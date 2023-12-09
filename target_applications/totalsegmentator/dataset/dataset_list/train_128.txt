@@ -1,0 +1,128 @@
+s0754	ct polytrauma
+s1045	ct polytrauma
+s0616	ct polytrauma
+s0224	ct polytrauma
+s0986	ct polytrauma
+s1089	ct polytrauma
+s1369	ct whole body
+s1397	ct whole body
+s1314	ct polytrauma
+s1321	ct polytrauma
+s0690	ct polytrauma
+s0790	ct polytrauma
+s1206	ct polytrauma
+s1159	ct polytrauma
+s0777	ct polytrauma
+s1124	ct polytrauma
+s0591	ct polytrauma
+s0624	ct aortic valve
+s1349	ct angiography neck-thx-abd-pelvis-leg
+s0763	ct polytrauma
+s0332	ct thorax-abdomen-pelvis
+s0467	ct angiography neck-thx-abd-pelvis-leg
+s0812	ct polytrauma
+s1029	ct polytrauma
+s1380	ct whole body
+s0751	ct angiography neck-thx-abd-pelvis-leg
+s0727	ct polytrauma
+s1388	ct whole body
+s0636	ct thorax-abdomen
+s0585	ct aortic valve
+s1304	ct polytrauma
+s1082	ct polytrauma
+s1350	ct polytrauma
+s1062	ct angiography neck-thx-abd-pelvis-leg
+s1178	ct neck-thorax-abdomen-pelvis
+s1105	ct aortic valve
+s0664	ct thorax-abdomen
+s1384	ct whole body
+s1334	ct angiography neck-thx-abd-pelvis-leg
+s1230	ct aortic valve
+s0804	ct angiography neck-thx-abd-pelvis-leg
+s1208	ct angiography neck-thx-abd-pelvis-leg
+s1207	ct thorax-abdomen-pelvis
+s0592	ct polytrauma
+s0196	ct angiography neck-thx-abd-pelvis-leg
+s1088	ct polytrauma
+s1379	ct angiography thorax-abdomen-pelvis
+s0334	ct neck-thorax-abdomen-pelvis
+s1310	ct aortic valve
+s0669	ct angiography neck-thx-abd-pelvis-leg
+s1326	ct heart-thorakale aorta
+s1344	ct angiography neck-thx-abd-pelvis-leg
+s0904	ct thorax-abdomen-pelvis
+s1362	ct angiography thorax-abdomen-pelvis
+s0447	ct thorax-abdomen-pelvis
+s0589	ct thorax-abdomen-pelvis
+s0462	ct spine
+s1123	ct polytrauma
+s0970	ct polytrauma
+s0024	ct thorax-abdomen
+s0931	ct angiography neck-thx-abd-pelvis-leg
+s0345	ct spine
+s0549	ct thorax-abdomen-pelvis
+s1224	ct thorax-abdomen-pelvis
+s0860	ct polytrauma
+s1209	ct thorax-abdomen-pelvis
+s1135	ct thorax-abdomen-pelvis
+s0863	ct neck-thorax-abdomen-pelvis
+s0429	ct thorax-abdomen-pelvis
+s1319	ct spine
+s0612	ct neck-thorax-abdomen-pelvis
+s1395	ct angiography thorax-abdomen-pelvis
+s0019	ct aortic valve
+s0619	ct thorax-abdomen-pelvis
+s0028	ct neck-thorax-abdomen-pelvis
+s0456	ct neck-thorax-abdomen-pelvis
+s1363	ct angiography thorax-abdomen-pelvis
+s1171	ct polytrauma
+s0982	ct thorax-abdomen-pelvis
+s0880	ct thorax-abdomen-pelvis
+s0550	ct neck-thorax-abdomen-pelvis
+s1044	ct thorax-abdomen-pelvis
+s1400	ct angiography thorax-abdomen-pelvis
+s0621	ct thorax-abdomen-pelvis
+s0859	ct thorax-abdomen-pelvis
+s0692	ct angiography neck-thx-abd-pelvis-leg
+s1085	ct neck-thorax-abdomen-pelvis
+s0916	ct thorax-abdomen-pelvis
+s0940	ct neck-thorax-abdomen-pelvis
+s1297	ct neck-thorax-abdomen-pelvis
+s0091	ct angiography neck-thx-abd-pelvis-leg
+s0637	ct thorax-abdomen-pelvis
+s0733	ct neck-thorax-abdomen-pelvis
+s0519	ct thorax-abdomen-pelvis
+s0778	ct thorax-abdomen-pelvis
+s0086	ct neck-thorax-abdomen-pelvis
+s0593	ct neck-thorax-abdomen-pelvis
+s0639	ct neck-thorax-abdomen-pelvis
+s1210	ct thorax-abdomen-pelvis
+s0484	ct thorax-abdomen-pelvis
+s1404	ct angiography thorax-abdomen-pelvis
+s0602	ct thorax-abdomen-pelvis
+s1111	ct thorax-abdomen-pelvis
+s0628	ct thorax-abdomen-pelvis
+s0656	ct thorax-abdomen-pelvis
+s0919	ct aortic valve
+s1006	ct thorax-abdomen-pelvis
+s0239	ct angiography abdomen-pelvis-leg
+s0587	ct neck-thorax-abdomen-pelvis
+s0796	ct neck-thorax-abdomen-pelvis
+s0171	ct angiography abdomen-pelvis-leg
+s0141	ct neck-thorax-abdomen-pelvis
+s0764	ct neck-thorax-abdomen-pelvis
+s1228	ct thorax-abdomen-pelvis
+s0050	ct thorax-abdomen
+s1283	ct neck-thorax-abdomen-pelvis
+s0472	ct thorax-abdomen-pelvis
+s0408	ct neck-thorax-abdomen-pelvis
+s0644	ct neck-thorax-abdomen-pelvis
+s0383	ct thorax-abdomen-pelvis
+s1371	ct whole body
+s0657	ct neck-thorax-abdomen-pelvis
+s1143	ct neck-thorax-abdomen-pelvis
+s1361	ct angiography thorax-abdomen-pelvis
+s1273	ct thorax-abdomen-pelvis
+s1382	ct angiography thorax-abdomen-pelvis
+s0476	ct neck-thorax-abdomen-pelvis
+s0869	ct neck-thorax-abdomen-pelvis
