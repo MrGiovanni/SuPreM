@@ -242,7 +242,7 @@ def process(args):
     mean_dice, std = validation(model, test_loader, args)
     print("Mean dice is:", mean_dice)
     dist.destroy_process_group()
-    assert 0 == 1
+    # assert 0 == 1
 
 def main():
     parser = argparse.ArgumentParser()
