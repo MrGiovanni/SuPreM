@@ -382,8 +382,8 @@ def main():
     parser.add_argument('--roi_y', default=96, type=int, help='roi size in y direction')
     parser.add_argument('--roi_z', default=96, type=int, help='roi size in z direction')
     parser.add_argument('--num_samples', default=1, type=int, help='sample number in each ct')
-    parser.add_argument('--map_type', default='organs', help='sample number in each ct') 
-    parser.add_argument('--num_class', default=18, type=int, help='class num')
+    parser.add_argument('--map_type', default='organs', help='organs | muscles | cardiac | vertebrae') 
+    parser.add_argument('--num_class', default=18, type=int, help='class num: 18 | 22 | 19 | 25')
     parser.add_argument('--phase', default='train', help='train or validation or test')
     parser.add_argument('--uniform_sample', action="store_true", default=False, help='whether utilize uniform sample strategy')
     parser.add_argument('--datasetkey', nargs='+', default=['01', '02', '03', '04', '05', 

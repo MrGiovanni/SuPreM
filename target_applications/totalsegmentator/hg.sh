@@ -7,7 +7,7 @@
 ##SBATCH --exclusive
 #SBATCH --mem=100G
 #SBATCH -p general
-#SBATCH -t 0-05:00:00
+#SBATCH -t 5-00:00:00
 #SBATCH -q public
 
 #SBATCH -o %x_slurm_%j.out     
@@ -34,16 +34,32 @@ datapath=/scratch/zzhou82/data/Totalsegmentator_dataset/Totalsegmentator_dataset
 # change to /path/to/your/data/TotalSegmentator
 arch=swinunetr 
 # support swinunetr, unet, and segresnet
-target_task=vertebrae
-num_target_class=25
-num_target_annotation=64
+target_task=$1
+num_target_class=$2
+num_target_annotation=$3
 suprem_path=pretrained_weights/supervised_suprem_swinunetr_2100.pth
 checkpoint_path=out/efficiency.$arch.$target_task.number$num_target_annotation/best_model.pth
 
+### Training 
+
 python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT train.py --dist False --model_backbone $arch --log_name efficiency.$arch.$target_task.number$num_target_annotation --map_type $target_task --num_class $num_target_class --dataset_path $datapath --num_workers 12 --batch_size 8 --pretrain $suprem_path --percent $num_target_annotation
 
-# sbatch --error=logs/train.out --output=logs/train.out hg.sh
+# for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.organs.$num_target_annotation.out --output=logs/train.organs.$num_target_annotation.out hg.sh organs 18 $num_target_annotation; done
+
+# for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.muscles.$num_target_annotation.out --output=logs/train.muscles.$num_target_annotation.out hg.sh muscles 22 $num_target_annotation; done
+
+# for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.cardiac.$num_target_annotation.out --output=logs/train.cardiac.$num_target_annotation.out hg.sh cardiac 19 $num_target_annotation; done
+
+# for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.vertebrae.$num_target_annotation.out --output=logs/train.vertebrae.$num_target_annotation.out hg.sh vertebrae 25 $num_target_annotation; done
+
+### Testing
 
 # python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT test.py --dist False --model_backbone $arch --log_name efficiency.$arch.$target_task.number$num_target_annotation --map_type $target_task --num_class $num_target_class --dataset_path $datapath --num_workers 12 --batch_size 2 --pretrain $checkpoint_path --train_type efficiency 
 
-# # sbatch --error=logs/test.out --output=logs/test.out hg.sh
+# # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.organs.$num_target_annotation.out --output=logs/test.organs.$num_target_annotation.out hg.sh organs 18 $num_target_annotation; done
+
+# # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.muscles.$num_target_annotation.out --output=logs/test.muscles.$num_target_annotation.out hg.sh muscles 22 $num_target_annotation; done
+
+# # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.cardiac.$num_target_annotation.out --output=logs/test.cardiac.$num_target_annotation.out hg.sh cardiac 19 $num_target_annotation; done
+
+# # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.vertebrae.$num_target_annotation.out --output=logs/test.vertebrae.$num_target_annotation.out hg.sh vertebrae 25 $num_target_annotation; done
