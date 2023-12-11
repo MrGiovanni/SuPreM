@@ -16,6 +16,9 @@ We developed a suite of pre-trained 3D models, named **SuPreM**, that combined t
 Radiological Society of North America (RSNA) 2023  <br/>
 [abstract](document/rsna_abstract.pdf) | [code](https://github.com/MrGiovanni/3D-MedicalPretraining) | [slides](document/rsna_slides.pdf) | talk
 
+**&#9733; We have maintained a document for [Frequently Asked Questions](document/frequently_asked_questions.md).**
+**&#9733; We have provided a list of publications about 3D medical pre-training in [Awesome Medical Pre-Training](document/awesome_medical_pretraining.md) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re).**
+
 ## An Extensive Dataset: AbdomenAtlas 1.1
 
 The release of AbdomenAtlas 1.0 can be found at https://github.com/MrGiovanni/AbdomenAtlas
@@ -30,7 +33,7 @@ We anticipate that the release of large, annotated datasets (AbdomenAtlas 1.1) a
 
 ## A Suite of Pre-trained Models: SuPreM
 
-The following is a list of supported model backbones in our collection. Select the appropriate family of backbones and click to expand the table, download a specific backbone and its pre-trained weights (`name` and `download`), and save the weights into `./pretrained_weights/`. More backbones will be added along time. **Please suggest the backbone in [this channel](https://github.com/MrGiovanni/SuPreM/issues/3) if you want us to pre-train it on AbdomenAtlas 1.1 containing 9,262 annotated CT volumes.**
+The following is a list of supported model backbones in our collection. Select the appropriate family of backbones and click to expand the table, download a specific backbone and its pre-trained weights (`name` and `download`), and save the weights into `./pretrained_weights/`. More backbones will be added along time. **Please suggest the backbone in [this channel](https://github.com/MrGiovanni/SuPreM/issues/1) if you want us to pre-train it on AbdomenAtlas 1.1 containing 9,262 annotated CT volumes.**
 
 <details>
 <summary style="margin-left: 25px;">Swin UNETR</summary>
