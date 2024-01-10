@@ -1,5 +1,12 @@
 # Fine-tuning SuPreM on the (subset of) TotalSegmentator dataset
 
+##### 0. Create a virtual environment (optional)
+
+```bash
+conda create -n suprem python=3.8
+source activate suprem
+```
+
 ##### 1. Clone the GitHub repository
 
 ```bash
