@@ -8,13 +8,19 @@ We developed a suite of pre-trained 3D models, named **SuPreM**, that combined t
 
 ## Paper
 
+<b>How Well Do Supervised 3D Models Transfer to Medical Imaging Tasks?</b> <br/>
+[Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/), and [Zongwei Zhou](https://www.zongweiz.com/)<sup>*</sup> <br/>
+Johns Hopkins University  <br/>
+International Conference on Learning Representations (ICLR) 2024  <br/>
+[paper](https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf) | [code](https://github.com/MrGiovanni/SuPreM) | slides | talk
+
 <b>Transitioning to Fully-Supervised Pre-Training with Large-Scale Radiology ImageNet for Improved AI Transferability in Three-Dimensional Medical Segmentation</b> <br/>
 [Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ)<sup>1</sup>, [Junfei Xiao](https://lambert-x.github.io/)<sup>1</sup>, [Jie Liu](https://ljwztc.github.io/)<sup>2</sup>, [Yucheng Tang](https://scholar.google.com/citations?hl=en&user=0xheliUAAAAJ)<sup>3</sup>, [Alan Yuille](https://www.cs.jhu.edu/~ayuille/)<sup>1</sup>, and [Zongwei Zhou](https://www.zongweiz.com/)<sup>1,*</sup> <br/>
 <sup>1</sup>Johns Hopkins University  <br/>
 <sup>2</sup>City University of Hong Kong  <br/>
 <sup>3</sup>NVIDIA  <br/>
 Radiological Society of North America (RSNA) 2023  <br/>
-[abstract](document/rsna_abstract.pdf) | [code](https://github.com/MrGiovanni/3D-MedicalPretraining) | [slides](document/rsna_slides.pdf) | talk
+[abstract](document/rsna_abstract.pdf) | [code](https://github.com/MrGiovanni/SuPreM) | [slides](document/rsna_slides.pdf) | talk
 
 **&#9733; We have maintained a document for [Frequently Asked Questions](document/frequently_asked_questions.md).**
 
