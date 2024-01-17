@@ -1,7 +1,7 @@
 <div align="center">
  
 ![logo](document/fig_suprem_logo.png)  
-**Subscribe us: https://groups.google.com/u/2/g/imseg**  
+**Subscribe us: https://groups.google.com/u/2/g/bodymaps**  
 </div>
 
 We developed a suite of pre-trained 3D models, named **SuPreM**, that combined the best of large-scale datasets and per-voxel annotations, showing the transferability across a range of 3D medical imaging tasks.
