@@ -11,7 +11,7 @@ We developed a suite of pre-trained 3D models, named **SuPreM**, that combined t
 <b>How Well Do Supervised 3D Models Transfer to Medical Imaging Tasks?</b> <br/>
 [Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/), and [Zongwei Zhou](https://www.zongweiz.com/)<sup>*</sup> <br/>
 Johns Hopkins University  <br/>
-International Conference on Learning Representations (ICLR) 2024  <br/>
+International Conference on Learning Representations (ICLR) 2024 (oral; top 1.2%) <br/>
 [paper](https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf) | [code](https://github.com/MrGiovanni/SuPreM) | slides | talk
 
 <b>Transitioning to Fully-Supervised Pre-Training with Large-Scale Radiology ImageNet for Improved AI Transferability in Three-Dimensional Medical Segmentation</b> <br/>
