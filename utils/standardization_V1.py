@@ -14,8 +14,16 @@ from skimage.measure import label
 def rename_id(name):
     name = name.replace('01_Multi-Atlas_Labeling', '01_BTCV')
     name = name.replace('18_FLARE23_FLARE23_', '18_FLARE23_')
+    name = name.replace('KiTS23_case_', '05_KiTS_case_')
     
     return name
+
+# def compare_files_size(file1, file2): 
+
+# 	if abs(os.path.getsize(file1) - os.path.getsize(file2)) < 100:    
+# 		return True   
+# 	else:
+# 		return False
 
 def main():
     
@@ -45,6 +53,7 @@ def main():
         duplication = False
         for i in range(len(dic)):
             if data.shape == dic[i]['dimension']:
+
                 ct1 = nib.load(os.path.join(args.ROOT_DIR, ct_id, 'ct.nii.gz'))
                 ct1 = np.array(ct1.dataobj)
                 ct2 = nib.load(os.path.join(args.ROOT_UNIQUE_DIR, rename_id(dic[i]['ID']), 'ct.nii.gz'))
@@ -61,7 +70,7 @@ def main():
         else:
             case = {'ID': ct_id, 'dimension': data.shape}
             dic.append(case)
-            shutil.copytree(os.path.join(args.ROOT_DIR, ct_id), os.path.join(args.ROOT_UNIQUE_DIR, rename_id(ct_id)))
+            shutil.move(os.path.join(args.ROOT_DIR, ct_id), os.path.join(args.ROOT_UNIQUE_DIR, rename_id(ct_id)))
         
 if __name__ == "__main__":
     main()
