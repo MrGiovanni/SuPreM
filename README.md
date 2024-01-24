@@ -87,9 +87,9 @@ The following is a list of supported model backbones in our collection. Select t
 Examples of fine-tuning our SuPreM on other downstream medical tasks are provided in this repository.
 
 | **task** | **dataset** | **README** |
-|----------|:------------|:-----------|
+|:---------|:------------|:-----------|
 | organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [doc](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
 
 ## Acknowledgement
 
-This work was supported by the Lustgarten Foundation for Pancreatic Cancer Research and the McGovern Foundation. The segmentation backbone is based on [Swin UNETR](https://github.com/Project-MONAI/tutorials/blob/main/3d_segmentation/swin_unetr_btcv_segmentation_3d.ipynb); we appreciate the effort of the [MONAI Team](https://monai.io/) to provide and maintain open-source code to the community. Paper content is covered by patents pending.
+This work was supported by the Lustgarten Foundation for Pancreatic Cancer Research and the McGovern Foundation. The codebase is modified from [NVIDI MONAI](https://monai.io/). Paper content is covered by patents pending.
