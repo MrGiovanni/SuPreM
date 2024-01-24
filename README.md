@@ -24,7 +24,7 @@ Radiological Society of North America (RSNA) 2023  <br/>
 
 **&#9733; We have maintained a document for [Frequently Asked Questions](document/frequently_asked_questions.md).**
 
-**&#9733; We have provided a list of publications about 3D medical pre-training in [Awesome Medical Pre-Training](document/awesome_medical_pretraining.md) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re).**
+**&#9733; We have summarized publications about 3D medical pre-training in [Awesome Medical Pre-Training](document/awesome_medical_pretraining.md) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re).**
 
 ## An Extensive Dataset: AbdomenAtlas 1.1
 
@@ -83,6 +83,12 @@ The following is a list of supported model backbones in our collection. Select t
 
 </div>
 </details>
+
+Examples of fine-tuning our SuPreM on other downstream medical tasks are provided in this repository.
+
+| **task** | **dataset** | **README** |
+|----------|:------------|:-----------|
+| organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [doc](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
 
 ## Acknowledgement
 
