@@ -79,16 +79,16 @@ The following is a list of supported model backbones in our collection. Select t
 
 | name | params | pre-trained data | resources | download |
 |:----  |:----  |:----  |:----  |:----  |
-| SuPreM | 470.13M | 2100 CT | ours :star2: | [weights](https://www.dropbox.com/scl/fi/hq10omgcie7mdsxo34bjg/supervised_suprem_segresnet_2100.pth?rlkey=pwwes2dnlo2t6na80kioljbmm&dl=0) |
+| SuPreM | 470.13M | 2100 CT | ours :star2: | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_segresnet_2100.pth?download=true) |
 
 </div>
 </details>
 
 Examples of fine-tuning our SuPreM on other downstream medical tasks are provided in this repository.
 
-| **task** | **dataset** | **README** |
+| **task** | **dataset** | **document** |
 |:---------|:------------|:-----------|
-| organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [doc](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
+| organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [README](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
 
 ## Acknowledgement
 
