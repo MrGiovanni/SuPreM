@@ -92,4 +92,4 @@ Examples of fine-tuning our SuPreM on other downstream medical tasks are provide
 
 ## Acknowledgement
 
-This work was supported by the Lustgarten Foundation for Pancreatic Cancer Research and the McGovern Foundation. The codebase is modified from [NVIDI MONAI](https://monai.io/). Paper content is covered by patents pending.
+This work was supported by the Lustgarten Foundation for Pancreatic Cancer Research and the McGovern Foundation. The codebase is modified from [NVIDIA MONAI](https://monai.io/). Paper content is covered by patents pending.
