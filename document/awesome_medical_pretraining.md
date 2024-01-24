@@ -6,7 +6,7 @@
 - 🔥 Welcome to share the paper and code through the [issues](https://github.com/MrGiovanni/SuPreM/issues/2).
 
 | **title** | **paper** | **conf/jour** | **repo** |
-|-----------|:--------:|:---------:|
+|-----------|:---------:|:---------:|:---------:|
 | Disruptive Autoencoders: Leveraging Low-level features for 3D Medical Image Pre-training | [![arXiv](https://img.shields.io/badge/arXiv-2307.16896-b31b1b.svg)](http://arxiv.org/abs/2307.16896) | | [![GitHub stars](https://img.shields.io/github/stars/Project-MONAI/research-contributions.svg?logo=github&label=Stars)](https://github.com/Project-MONAI/research-contributions) |
 | CLIP-Driven Universal Model for Organ Segmentation and Tumor Detection | [![arXiv](https://img.shields.io/badge/arXiv-2301.00785-b31b1b.svg)](http://arxiv.org/abs/2301.00785) | ICCV'23 | [![GitHub stars](https://img.shields.io/github/stars/ljwztc/CLIP-Driven-Universal-Model.svg?logo=github&label=Stars)](https://github.com/ljwztc/CLIP-Driven-Universal-Model) |
 | UniMiSS: Universal Medical Self-supervised Learning via Breaking Dimensionality Barrier | [![arXiv](https://img.shields.io/badge/arXiv-2112.09356-b31b1b.svg)](http://arxiv.org/abs/2112.09356) | ECCV'22 | [![GitHub stars](https://img.shields.io/github/stars/YtongXie/UniMiSS-code.svg?logo=github&label=Stars)](https://github.com/YtongXie/UniMiSS-code) |
