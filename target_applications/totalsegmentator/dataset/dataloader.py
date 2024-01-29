@@ -31,6 +31,7 @@ import time
 import warnings
 from copy import copy, deepcopy
 import h5py
+import os
 
 
 import numpy as np
@@ -287,16 +288,42 @@ def get_loader(args):
         ]
     )
 
+    test_transforms = Compose(
+        [
+            LoadImaged_totoalseg(keys=["image"], map_type=args.map_type),
+            AddChanneld(keys=["image"]),
+            Orientationd(keys=["image"], axcodes="RAS"),
+            Spacingd(
+                keys=["image"],
+                pixdim=(args.space_x, args.space_y, args.space_z),
+                mode=("bilinear"),
+            ), 
+            ScaleIntensityRanged(
+                keys=["image"],
+                a_min=args.a_min,
+                a_max=args.a_max,
+                b_min=args.b_min,
+                b_max=args.b_max,
+                clip=True,
+            ),
+            CropForegroundd(keys=["image"], source_key="image"),
+            ToTensord(keys=["image"]),
+
+        ]
+    )
+
     train_img = []
     train_lbl = []
-    train_post_lbl = []
     train_name = []
 
     for item in args.dataset_list:
-        for line in open(args.data_txt_path + 'train_' + str(args.percent) + '.txt'):
+        train_txt_path = os.path.join(args.data_txt_path, 'train_' + str(args.percent) + '.txt')
+        for line in open(train_txt_path):
             name = line.strip().split('\t')[0]
-            train_img.append(args.dataset_path + name + '/ct.nii.gz')
-            train_lbl.append(args.dataset_path + name + '/segmentations/')
+            train_img_path = os.path.join(args.dataset_path, name, 'ct.nii.gz')
+            train_lbl_path = os.path.join(args.dataset_path, name, 'segmentations/')
+            train_img.append(train_img_path)
+            train_lbl.append(train_lbl_path)
             train_name.append(name)
     data_dicts_train = [{'image': image, 'label': label, 'name': name}
                 for image, label, name in zip(train_img, train_lbl, train_name)]
@@ -304,29 +331,32 @@ def get_loader(args):
 
     val_img = []
     val_lbl = []
-    val_post_lbl = []
     val_name = []
     for item in args.dataset_list:
-        for line in open(args.data_txt_path + 'val.txt'):
+        val_txt_path = os.path.join(args.data_txt_path, 'val.txt')
+        for line in open(val_txt_path):
             name = line.strip().split('\t')[0]
-            val_img.append(args.dataset_path + name + '/ct.nii.gz')
-            val_lbl.append(args.dataset_path + name + '/segmentations/')
+            val_img_path = os.path.join(args.dataset_path, name, 'ct.nii.gz')
+            val_lbl_path = os.path.join(args.dataset_path, name, 'segmentations/')
+            val_img.append(val_img_path)
+            val_lbl.append(val_lbl_path)
             val_name.append(name)
     data_dicts_val = [{'image': image, 'label': label, 'name': name}
                 for image, label, name in zip(val_img, val_lbl, val_name)]
     print('val len {}'.format(len(data_dicts_val)))
 
-
     ## test dict part
     test_img = []
     test_lbl = []
-    test_post_lbl = []
     test_name = []
     for item in args.dataset_list:
-        for line in open(args.data_txt_path + 'test.txt'):
+        test_txt_path = os.path.join(args.data_txt_path, 'test.txt')
+        for line in open(test_txt_path):
             name = line.strip().split('\t')[0]
-            test_img.append(args.dataset_path + name + '/ct.nii.gz')
-            test_lbl.append(args.dataset_path + name + '/segmentations/')
+            test_img_path = os.path.join(args.dataset_path, name, 'ct.nii.gz')
+            test_lbl_path = os.path.join(args.dataset_path, name, 'segmentations/')
+            test_img.append(test_img_path)
+            test_lbl.append(test_lbl_path)
             test_name.append(name)
     data_dicts_test = [{'image': image, 'label': label, 'name': name}
                 for image, label, name in zip(test_img, test_lbl, test_name)]
