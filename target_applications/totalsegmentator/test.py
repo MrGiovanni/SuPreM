@@ -64,10 +64,14 @@ def validation(model, ValLoader, args):
                     # Store the spacing information in the dictionary with the compound key
                     spacing_dict[(name, class_name)] = spacing
         with torch.no_grad():
-            val_outputs = sliding_window_inference(image, (args.roi_x, args.roi_y, args.roi_z), 1, model, overlap=args.overlap, mode='gaussian')
+            # val_outputs = sliding_window_inference(image, (args.roi_x, args.roi_y, args.roi_z), 1, model, overlap=args.overlap, mode='gaussian')
+            # if the gpu memory is not enough, you can try to use the following code as alternative
+            val_outputs = sliding_window_inference(image, (args.roi_x, args.roi_y, args.roi_z), 1, model, overlap=args.overlap, mode='gaussian', sw_device="cuda", device="cpu")
         
         val_labels_list = decollate_batch(val_labels)
-        val_labels_convert = [post_label(val_label_tensor) for val_label_tensor in val_labels_list]
+        # val_labels_convert = [post_label(val_label_tensor) for val_label_tensor in val_labels_list]
+        # if the gpu memory is not enough, you can try to use the following code as alternative
+        val_labels_convert = [post_label(val_label_tensor.cpu()) for val_label_tensor in val_labels_list]
         
         val_outputs_list = decollate_batch(val_outputs)
         val_output_convert = [post_pred(val_pred_tensor) for val_pred_tensor in val_outputs_list]
