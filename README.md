@@ -84,11 +84,22 @@ The following is a list of supported model backbones in our collection. Select t
 </div>
 </details>
 
+Examples of predicting organ masks on unseen CT volumes using our SuPreM: [README](https://github.com/MrGiovanni/SuPreM/blob/main/direct_inference/README.md)
+
 Examples of fine-tuning our SuPreM on other downstream medical tasks are provided in this repository.
 
 | **task** | **dataset** | **document** |
 |:---------|:------------|:-----------|
 | organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [README](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
+
+## If You Want To Re-Pre-Train SuPreM on AbdomenAtlas 1.1 (*not recommended*), See [README](https://github.com/MrGiovanni/SuPreM/blob/main/supervised_pretraining/README.md)
+
+Estimated cost:
+- Eight A100 GPUs
+- At least seven days
+- 733GB disk space
+
+&#9733; Or make a request here: https://github.com/MrGiovanni/SuPreM/issues/1
 
 ## Acknowledgement
 
