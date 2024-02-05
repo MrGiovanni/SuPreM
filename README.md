@@ -92,14 +92,14 @@ Examples of fine-tuning our SuPreM on other downstream medical tasks are provide
 |:---------|:------------|:-----------|
 | organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [README](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
 
-## If You Want To Re-Pre-Train SuPreM on AbdomenAtlas 1.1 (*not recommended*), See [README](https://github.com/MrGiovanni/SuPreM/blob/main/supervised_pretraining/README.md)
+#### If you want to re-pre-train SuPreM on AbdomenAtlas 1.1 (*not recommended*), please refer to our [instruction](https://github.com/MrGiovanni/SuPreM/blob/main/supervised_pretraining/README.md)
 
 Estimated cost:
 - Eight A100 GPUs
 - At least seven days
 - 733GB disk space
 
-&#9733; Or make a request here: https://github.com/MrGiovanni/SuPreM/issues/1
+**&#9733; Or simply make a request here: https://github.com/MrGiovanni/SuPreM/issues/1**
 
 ## Acknowledgement
 
