@@ -12,8 +12,8 @@ source activate suprem
 ### 1. Clone the GitHub repository
 
 ```bash
-git clone https://github.com/MrGiovanni/BenchmarkBackbone
-cd BenchmarkBackbone/
+git clone https://github.com/MrGiovanni/SuPreM
+cd SuPreM/benchmark_backbones/
 pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install monai[all]==0.9.0
 pip install -r requirements.txt
@@ -54,7 +54,7 @@ from model.SwinUNETR import SwinUNETR # add this line
 
 ##### 4.3 Add an IF branch to set up your backbone in the `train.py`
 
-For example, in Line [72](https://github.com/MrGiovanni/BenchmarkBackbone/blob/3030c70487f23d6e0d87c8297e646cffbacedd5a/train.py#L72)
+For example, in Line [72](https://github.com/MrGiovanni/SuPreM/blob/fef9725c86d39caed2d79bcca0a69683c847b00f/benchmark_backbones/train.py#L72)
 ```python
 # add this IF branch
 if args.backbone == 'swinunetr':
