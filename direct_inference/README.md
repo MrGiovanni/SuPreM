@@ -19,7 +19,7 @@ Download the datasets to `your_datapath`
 1. [Totalsegmentator](https://github.com/wasserth/TotalSegmentator).
 2. [DAP Atlas](https://github.com/alexanderjaus/AtlasDataset).
 
-##### 3. Download the pre-trained checkpoint
+##### 1.3 Download the pre-trained checkpoint
 We use Swin UNETR as an example.
 ```bash
 cd direct_inference/pretrained_weights/
