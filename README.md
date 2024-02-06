@@ -12,7 +12,7 @@ We developed a suite of pre-trained 3D models, named **SuPreM**, that combined t
 [Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/), and [Zongwei Zhou](https://www.zongweiz.com/)<sup>*</sup> <br/>
 Johns Hopkins University  <br/>
 International Conference on Learning Representations (ICLR) 2024 (oral; top 1.2%) <br/>
-[paper](https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf) | [code](https://github.com/MrGiovanni/SuPreM) | slides | talk
+[paper](https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf) | [code](https://github.com/MrGiovanni/SuPreM) | slides | talk | [news](https://www.cs.jhu.edu/news/ai-and-radiologists-unite-to-map-the-abdomen/)
 
 <b>Transitioning to Fully-Supervised Pre-Training with Large-Scale Radiology ImageNet for Improved AI Transferability in Three-Dimensional Medical Segmentation</b> <br/>
 [Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ)<sup>1</sup>, [Junfei Xiao](https://lambert-x.github.io/)<sup>1</sup>, [Jie Liu](https://ljwztc.github.io/)<sup>2</sup>, [Yucheng Tang](https://scholar.google.com/citations?hl=en&user=0xheliUAAAAJ)<sup>3</sup>, [Alan Yuille](https://www.cs.jhu.edu/~ayuille/)<sup>1</sup>, and [Zongwei Zhou](https://www.zongweiz.com/)<sup>1,*</sup> <br/>
