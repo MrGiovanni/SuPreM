@@ -240,9 +240,6 @@ def process(args):
         else:
             print('This is training from scratch')
 
-    model.to(args.device)
-    model.train()
-
     # SuPreM segresnet backbone
     if args.model_backbone == 'segresnet':
         model = SegResNet(
@@ -267,6 +264,9 @@ def process(args):
             print('Use SuPreM SegResNet backbone pretrained weights')
         else:
             print('This is SegResNet training from scratch')
+            
+    model.to(args.device)
+    model.train()
     
     if args.dist:
         model = DistributedDataParallel(model, device_ids=[args.device])
