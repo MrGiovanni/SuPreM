@@ -12,11 +12,6 @@ from dataset.dataloader_bdmap import get_loader
 
 from tensorboardX import SummaryWriter
 
-from monai.losses import DiceCELoss
-from monai.metrics import DiceMetric
-dice_metric = DiceMetric(include_background=True, reduction="mean_batch", get_not_nans=False)
-loss_function = DiceCELoss(to_onehot_y=True, softmax=True)
-
 from model.unet3d import UNet
 from model.SwinUNETR import SwinUNETR
 from utils import loss
