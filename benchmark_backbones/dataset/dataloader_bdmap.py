@@ -94,7 +94,7 @@ class LoadSelectedImaged(MapTransform):
         label_organs = class_map_abdomenatlas_1_0
         temp = nib.load(os.path.join(label_parent_path,label_organs[0]+'.nii.gz')).get_fdata()
         W,H,D = temp.shape
-        label = np.zeros((len(label_organs)+1,W,H,D))
+        label = np.zeros((len(label_organs),W,H,D))
         
         for organ in range(len(label_organs)):
             selected_organ = label_organs[organ]
