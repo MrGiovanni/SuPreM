@@ -24,7 +24,9 @@ Radiological Society of North America (RSNA) 2023  <br/>
 
 **&#9733; We have maintained a document for [Frequently Asked Questions](document/frequently_asked_questions.md).**
 
-**&#9733; We have reviewed 3D medical pre-training in [Awesome Medical Pre-Training](document/awesome_medical_pretraining.md).**
+**&#9733; We have maintained a paper list for [Awesome Medical Pre-Training](document/awesome_medical_pretraining.md).**
+
+**&#9733; We have maintained a paper list for [Awesome Medical Segmentation Backbones](document/awesome_medical_backbone.md).**
 
 ## An Extensive Dataset: AbdomenAtlas 1.1
 

@@ -1,5 +1,17 @@
 # FAQ
 
+* **Q: Due to the limited CPU memory, I can only cache 60% of the data. I am curious to know if reducing the cache number or the cache rate would significantly impact the final performance.**
+
+    Short answer is yes, it will impact the performance, but you could increase the number of epochs to let the model train more.
+    
+    This is a very important question. I predict that more and more medical imaging researchers will meet the same issue shortly. Our AbdomenAtlas 1.0 [[Qu et al., NeurIPS 2023]](https://www.cs.jhu.edu/~alanlab/Pubs23/qu2023abdomenatlas.pdf) provides 5,000+ CT volumes, and our next version AbdomenAtlas 1.1 [[Li et al., ICLR 2024]](https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf) will provide 9,000+ volumes, and we also have a bigger version at Hopkins, called AbdomenAtlas Pro with 22,000 volumes.
+    
+    Dealing with increasing medical data/annotations will be the emerging research frontier for more exploration. We have already made several explorations on this (e.g., lifelong learning, better sampling strategies, better CPU-GPU communication, etc.). For this specific benchmark, you are allowed to modify any hyperparameters and use any engineering tricks to make your backbone competitive.
+
+* **Q: What are the immediate implications for the average hospital patient?**
+
+    Trained on our dataset, AI holds the premise to improve organ volume measurement accuracy and reduce manual contouring efforts. Precise organ volume measurement is fundamental for effective patient care, but manual organ contouring is extremely time-consuming and exhibits considerable variability among expert radiologists. Variations in organ sizes and shapes can indicate a range of medical conditions, from benign anomalies to life-threatening diseases. Our dataset provides detailed per-voxel annotations for eight abdominal organs. These can be used to develop AI that can automatically identifies and delineates the boundary of various anatomical structures, essential for numerous downstream applications such as disease diagnosis and treatment planning. Besides, as said in 5th answer, our dataset can be a great resource to improve AI performance of cancer-related tasks.
+
 * **Q: How do the models trained on the collected large CT dataset generalize to novel modalities such as MRI?**
 
     This is a very good point. We think transfer learning across different imaging modalities, such as from CT to MRI, might be less effective compared to transfers within the same modality, primarily due to the significant differences in their imaging techniques. The discrepancies in image acquisition methods between CT and MRI result in distinct intensity values and ranges. Nonetheless, our pre-trained model could still be valuable for abdominal MRI applications. This is because the underlying anatomical structures remain consistent across both CT and MRI, allowing for the potential transfer of shared knowledge.
