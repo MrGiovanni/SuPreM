@@ -37,6 +37,7 @@ class SwinUNETR(nn.Module):
         normalize: bool = True,
         use_checkpoint: bool = False,
         spatial_dims: int = 3,
+        encoding: Union[Tuple, str] = 'rand_embedding', ## rand_embedding or word_embedding
     ) -> None:
         """
         Args:
@@ -63,6 +64,8 @@ class SwinUNETR(nn.Module):
         """
 
         super().__init__()
+
+        self.encoding = encoding
 
         img_size = ensure_tuple_rep(img_size, spatial_dims)
         patch_size = ensure_tuple_rep(2, spatial_dims)
@@ -204,11 +207,7 @@ class SwinUNETR(nn.Module):
             upsample_kernel_size=2,
             norm_name=norm_name,
             res_block=True,
-        )
-
-        self.out = UnetOutBlock(
-            spatial_dims=spatial_dims, in_channels=feature_size, out_channels=out_channels
-        )  # type: ignore
+        ) 
 
     def load_from(self, weights):
 
@@ -261,20 +260,26 @@ class SwinUNETR(nn.Module):
             )
 
     def forward(self, x_in):
+        # print(x_in.shape, task_id.shape)
         hidden_states_out = self.swinViT(x_in, self.normalize)
         enc0 = self.encoder1(x_in)
         enc1 = self.encoder2(hidden_states_out[0])
         enc2 = self.encoder3(hidden_states_out[1])
         enc3 = self.encoder4(hidden_states_out[2])
         dec4 = self.encoder10(hidden_states_out[4])
+        # print(x_in.shape, enc0.shape, enc1.shape, enc2.shape, enc3.shape, dec4.shape)
+        # torch.Size([6, 1, 64, 64, 64]) torch.Size([6, 48, 64, 64, 64]) torch.Size([6, 48, 32, 32, 32]) 
+        # torch.Size([6, 96, 16, 16, 16]) torch.Size([6, 192, 8,8, 8]) torch.Size([6, 768, 2, 2, 2])
+
         dec3 = self.decoder5(dec4, hidden_states_out[3])
         dec2 = self.decoder4(dec3, enc3)
         dec1 = self.decoder3(dec2, enc2)
         dec0 = self.decoder2(dec1, enc1)
         out = self.decoder1(dec0, enc0)
-        logits = self.out(out)
-        print(logits.shape)
-        return logits
+        # print(dec3.shape, dec2.shape, dec1.shape, dec0.shape, out.shape)
+        # torch.Size([6, 384, 4, 4, 4]) torch.Size([6, 192, 8, 8, 8]) torch.Size([6, 96, 16, 16, 16]) 
+        # torch.Size([6, 48, 32, 32, 32]) torch.Size([6, 48, 64, 64, 64])
+        return dec4, out
 
 
 def window_partition(x, window_size):
