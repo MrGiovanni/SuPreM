@@ -198,12 +198,12 @@ def main():
     
     ## model load
     parser.add_argument('--resume', default=None, help='The path resume from checkpoint')
-    parser.add_argument('--pretrain', default='./pretrained_weights/Genesis_Chest_CT.pt', 
+    parser.add_argument('--pretrain', default=None, 
                         help='The path of pretrain model')
     parser.add_argument('--trans_encoding', default='word_embedding', 
                         help='the type of encoding: rand_embedding or word_embedding')
     parser.add_argument('--word_embedding', default='./pretrained_weights/txt_encoding.pth', 
-                        help='The path of word embedding')
+                        help='The path of word embedding, need to change if you change the num_class')
     
     ## hyperparameter
     parser.add_argument("--epoch", default=0)
@@ -215,7 +215,7 @@ def main():
     
     ## dataset
     parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.0'])
-    parser.add_argument('--data_root_path', default='/data2/wenxuan/Dataset/AbdomenAtlasDataset/AbdomenAtlasMini/AbdomenAtlasInternalMini', help='data root path')
+    parser.add_argument('--data_root_path', default='...', help='data root path')
     parser.add_argument('--data_txt_path', default='./dataset/dataset_list/', help='data txt path')
     parser.add_argument('--batch_size', default=2, type=int, help='batch size')
     parser.add_argument('--a_min', default=-175, type=float, help='a_min in ScaleIntensityRanged')
@@ -232,7 +232,7 @@ def main():
     parser.add_argument('--cache_dataset', action="store_true", default=False, help='whether use cache dataset')
     parser.add_argument('--cache_rate', default=0.6, type=float, help='the percentage of cached data in total')
     parser.add_argument('--cache_num', default=3000, type=int, help='the number of cached data')
-    parser.add_argument('--num_class', default=25, type=int, help='number of class')
+    parser.add_argument('--num_class', default=25, type=int, help='number of class, 25 by default')
 
     args = parser.parse_args()
     
