@@ -103,6 +103,25 @@ Estimated cost:
 
 **&#9733; Or simply make a request here: https://github.com/MrGiovanni/SuPreM/issues/1**
 
+
+## Citation
+
+```
+@inproceedings{li2024well,
+  title={How Well Do Supervised Models Transfer to 3D Image Segmentation?},
+  author={Li, Wenxuan and Yuille, Alan and Zhou, Zongwei},
+  booktitle={The Twelfth International Conference on Learning Representations},
+  year={2024}
+}
+
+@article{qu2023annotating,
+  title={Annotating 8,000 Abdominal CT Volumes for Multi-Organ Segmentation in Three Weeks},
+  author={Qu, Chongyu and Zhang, Tiezheng and Qiao, Hualin and Liu, Jie and Tang, Yucheng and Yuille, Alan and Zhou, Zongwei},
+  journal={arXiv preprint arXiv:2305.09666},
+  year={2023}
+}
+```
+
 ## Acknowledgement
 
 This work was supported by the Lustgarten Foundation for Pancreatic Cancer Research and the McGovern Foundation. The codebase is modified from [NVIDIA MONAI](https://monai.io/). Paper content is covered by patents pending.
