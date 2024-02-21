@@ -6,8 +6,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
 from torch.nn import LayerNorm
-from backbone.SwinUNETR import SwinUNETR
-from backbone.Unet import UNet3D
+from backbone.swinunetr import SwinUNETR
+from backbone.unet import UNet3D
 from backbone.DiNTS import TopologyInstance, DiNTS
 
 
@@ -206,7 +206,7 @@ class Universal_model(nn.Module):
             task_encoding = F.relu(self.text_to_vision(self.organ_embedding))
             task_encoding = task_encoding.unsqueeze(2).unsqueeze(2).unsqueeze(2)
         # print('task_encoding', task_encoding.shape)
-        # task_encoding torch.Size([31, 256, 1, 1, 1])
+        # task_encoding torch.Size([25, 256, 1, 1, 1])
         
         # Global Average Pooling for feature aggregation
         x_feat = self.GAP(dec4)

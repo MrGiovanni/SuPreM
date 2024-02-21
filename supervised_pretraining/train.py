@@ -84,8 +84,9 @@ def process(args):
                     )
 
     # load pre-trained weights
-    model.load_params(torch.load(args.pretrain)["state_dict"])
-    print('Use pretrained weights')
+    if args.pretrain:
+        model.load_params(torch.load(args.pretrain)["state_dict"])
+        print('Use pretrained weights')
 
     if args.trans_encoding == 'word_embedding':
         word_embedding = torch.load(args.word_embedding)
