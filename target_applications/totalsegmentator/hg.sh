@@ -36,6 +36,7 @@ arch=swinunetr
 # support swinunetr, unet, and segresnet
 target_task=$1
 num_target_class=$2
+# the maximum number of target annotations is 1081 for the whole training dataset
 num_target_annotation=$3
 suprem_path=pretrained_weights/supervised_suprem_swinunetr_2100.pth
 checkpoint_path=out/efficiency.$arch.$target_task.number$num_target_annotation/best_model.pth
@@ -52,6 +53,9 @@ python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$R
 
 # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.vertebrae.$num_target_annotation.out --output=logs/train.vertebrae.$num_target_annotation.out hg.sh vertebrae 25 $num_target_annotation; done
 
+# for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/train.ribs.$num_target_annotation.out --output=logs/train.ribs.$num_target_annotation.out hg.sh ribs 25 $num_target_annotation; done
+
+
 ### Testing
 
 # python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT test.py --dist False --model_backbone $arch --log_name efficiency.$arch.$target_task.number$num_target_annotation --map_type $target_task --num_class $num_target_class --dataset_path $datapath --num_workers 12 --batch_size 2 --pretrain $checkpoint_path --train_type efficiency 
@@ -63,3 +67,5 @@ python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$R
 # # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.cardiac.$num_target_annotation.out --output=logs/test.cardiac.$num_target_annotation.out hg.sh cardiac 19 $num_target_annotation; done
 
 # # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.vertebrae.$num_target_annotation.out --output=logs/test.vertebrae.$num_target_annotation.out hg.sh vertebrae 25 $num_target_annotation; done
+
+# # for num_target_annotation in 64 128 256 512 1024; do sbatch --error=logs/test.ribs.$num_target_annotation.out --output=logs/test.ribs.$num_target_annotation.out hg.sh ribs 25 $num_target_annotation; done
