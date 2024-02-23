@@ -74,7 +74,7 @@ class_map_part_cardiac = {
     16: "colon",
     17: "urinary_bladder",
     18: "face"
-}
+    }
 
 class_map_part_organs = {
     1: "spleen",
@@ -94,7 +94,7 @@ class_map_part_organs = {
     15: "lung_upper_lobe_right",
     16: "lung_middle_lobe_right",
     17: "lung_lower_lobe_right"
-}
+    }
 
 class_map_part_vertebrae = {
     1: "vertebrae_L5",
@@ -121,7 +121,7 @@ class_map_part_vertebrae = {
     22: "vertebrae_C3",
     23: "vertebrae_C2",
     24: "vertebrae_C1"
-}
+    }
 
 class_map_part_muscles = {
     1: "humerus_left",
@@ -145,13 +145,41 @@ class_map_part_muscles = {
     19: "autochthon_right",
     20: "iliopsoas_left",
     21: "iliopsoas_right"
-}
+    }
+
+class_map_part_ribs = {
+    1: 'rib_left_1', 
+    2: 'rib_left_2', 
+    3: 'rib_left_3', 
+    4: 'rib_left_4', 
+    5: 'rib_left_5', 
+    6: 'rib_left_6', 
+    7: 'rib_left_7', 
+    8: 'rib_left_8', 
+    9: 'rib_left_9', 
+    10: 'rib_left_10', 
+    11: 'rib_left_11', 
+    12: 'rib_left_12', 
+    13: 'rib_right_1', 
+    14: 'rib_right_2', 
+    15: 'rib_right_3', 
+    16: 'rib_right_4', 
+    17: 'rib_right_5', 
+    18: 'rib_right_6', 
+    19: 'rib_right_7', 
+    20: 'rib_right_8', 
+    21: 'rib_right_9', 
+    22: 'rib_right_10', 
+    23: 'rib_right_11', 
+    24: 'rib_right_12'
+    }
 
 totalseg_taskmap_set = {
     'cardiac': class_map_part_cardiac,
     'organs': class_map_part_organs,
     'vertebrae': class_map_part_vertebrae,
     'muscles': class_map_part_muscles,
+    'ribs': class_map_part_ribs,
 }
 
 
@@ -223,7 +251,7 @@ class LoadImaged_totoalseg(MapTransform):
 def get_loader(args):
     train_transforms = Compose(
         [
-            LoadImaged_totoalseg(keys=["image"], map_type=args.map_type), # 'cardiac', 'organs', 'vertebrae', 'muscles'
+            LoadImaged_totoalseg(keys=["image"], map_type=args.map_type), # 'cardiac', 'organs', 'vertebrae', 'muscles', 'ribs'
             AddChanneld(keys=["image", "label"]),
             Orientationd(keys=["image", "label"], axcodes="RAS"),
             Spacingd(
