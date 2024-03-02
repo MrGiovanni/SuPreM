@@ -114,12 +114,12 @@ Estimated cost:
   year={2024}
 }
 
-@article{qu2024abdomenatlas,
+@article{qu2023abdomenatlas,
   title={Abdomenatlas-8k: Annotating 8,000 CT volumes for multi-organ segmentation in three weeks},
   author={Qu, Chongyu and Zhang, Tiezheng and Qiao, Hualin and Tang, Yucheng and Yuille, Alan L and Zhou, Zongwei and others},
   journal={Advances in Neural Information Processing Systems},
   volume={36},
-  year={2024}
+  year={2023}
 }
 ```
 
