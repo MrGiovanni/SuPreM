@@ -30,7 +30,7 @@ Radiological Society of North America (RSNA) 2023  <br/>
 
 ## An Extensive Dataset: AbdomenAtlas 1.1
 
-The release of AbdomenAtlas 1.0 can be found at https://github.com/MrGiovanni/AbdomenAtlas
+The release of AbdomenAtlas 1.0 can be found at https://huggingface.co/datasets/AbdomenAtlas/AbdomenAtlas_1.0_Mini
 
 AbdomenAtlas 1.1 is an extensive dataset of 9,262 CT volumes with per-voxel annotation of **25 organs** and pseudo annotations for **seven types of tumors**, enabling us to *finally* perform supervised pre-training of AI models at scale. Based on AbdomenAtlas 1.1, we also provide a suite of pre-trained models comprising several widely recognized AI models. 
 
