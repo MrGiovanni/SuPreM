@@ -29,6 +29,9 @@ datapath=/scratch/zzhou82/data/AbdomenAtlas1.1Mini
 backbone=unet # or swinunetr
 pretrainpath=./pretrained_weights/Genesis_Chest_CT.pt
 # pretrainpath=./pretrained_weights/swin_unetr.base_5000ep_f48_lr2e-4_pretrained.pt # for swinunetr
+datasetversion=AbdomenAtlas1.1 # or AbdomenAtlas1.0
+wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.1.pth
+# wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.0.pth # for AbdomenAtlas 1.0
 
-python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.1.$backbone --pretrain $pretrainpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 150
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$backbone --pretrain $pretrainpath --word_embedding $wordembeddingpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 150 --dataset_version $datasetversion
 ```

@@ -195,7 +195,7 @@ def main():
     parser.add_argument('--num_workers', default=12, type=int, help='workers numebr for DataLoader')
     
     ## logging
-    parser.add_argument('--log_name', default='AbdomenAtlas1.0.unet', help='The path resume from checkpoint')
+    parser.add_argument('--log_name', default='AbdomenAtlas1.1.unet', help='The path resume from checkpoint')
     
     ## model load
     parser.add_argument('--resume', default=None, help='The path resume from checkpoint')
@@ -203,8 +203,8 @@ def main():
                         help='The path of pretrain model')
     parser.add_argument('--trans_encoding', default='word_embedding', 
                         help='the type of encoding: rand_embedding or word_embedding')
-    parser.add_argument('--word_embedding', default='./pretrained_weights/txt_encoding.pth', 
-                        help='The path of word embedding, need to change if you change the num_class')
+    parser.add_argument('--word_embedding', default='./pretrained_weights/txt_encoding_abdomenatlas1.1.pth', 
+                        help='The path of word embedding, need to change if you change the AbdomenAtlas version, 1.1 by default')
     
     ## hyperparameter
     parser.add_argument("--epoch", default=0)
@@ -215,7 +215,7 @@ def main():
     parser.add_argument('--backbone', default='unet', help='model backbone, unet backbone by default') 
     
     ## dataset
-    parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.0'])
+    parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.1'])
     parser.add_argument('--data_root_path', default='...', help='data root path')
     parser.add_argument('--data_txt_path', default='./dataset/dataset_list/', help='data txt path')
     parser.add_argument('--batch_size', default=2, type=int, help='batch size')
@@ -229,11 +229,12 @@ def main():
     parser.add_argument('--roi_x', default=96, type=int, help='roi size in x direction')
     parser.add_argument('--roi_y', default=96, type=int, help='roi size in y direction')
     parser.add_argument('--roi_z', default=96, type=int, help='roi size in z direction')
-    parser.add_argument('--num_samples', default=2, type=int, help='sample number in each ct')
+    parser.add_argument('--num_samples', default=1, type=int, help='sample number in each ct')
     parser.add_argument('--cache_dataset', action="store_true", default=False, help='whether use cache dataset')
     parser.add_argument('--cache_rate', default=0.6, type=float, help='the percentage of cached data in total')
     parser.add_argument('--cache_num', default=3000, type=int, help='the number of cached data')
-    parser.add_argument('--num_class', default=25, type=int, help='number of class, 25 by default')
+    parser.add_argument('--num_class', default=25, type=int, help='number of class in AbdomenAtlas, 25 by default for 1.1 version, 9 for 1.0 version')
+    parser.add_argument('--dataset_version', default='AbdomenAtlas1.1', help='dataset version for AbdomenAtlas, 1.1 by default')
 
     args = parser.parse_args()
     

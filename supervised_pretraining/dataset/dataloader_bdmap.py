@@ -73,6 +73,11 @@ class_map_abdomenatlas_1_1 = {
     24: 'rectum'
     }
 
+abdomenatlas_set = {
+    'AbdomenAtlas1.0': class_map_abdomenatlas_1_0,
+    'AbdomenAtlas1.1': class_map_abdomenatlas_1_1,
+}
+
 class LoadSelectedImaged(MapTransform):
     """
     Custom transform to load a specific image and metadata using a flexible reader.
@@ -92,6 +97,7 @@ class LoadSelectedImaged(MapTransform):
     def __init__(
         self,
         keys: KeysCollection,
+        dataset_version,
         reader: Optional[Union[ImageReader, str]] = None,
         dtype: DtypeLike = np.float32,
         meta_keys: Optional[KeysCollection] = None,
@@ -113,6 +119,7 @@ class LoadSelectedImaged(MapTransform):
             raise ValueError("meta_keys should have the same length as keys.")
         self.meta_key_postfix = ensure_tuple_rep(meta_key_postfix, len(self.keys))
         self.overwriting = overwriting
+        self.dataset_version = dataset_version
 
 
     def register(self, reader: ImageReader):
@@ -138,7 +145,7 @@ class LoadSelectedImaged(MapTransform):
         label_parent_path = d['label_parent']
         
         # based on which dataset is being used, load the appropriate class map
-        label_organs = class_map_abdomenatlas_1_1
+        label_organs = abdomenatlas_set[self.dataset_version]
         temp = nib.load(os.path.join(label_parent_path,label_organs[0]+'.nii.gz')).get_fdata()
         W,H,D = temp.shape
         label = np.zeros((len(label_organs),W,H,D))
@@ -161,7 +168,7 @@ def get_loader(args):
 
     train_transforms = Compose(
         [
-            LoadSelectedImaged(keys=["image"]), # custom data loading 
+            LoadSelectedImaged(keys=["image"], dataset_version=args.dataset_version), # custom data loading 
             AddChanneld(keys=["image"]), # ensure a channel dimension
             Orientationd(keys=["image", "label"], axcodes="RAS"), # standardize orientation
             Spacingd(
