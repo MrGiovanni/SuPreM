@@ -20,7 +20,7 @@ wget https://www.dropbox.com/s/lh5kuyjxwjsxjpl/Genesis_Chest_CT.pt
 cd ..
 ```
 
-##### 2. Pre-train models on AbdomenAtlas 1.0
+##### 2. Pre-train models on AbdomenAtlas 1.1
 
 ```bash
 
