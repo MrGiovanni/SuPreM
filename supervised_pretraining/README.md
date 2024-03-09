@@ -5,16 +5,30 @@
 ```bash
 conda create -n suprem python=3.8
 source activate suprem
-```
-
-##### 1. Clone the GitHub repository
-
-```bash
-git clone https://github.com/MrGiovanni/SuPreM
-cd SuPreM/
 pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install monai[all]==0.9.0
 pip install -r requirements.txt
 ```
 
-##### Next step: TBA
+##### 1. Clone and setup the GitHub repository
+
+```bash
+git clone https://github.com/MrGiovanni/SuPreM
+cd SuPreM/supervised_pretraining/pretrained_weights/
+wget https://github.com/Project-MONAI/MONAI-extra-test-data/releases/download/0.8.1/swin_unetr.base_5000ep_f48_lr2e-4_pretrained.pt
+wget https://www.dropbox.com/s/lh5kuyjxwjsxjpl/Genesis_Chest_CT.pt
+cd ..
+```
+
+##### 2. Pre-train models on AbdomenAtlas 1.0
+
+```bash
+
+RANDOM_PORT=$((RANDOM % 64512 + 1024))
+datapath=/scratch/zzhou82/data/AbdomenAtlas1.1Mini
+backbone=unet # or swinunetr
+pretrainpath=./pretrained_weights/Genesis_Chest_CT.pt
+# pretrainpath=./pretrained_weights/swin_unetr.base_5000ep_f48_lr2e-4_pretrained.pt # for swinunetr
+
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.1.$backbone --pretrain $pretrainpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 150
+```
