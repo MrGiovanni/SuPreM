@@ -41,23 +41,14 @@ source activate suprem
 
 RANDOM_PORT=$((RANDOM % 64512 + 1024))
 datapath=/scratch/zzhou82/data/AbdomenAtlas1.1Mini
-<<<<<<< Updated upstream
-wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.1.pth
-datasetversion=AbdomenAtlas1.1
-=======
 datasetversion=AbdomenAtlas1.1 # or AbdomenAtlas1.0
 wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.1.pth
->>>>>>> Stashed changes
 
 # Single GPU
 python -W ignore --master_port=$RANDOM_PORT train.py --dist False --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$1 --pretrain $2 --word_embedding $wordembeddingpath --backbone $1 --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 20 --dataset_version $datasetversion
 
-<<<<<<< Updated upstream
-python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$1 --pretrain $2 --word_embedding $wordembeddingpath --backbone $1 --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 20 --dataset_version $datasetversion
-=======
 # # Multiple GPUs
 # python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$backbone --pretrain $pretrainpath --word_embedding $wordembeddingpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 150 --dataset_version $datasetversion
->>>>>>> Stashed changes
 
 # [IMPORTANT] Modify logs/XXX.out
 
