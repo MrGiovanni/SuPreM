@@ -1,5 +1,5 @@
 '''
-python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Library/CloudStorage/OneDrive-JohnsHopkins/Academic/Wenxuan\ -\ Supervised\ PreTraining/Code/website_videos/AbdomenAtlas1.0Mini --png_save_path /Users/zongwei.zhou/Library/CloudStorage/OneDrive-JohnsHopkins/Academic/Wenxuan\ -\ Supervised\ PreTraining/Code/website_videos/AbdomenAtlas1.0PNG --video_save_path /Users/zongwei.zhou/Library/CloudStorage/OneDrive-JohnsHopkins/Academic/Wenxuan\ -\ Supervised\ PreTraining/Code/website_videos/AbdomenAtlas1.0AVI --gif_save_path /Users/zongwei.zhou/Library/CloudStorage/OneDrive-JohnsHopkins/Academic/Wenxuan\ -\ Supervised\ PreTraining/Code/website_videos/AbdomenAtlas1.0GIF --FPS 8
+python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasPro --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasProPNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasProAVI --gif_sav
 '''
 
 import numpy as np 
