@@ -6,7 +6,7 @@
 - Place your new CT scan file in its corresponding subfolder and name the CT scan "ct.nii.gz".
 
 ```
-/path/to/your/CT/scans
+/path/to/your/CT/scan/folders
     ├── casename00001
     │   └── ct.nii.gz
     ├── casename00002
@@ -16,6 +16,7 @@
     ...
 ```
 - Prepare a text file (.txt extension) storing all the subfolder names(e.g., casename00001), one name per line.
+  Note: this text file name will be assigned to the $datasetlist in step 3.
 
 ```
 casename00001
@@ -49,8 +50,8 @@ backbone=unet # or swinunetr
 pretrainpath=./pretrained_checkpoints/supervised_suprem_unet_2100.pth # or ./pretrained_weights/supervised_suprem_swinunetr_2100.pth
 savepath=./inference
 datasettxtpath=./dataset/dataset_list/
-datasetlist=AbdomenAtlas1.0 # change to the txt file name, this txt file stores all the names of new CT scans (must be saved under datasettxtpath)
-datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini
+datasetlist=AbdomenAtlas1.0 # change to the txt file name, this txt file stores all the subfolder names (must be saved under datasettxtpath)
+datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini # change to /path/to/your/CT/scan/folders
 
 cd SuPreM/direct_inference/
 python -W ignore inference.py --save_dir $savepath --resume $pretrainpath --dataset_list $datasetlist --data_root_path $datarootpath --data_txt_path $datasettxtpath --backbone $backbone --store_result
