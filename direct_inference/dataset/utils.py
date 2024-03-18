@@ -1,11 +1,5 @@
-import cc3d # pip install connected-components-3d
+#import cc3d # pip install connected-components-3d
 import numpy as np
-from monai.data import DataLoader, Dataset, list_data_collate, DistributedSampler
-from monai.config import DtypeLike, KeysCollection
-from monai.transforms.transform import Transform, MapTransform
-from monai.utils.enums import TransformBackends
-from monai.config.type_definitions import NdarrayOrTensor
-from typing import IO, TYPE_CHECKING, Any, Callable, Dict, Hashable, List, Mapping, Optional, Sequence, Tuple, Union
 
 def rl_split(input_data, organ_index, right_index, left_index, name):
     '''
@@ -47,28 +41,3 @@ def rl_split(input_data, organ_index, right_index, left_index, name):
         label_new[label_out==2] = LEFT_ORGAN
     
     return label_new[None]
-
-
-class RL_Split(Transform):
-    backend = [TransformBackends.TORCH, TransformBackends.NUMPY]
-
-    def __call__(self, lbl: NdarrayOrTensor, name) -> NdarrayOrTensor:
-        lbl_new = lbl.copy()
-
-        organ_index = 12
-        right_index = 12
-        left_index = 13
-        lbl_post = rl_split(lbl_new[0], organ_index, right_index, left_index, name)
-        lbl_new[lbl_post == left_index] = left_index
-        
-        return lbl_new
-
-class RL_Splitd(MapTransform):
-    def __init__(self, keys: KeysCollection, allow_missing_keys: bool = False) -> None:
-        super().__init__(keys, allow_missing_keys)
-        self.spliter = RL_Split()
-
-    def __call__(self, data: Mapping[Hashable, NdarrayOrTensor]) -> Dict[Hashable, NdarrayOrTensor]:
-        d = dict(data)
-        d['label'] = self.spliter(d['label'], d['name'])
-        return d

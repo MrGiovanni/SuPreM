@@ -38,9 +38,30 @@ NUM_CLASS = 32
 
 
 TEMPLATE={
-    'Totalsegmentator': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32], 
-    'DAP_Atlas': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32], 
-    'JHH': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32], 
+    '01': [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+    '01_2': [1,3,4,5,6,7,11,14],
+    '02': [1,3,4,5,6,7,11,14],
+    '03': [6],
+    '04': [6,27], # post process
+    '05': [2,3,26,32], # post process
+    '06': [1,2,3,4,6,7,11,16,17],
+    '07': [6,1,3,2,7,4,5,11,14,18,19,12,13,20,21,23,24],
+    '08': [6, 2, 3, 1, 11],
+    '09': [1,2,3,4,5,6,7,8,9,11,12,13,14,21,22],
+    '12': [6,21,16,17,2,3],  
+    '13': [6,2,3,1,11,8,9,7,4,5,12,13,25], 
+    '14': [11, 28],
+    '10_03': [6, 27], # post process
+    '10_06': [30],
+    '10_07': [11, 28], # post process
+    '10_08': [15, 29], # post process
+    '10_09': [1],
+    '10_10': [31],
+    '15': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17], ## total segmentation
+    '18':[6,2,1,11,8,9,12,13,4,5,7,14,3],
+    'all': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32], 
+    'target':[1,2,3,4,6,7,8,9,11], ## target organ index
+    'assemble':[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]
 }
 
 ORGAN_NAME = ['Spleen', 'Right Kidney', 'Left Kidney', 'Gall Bladder', 'Esophagus', 
@@ -212,9 +233,19 @@ TUMOR_ORGAN = {
 }
 
 
-def organ_post_process(pred_mask, organ_list,args):
+def organ_post_process(pred_mask, organ_list,case_dir,args):
+    total_anomly_slice_number = 0
     post_pred_mask = np.zeros(pred_mask.shape)
-
+    dataset_id = case_dir.split('/')[-2]
+    case_id = case_dir.split('/')[-1]
+    if args.create_dataset:
+        plot_save_path = os.path.join(case_dir,'average')
+        anomaly_csv_path = os.path.join(args.save_dir,dataset_id,'average_anomaly.csv')
+    else:
+        plot_save_path = os.path.join(case_dir,'backbones',args.backbone)
+        anomaly_csv_path = os.path.join(args.save_dir,dataset_id,args.backbone+'_anomaly.csv')
+    # if not os.path.isdir(plot_save_path):
+        # os.makedirs(plot_save_path)
     for b in range(pred_mask.shape[0]):
         for organ in organ_list:
             if organ == 11: # both process pancreas and Portal vein and splenic vein
@@ -233,6 +264,10 @@ def organ_post_process(pred_mask, organ_list,args):
                     shape_temp = post_pred_mask[b,16].shape
                     post_pred_mask[b,16] = np.zeros(shape_temp)
                     post_pred_mask[b,15] = np.zeros(shape_temp)
+                    with open(anomaly_csv_path,'a',newline='') as f:
+                        writer = csv.writer(f)
+                        content = case_id
+                        writer.writerow([content])
 
                 right_lung_size = np.sum(post_pred_mask[b,15],axis=(0,1,2))
                 left_lung_size = np.sum(post_pred_mask[b,16],axis=(0,1,2))
@@ -240,6 +275,8 @@ def organ_post_process(pred_mask, organ_list,args):
                 print('left lung size: '+str(left_lung_size))
                 print('right lung size: '+str(right_lung_size))
 
+                right_lung_save_path = os.path.join(plot_save_path,'right_lung.png')
+                left_lung_save_path = os.path.join(plot_save_path,'left_lung.png')
                 total_anomly_slice_number=0
 
                 if right_lung_size>left_lung_size:
@@ -261,7 +298,7 @@ def organ_post_process(pred_mask, organ_list,args):
                             print('start anomly detection at right lung')
                             try:
                                 left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                    pred_mask,post_pred_mask[b,15],b,total_anomly_slice_number)
+                                    pred_mask,post_pred_mask[b,15],right_lung_save_path,b,total_anomly_slice_number)
                                 post_pred_mask[b,16] = left_lung_mask
                                 post_pred_mask[b,15] = right_lung_mask
                                 right_lung_size = np.sum(post_pred_mask[b,15],axis=(0,1,2))
@@ -270,10 +307,10 @@ def organ_post_process(pred_mask, organ_list,args):
                                     print('still need anomly detection')
                                     if right_lung_size>left_lung_size:
                                         left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                        pred_mask,post_pred_mask[b,15],b,total_anomly_slice_number)
+                                        pred_mask,post_pred_mask[b,15],right_lung_save_path,b,total_anomly_slice_number)
                                     else:
                                         left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                        pred_mask,post_pred_mask[b,16],b,total_anomly_slice_number)
+                                        pred_mask,post_pred_mask[b,16],left_lung_save_path,b,total_anomly_slice_number)
                                     post_pred_mask[b,16] = left_lung_mask
                                     post_pred_mask[b,15] = right_lung_mask
                                     right_lung_size = np.sum(post_pred_mask[b,15],axis=(0,1,2))
@@ -284,6 +321,16 @@ def organ_post_process(pred_mask, organ_list,args):
                                 post_pred_mask[b,16] = left_lung_mask
                                 post_pred_mask[b,15] = right_lung_mask
                                 print("cannot seperate two lungs, writing csv")
+                                with open(anomaly_csv_path,'a',newline='') as f:
+                                    writer = csv.writer(f)
+                                    content = case_id
+                                    writer.writerow([case_id])
+
+
+                            
+
+  
+
 
 
                 else:
@@ -305,7 +352,7 @@ def organ_post_process(pred_mask, organ_list,args):
                             print('start anomly detection at left lung')
                             try:
                                 left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                    pred_mask,post_pred_mask[b,16],b,total_anomly_slice_number)
+                                    pred_mask,post_pred_mask[b,16],left_lung_save_path,b,total_anomly_slice_number)
                                 post_pred_mask[b,16] = left_lung_mask
                                 post_pred_mask[b,15] = right_lung_mask
                                 right_lung_size = np.sum(post_pred_mask[b,15],axis=(0,1,2))
@@ -314,10 +361,10 @@ def organ_post_process(pred_mask, organ_list,args):
                                     print('still need anomly detection')
                                     if right_lung_size>left_lung_size:
                                         left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                        pred_mask,post_pred_mask[b,15],b,total_anomly_slice_number)
+                                        pred_mask,post_pred_mask[b,15],right_lung_save_path,b,total_anomly_slice_number)
                                     else:
                                         left_lung_mask,right_lung_mask,total_anomly_slice_number = anomly_detection(
-                                        pred_mask,post_pred_mask[b,16],b,total_anomly_slice_number)
+                                        pred_mask,post_pred_mask[b,16],left_lung_save_path,b,total_anomly_slice_number)
                                     post_pred_mask[b,16] = left_lung_mask
                                     post_pred_mask[b,15] = right_lung_mask
                                     right_lung_size = np.sum(post_pred_mask[b,15],axis=(0,1,2))
@@ -329,7 +376,10 @@ def organ_post_process(pred_mask, organ_list,args):
                                 post_pred_mask[b,16] = left_lung_mask
                                 post_pred_mask[b,15] = right_lung_mask
                                 print("cannot seperate two lungs, writing csv")
-
+                                with open(anomaly_csv_path,'a',newline='') as f:
+                                    writer = csv.writer(f)
+                                    content = case_id
+                                    writer.writerow([case_id])
                 print('find number of anomaly slice: '+str(total_anomly_slice_number))
 
 
@@ -462,7 +512,7 @@ def find_best_iter_and_masks(lung_mask):
 
 
 
-def anomly_detection(pred_mask,post_pred_mask,batch,anomly_num):
+def anomly_detection(pred_mask,post_pred_mask,save_path,batch,anomly_num):
     total_anomly_slice_number = anomly_num
     df = get_dataframe(post_pred_mask)
     # lung_pred_df = fit_model(model,lung_df)
@@ -492,6 +542,8 @@ def anomly_detection(pred_mask,post_pred_mask,batch,anomly_num):
         
         if len(real_anomly_slice)!=0:
 
+            
+            plot_anomalies(lung_df,save_dir=save_path)
             print('anomaly detection plot created')
             for s in real_anomly_slice:
                 pred_mask[batch,15,:,:,s]=0
@@ -684,18 +736,6 @@ def invert_transform(invert_key = str,batch = None, input_transform = None ):
     BATCH = [post_transforms(i) for i in decollate_batch(batch)]
     return BATCH
 
-# def invert_transform(batch = None, input_transform = None ):
-#     post_transforms = Compose([
-#         Invertd(
-#             keys=["label", "pred"],
-#             transform=input_transform,
-#             orig_keys="image",
-#             nearest_interp=True,
-#             to_tensor=True,
-#         ),
-#     ])
-#     BATCH = [post_transforms(i) for i in decollate_batch(batch)]
-#     return BATCH
 
 def visualize_label(batch, save_dir, input_transform):
     ### function: save the prediction result into dir
@@ -711,6 +751,12 @@ def visualize_label(batch, save_dir, input_transform):
             nearest_interp=True,
             to_tensor=True,
         ),
+        # SaveImaged(keys="label", 
+        #         meta_keys="label_meta_dict" , 
+        #         output_dir=save_dir, 
+        #         output_postfix="original_label", 
+        #         resample=False
+        # ),
         SaveImaged(keys='pseudo_label', 
                 meta_keys="image_meta_dict" , 
                 output_dir=save_dir, 
@@ -841,6 +887,52 @@ def get_key(name):
     return template_key
 
 
+def calculate_metrics(attention_ideal,attention_real):
+    ## organ_metrics_data: attention/overlap/uncertainty
+
+    tp = np.sum(np.multiply(attention_ideal,attention_real),axis = (0,1,2))
+    fp = np.sum(np.multiply(attention_ideal!=1,attention_real),axis = (0,1,2))
+    fn = np.sum(np.multiply(attention_ideal,attention_real!=1),axis = (0,1,2))
+    tn = np.sum(np.multiply(attention_ideal!=1,attention_real!=1),axis = (0,1,2))
+
+
+    sensitivity = tp/(tp+fn)
+    
+    specificity= tn/(tn+fp)
+    
+    precision = tp/(tp+fp)
+    
+    return sensitivity,specificity,precision
+
+
+
+
+
+def dice_score(preds, labels, spe_sen=False):  # on GPU
+    ### preds: w,h,d; label: w,h,d
+    assert preds.shape[0] == labels.shape[0], "predict & target batch size don't match"
+    preds = torch.where(preds > 0.5, 1., 0.)
+    predict = preds.contiguous().view(1, -1)
+    target = labels.contiguous().view(1, -1)
+
+    tp = torch.sum(torch.mul(predict, target))
+    fn = torch.sum(torch.mul(predict!=1, target))
+    fp = torch.sum(torch.mul(predict, target!=1))
+    tn = torch.sum(torch.mul(predict!=1, target!=1))
+
+    den = torch.sum(predict) + torch.sum(target) + 1
+
+    dice = 2 * tp / den
+    recall = tp/(tp+fn)
+    precision = tp/(tp+fp)
+    specificity = tn/(fp + tn)
+
+
+    # print(dice, recall, precision)
+    if spe_sen:
+        return dice, recall, precision, specificity
+    else:
+        return dice, recall, precision
 
 
 def _get_gaussian(patch_size, sigma_scale=1. / 8) -> np.ndarray:
@@ -925,6 +1017,13 @@ def draw_transparent_contours(ct,mask,color):
 def create_color_mask(mask,color):
     color_mask = cv2.merge([mask]*3) * color
     return color_mask
+
+def calculate_dice(mask1,mask2):
+    intersection = np.sum(mask1*mask2)
+    sum_masks = np.sum(mask1)+np.sum(mask2)
+    smooth = 1e-4
+    dice = (2.*intersection+smooth)/(sum_masks+smooth)
+    return dice
 
 
 def find_components(mask):

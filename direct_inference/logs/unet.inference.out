@@ -1,0 +1,318 @@
+
+=====================================================================
+This module is intended solely for building or source activating user
+python environments, i.e.,
+
+    mamba create -n myenv -c conda-forge
+
+or
+
+    source activate myenv
+
+To list available environments, run:
+
+    mamba info --envs
+
+See our docs: https://links.asu.edu/solpy
+
+Any other use is NOT TESTED.
+=====================================================================
+
+  
+Use pretrained weights
+test len 21
+  0%|          | 0/21 [00:00<?, ?it/s]  5%|▍         | 1/21 [01:51<37:00, 111.04s/it] 10%|▉         | 2/21 [02:11<18:20, 57.92s/it]  14%|█▍        | 3/21 [02:35<12:42, 42.37s/it] 19%|█▉        | 4/21 [03:07<10:46, 38.03s/it] 24%|██▍       | 5/21 [04:24<13:56, 52.28s/it] 29%|██▊       | 6/21 [06:39<20:03, 80.22s/it] 33%|███▎      | 7/21 [06:48<13:19, 57.09s/it] 38%|███▊      | 8/21 [07:20<10:37, 49.02s/it] 43%|████▎     | 9/21 [07:46<08:22, 41.91s/it] 48%|████▊     | 10/21 [12:55<22:46, 124.22s/it] 52%|█████▏    | 11/21 [15:16<21:34, 129.43s/it] 57%|█████▋    | 12/21 [16:27<16:46, 111.82s/it] 62%|██████▏   | 13/21 [16:35<10:41, 80.17s/it]  67%|██████▋   | 14/21 [16:48<07:00, 60.11s/it] 71%|███████▏  | 15/21 [17:05<04:41, 46.95s/it] 76%|███████▌  | 16/21 [17:42<03:39, 43.89s/it] 81%|████████  | 17/21 [18:00<02:25, 36.35s/it] 86%|████████▌ | 18/21 [18:12<01:26, 28.88s/it] 90%|█████████ | 19/21 [19:26<01:24, 42.45s/it] 95%|█████████▌| 20/21 [20:04<00:41, 41.11s/it]100%|██████████| 21/21 [20:15<00:00, 32.19s/it]100%|██████████| 21/21 [20:15<00:00, 57.90s/it]
+./inference.unet.AbdomenAtlastest/BDMAP_00000001
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000001/ct.nii.gz
+torch.Size([1, 1, 281, 222, 564])
+['BDMAP_00000001']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000001/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000002
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000002/ct.nii.gz
+torch.Size([1, 1, 242, 188, 134])
+['BDMAP_00000002']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000002/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000003
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000003/ct.nii.gz
+torch.Size([1, 1, 301, 212, 215])
+['BDMAP_00000003']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000003/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000004
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000004/ct.nii.gz
+torch.Size([1, 1, 241, 173, 301])
+['BDMAP_00000004']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000004/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000005
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000005/ct.nii.gz
+torch.Size([1, 1, 267, 206, 272])
+['BDMAP_00000005']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000005/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000006
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000006/ct.nii.gz
+torch.Size([1, 1, 267, 234, 639])
+['BDMAP_00000006']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000006/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000007
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000007/ct.nii.gz
+torch.Size([1, 1, 199, 140, 164])
+['BDMAP_00000007']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000007/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000008
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000008/ct.nii.gz
+torch.Size([1, 1, 250, 196, 261])
+['BDMAP_00000008']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000008/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000009
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000009/ct.nii.gz
+torch.Size([1, 1, 241, 141, 371])
+['BDMAP_00000009']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000009/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000010
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000010/ct.nii.gz
+torch.Size([1, 1, 305, 275, 1109])
+['BDMAP_00000010']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000010/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000011
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000011/ct.nii.gz
+torch.Size([1, 1, 300, 233, 651])
+['BDMAP_00000011']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000011/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000012
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000012/ct.nii.gz
+torch.Size([1, 1, 201, 170, 293])
+['BDMAP_00000012']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000012/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000013
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000013/ct.nii.gz
+torch.Size([1, 1, 212, 162, 98])
+['BDMAP_00000013']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000013/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000014
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000014/ct.nii.gz
+torch.Size([1, 1, 262, 213, 166])
+['BDMAP_00000014']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000014/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000015
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000015/ct.nii.gz
+torch.Size([1, 1, 283, 193, 161])
+['BDMAP_00000015']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000015/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000016
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000016/ct.nii.gz
+torch.Size([1, 1, 250, 187, 301])
+['BDMAP_00000016']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000016/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000017
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000017/ct.nii.gz
+torch.Size([1, 1, 201, 165, 168])
+['BDMAP_00000017']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000017/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000018
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000018/ct.nii.gz
+torch.Size([1, 1, 238, 178, 170])
+['BDMAP_00000018']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000018/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000019
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000019/ct.nii.gz
+torch.Size([1, 1, 201, 181, 268])
+['BDMAP_00000019']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000019/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000020
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000020/ct.nii.gz
+torch.Size([1, 1, 230, 198, 324])
+['BDMAP_00000020']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000020/all_nine_classes.nii.gz
+./inference.unet.AbdomenAtlastest/BDMAP_00000021
+/scratch/zzhou82/data/AbdomenAtlas1.0Mini/BDMAP_00000021/ct.nii.gz
+torch.Size([1, 1, 220, 178, 179])
+['BDMAP_00000021']
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/spleen.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/kidney_right.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/kidney_left.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/gall_bladder.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/liver.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/stomach.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/aorta.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/postcava.nii.gz
+organ seg saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/segmentations/pancreas.nii.gz
+pseudo label saved in path: ./inference.unet.AbdomenAtlastest/BDMAP_00000021/all_nine_classes.nii.gz
