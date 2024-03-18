@@ -27,7 +27,7 @@ backbone=unet # or swinunetr
 pretrainpath=./pretrained_checkpoints/supervised_suprem_unet_2100.pth # or ./pretrained_weights/supervised_suprem_swinunetr_2100.pth
 savepath=./inference
 datasettxtpath=./dataset/dataset_list/
-datasetlist=AbdomenAtlas1.0 # change to the txt which stores all the name of new CT scans (must be saved under datasettxtpath)
+datasetlist=AbdomenAtlas1.0 # change to the txt file name, this txt file stores all the names of new CT scans (must be saved under datasettxtpath)
 datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini
 
 cd SuPreM/direct_inference/
