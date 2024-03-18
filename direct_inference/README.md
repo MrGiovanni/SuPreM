@@ -1,4 +1,4 @@
-# Inference SuPreM on the Novel Dataset
+# Apply SuPreM to New CT Scans
 
 
 ##### 1. Clone and setup the GitHub repository
@@ -20,14 +20,14 @@ pip install -r requirements.txt
 ```
 
 
-##### 3. Inference SuPreM on the Novel Dataset
+##### 3. Apply SuPreM to New CT Scans
 
 ```bash
 backbone=unet # or swinunetr
 pretrainpath=./pretrained_checkpoints/supervised_suprem_unet_2100.pth # or ./pretrained_weights/supervised_suprem_swinunetr_2100.pth
 savepath=./inference
 datasettxtpath=./dataset/dataset_list/
-datasetlist=AbdomenAtlas1.0 # change to the name of your dataset list (must be saved under datasettxtpath)
+datasetlist=AbdomenAtlas1.0 # change to the txt which stores all the name of new CT scans (must be saved under datasettxtpath)
 datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini
 
 cd SuPreM/direct_inference/
