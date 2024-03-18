@@ -1,5 +1,28 @@
 # Apply SuPreM to New CT Scans
 
+##### 0. Prepare New CT Scans with Structured Folders
+- Create a folder to hold all your CT scans
+- Within this folder, create a separate subfolder for each CT scan (e.g., casename00001, casename00002).
+- Place your new CT scan file in its corresponding subfolder and name the CT scan "ct.nii.gz".
+
+```
+/path/to/your/CT/scans
+    ├── casename00001
+    │   └── ct.nii.gz
+    ├── casename00002
+    │   └── ct.nii.gz
+    ├── casename00003
+    │   └── ct.nii.gz
+    ...
+```
+- Prepare a text file (.txt extension) storing all the subfolder names(e.g., casename00001), one name per line.
+
+```
+casename00001
+casename00002
+casename00003
+...
+```
 
 ##### 1. Clone and setup the GitHub repository
 ```bash
@@ -18,7 +41,6 @@ pip install monai[all]==0.9.0
 cd SuPreM/
 pip install -r requirements.txt
 ```
-
 
 ##### 3. Apply SuPreM to New CT Scans
 
