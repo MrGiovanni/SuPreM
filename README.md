@@ -93,7 +93,7 @@ Examples of fine-tuning our SuPreM on other downstream medical tasks are provide
 
 | **task** | **dataset** | **document** |
 |:---------|:------------|:-----------|
-| organ, muscle, vertebrae, cardiac segmentation | TotalSegmentator | [README](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
+| organ, muscle, vertebrae, cardiac, rib segmentation | TotalSegmentator | [README](https://github.com/MrGiovanni/SuPreM/blob/main/target_applications/totalsegmentator/README.md) |
 
 #### If you want to re-pre-train SuPreM on AbdomenAtlas 1.1 (*not recommended*), please refer to our [instruction](https://github.com/MrGiovanni/SuPreM/blob/main/supervised_pretraining/README.md)
 
