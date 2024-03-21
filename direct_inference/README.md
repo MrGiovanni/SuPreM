@@ -54,5 +54,5 @@ datasetlist=AbdomenAtlas1.0 # change to the txt file name, this txt file stores 
 datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini # change to /path/to/your/CT/scan/folders
 
 cd SuPreM/direct_inference/
-python -W ignore inference.py --save_dir $savepath --resume $pretrainpath --dataset_list $datasetlist --data_root_path $datarootpath --data_txt_path $datasettxtpath --backbone $backbone --store_result
+python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --dataset_list $datasetlist --data_root_path $datarootpath --data_txt_path $datasettxtpath --backbone $backbone --store_result
 ```

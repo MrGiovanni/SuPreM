@@ -93,7 +93,7 @@ def main():
     ## logging
     parser.add_argument('--save_dir', default='...', help='The dataset save path')
     ## model load
-    parser.add_argument('--resume', default='...', help='The path resume from checkpoint')
+    parser.add_argument('--checkpoint', default='...', help='The path of trained checkpoint')
     parser.add_argument('--pretrain', default='...', 
                         help='The path of pretrain model')
     ## hyperparameter
@@ -144,7 +144,7 @@ def main():
     #Load pre-trained weights
     store_dict = model.state_dict()
     store_dict_keys = [key for key, value in store_dict.items()]
-    checkpoint = torch.load(args.resume)
+    checkpoint = torch.load(args.checkpoint)
     load_dict = checkpoint['net']
     load_dict_value = [value for key, value in load_dict.items()]
 
