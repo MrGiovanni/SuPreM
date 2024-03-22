@@ -48,7 +48,7 @@ class LoadSelectedImaged(MapTransform):
         self,
         keys: KeysCollection,
         reader: Optional[Union[ImageReader, str]] = None,
-        dtype: DtypeLike = np.float32,
+        dtype: DtypeLike = np.int16,
         meta_keys: Optional[KeysCollection] = None,
         meta_key_postfix: str = DEFAULT_POST_FIX,
         overwriting: bool = False,
