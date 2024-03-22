@@ -330,13 +330,13 @@ def get_loader(args):
     
     ## test dict part
     
+    folders = [name for name in os.listdir(args.data_root_path) if os.path.isdir(os.path.join(args.data_root_path, name))]
     test_img = []
     test_name_img=[]
-    for item in args.dataset_list:
-        for line in open(os.path.join(args.data_txt_path,item + '.txt')):
-            name_img = line.strip().split('\t')[0]
-            test_img.append(os.path.join(args.data_root_path, name_img, 'ct.nii.gz'))
-            test_name_img.append(name_img)
+    for name_img in folders:
+        print(name_img)
+        test_img.append(os.path.join(args.data_root_path, name_img, 'ct.nii.gz'))
+        test_name_img.append(name_img)
     data_dicts_test = [{'image': image,'name_img':name_img}
                 for image, name_img in zip(test_img, test_name_img)]
     print('test len {}'.format(len(data_dicts_test)))
