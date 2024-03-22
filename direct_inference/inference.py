@@ -103,9 +103,9 @@ def main():
     parser.add_argument('--weight_decay', default=1e-5, type=float, help='Weight Decay')
 
     ## dataset
-    parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.0'])
+    # parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.0'])
     parser.add_argument('--data_root_path', default='...', help='data root path')
-    parser.add_argument('--data_txt_path', default='./dataset/dataset_list/', help='data txt path')
+    # parser.add_argument('--data_txt_path', default='./dataset/dataset_list/', help='data txt path')
     parser.add_argument('--batch_size', default=1, type=int, help='batch size')
     parser.add_argument('--num_workers', default=8, type=int, help='workers numebr for DataLoader')
     parser.add_argument('--a_min', default=-175, type=float, help='a_min in ScaleIntensityRanged')
