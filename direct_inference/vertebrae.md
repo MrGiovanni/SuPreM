@@ -28,6 +28,18 @@ wget http://www.cs.jhu.edu/~zongwei/model/swin_unetr_totalsegmentator_vertebrae.
 cd ..
 ```
 
+<details>
+<summary style="margin-left: 25px;">[Option] if you get certificate issues when using wget</summary>
+<div style="margin-left: 25px;">
+
+```bash
+wget --no-check-certificate http://www.cs.jhu.edu/~zongwei/model/swin_unetr_totalsegmentator_vertebrae.pth
+```
+
+</div>
+</details>
+
+
 ##### 2 Create environments
 ```bash
 conda create -n suprem python=3.9
