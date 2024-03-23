@@ -7,7 +7,7 @@
 ##SBATCH --exclusive
 #SBATCH --mem=80G
 #SBATCH -p general
-#SBATCH -t 5:00:00
+#SBATCH -t 3:00:00
 #SBATCH -q public
 
 #SBATCH -o %x_slurm_%j.out     
@@ -25,12 +25,10 @@ source activate suprem
 # pip install -r requirements.txt
 
 # Inference SuPreM on the novel dataset
-savepath=./inference
-datasettxtpath=./dataset/dataset_list/
-datasetlist=AbdomenAtlastest # change to the name of your dataset list (must be saved under datasettxtpath)
-datarootpath=/scratch/zzhou82/data/AbdomenAtlas1.0Mini
+savepath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemoPredict
+datarootpath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemo
 
-python -W ignore inference.py --save_dir $savepath.$1.$datasetlist --checkpoint $2 --dataset_list $datasetlist --data_root_path $datarootpath --data_txt_path $datasettxtpath --backbone $1 --store_result
+python -W ignore inference.py --save_dir $savepath.$1 --checkpoint $2 --data_root_path $datarootpath --backbone $1 --store_result
 
 # for backbone in unet; do for pretrainpath in ./pretrained_checkpoints/supervised_suprem_unet_2100.pth; do sbatch --error=logs/$backbone.inference.out --output=logs/$backbone.inference.out hg.sh $backbone $pretrainpath; done; done
 
