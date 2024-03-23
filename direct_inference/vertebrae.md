@@ -32,7 +32,6 @@ cd ..
 ```bash
 conda create -n suprem python=3.9
 source activate suprem
-cd SuPreM/
 pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install monai[all]==0.9.0
 pip install -r requirements.txt
@@ -41,13 +40,11 @@ pip install -r requirements.txt
 ##### 3. Generate vertebrae masks by the AI
 
 ```bash
-datarootpath=/path/to/your/AbdomenAtlasDemo
-# NEED MODIFICATION!!!
+datarootpath=/path/to/your/AbdomenAtlasDemo # NEED MODIFICATION!!!
 
 pretrainpath=./pretrained_checkpoints/swin_unetr_totalsegmentator_vertebrae.pth
 savepath=./AbdomenAtlasDemoPredict
 
-cd SuPreM/direct_inference/
 python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --data_root_path $datarootpath --customize
 ```
 
