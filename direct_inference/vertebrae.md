@@ -25,6 +25,7 @@ AbdomenAtlasDemo
 git clone https://github.com/MrGiovanni/SuPreM
 cd SuPreM/direct_inference/pretrained_checkpoints/
 wget http://www.cs.jhu.edu/~zongwei/model/swin_unetr_totalsegmentator_vertebrae.pth
+cd ..
 ```
 
 ##### 2 Create environments
