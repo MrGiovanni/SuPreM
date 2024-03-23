@@ -42,4 +42,4 @@ datarootpath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemo
 
 python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --data_root_path $datarootpath --customize
 
-# for datasetname in AbdomenAtlasDemo; do sbatch --error=logs/$datasetname.inference.out --output=logs/$datasetname.inference.out hg.sh $datasetname; done
+# for datasetname in AbdomenAtlasDemo; do sbatch --error=logs/$datasetname.inference.vertebrae.out --output=logs/$datasetname.inference.vertebrae.out hg.sh; done
