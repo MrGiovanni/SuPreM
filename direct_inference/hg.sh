@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=inference_unet
+#SBATCH --job-name=inference
 
 #SBATCH -N 1
 #SBATCH -n 6
@@ -24,12 +24,22 @@ source activate suprem
 # pip install monai[all]==0.9.0
 # pip install -r requirements.txt
 
-# Inference SuPreM on the novel dataset
-savepath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemoPredict
+
+### Inference SuPreM on the novel dataset
+# savepath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemoPredict
+# datarootpath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemo
+
+# python -W ignore inference.py --save_dir $savepath.$1 --checkpoint $2 --data_root_path $datarootpath --backbone $1 --store_result --suprem
+
+# # for backbone in unet; do for pretrainpath in ./pretrained_checkpoints/supervised_suprem_unet_2100.pth; do sbatch --error=logs/$backbone.inference.out --output=logs/$backbone.inference.out hg.sh $backbone $pretrainpath; done; done
+# # for backbone in swinunetr; do for pretrainpath in ./pretrained_checkpoints/supervised_suprem_swinunetr_2100.pth; do sbatch --error=logs/$backbone.inference.out --output=logs/$backbone.inference.out hg.sh $backbone $pretrainpath; done; done
+
+
+### Inference other AI on the novel dataset
+pretrainpath=./pretrained_checkpoints/swin_unetr_totalsegmentator_vertebrae.pth
+savepath=./AbdomenAtlasDemoPredict
 datarootpath=/scratch/zzhou82/2024_0322/AbdomenAtlasDemo
 
-python -W ignore inference.py --save_dir $savepath.$1 --checkpoint $2 --data_root_path $datarootpath --backbone $1 --store_result
+python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --data_root_path $datarootpath --customize
 
-# for backbone in unet; do for pretrainpath in ./pretrained_checkpoints/supervised_suprem_unet_2100.pth; do sbatch --error=logs/$backbone.inference.out --output=logs/$backbone.inference.out hg.sh $backbone $pretrainpath; done; done
-
-# for backbone in swinunetr; do for pretrainpath in ./pretrained_checkpoints/supervised_suprem_swinunetr_2100.pth; do sbatch --error=logs/$backbone.inference.out --output=logs/$backbone.inference.out hg.sh $backbone $pretrainpath; done; done
+# for datasetname in AbdomenAtlasDemo; do sbatch --error=logs/$datasetname.inference.out --output=logs/$datasetname.inference.out hg.sh $datasetname; done

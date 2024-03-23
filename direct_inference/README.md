@@ -44,5 +44,5 @@ pretrainpath=./pretrained_checkpoints/supervised_suprem_unet_2100.pth # or ./pre
 savepath=./inference
 
 cd SuPreM/direct_inference/
-python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --data_root_path $datarootpath --backbone $backbone --store_result
+python -W ignore inference.py --save_dir $savepath.$backbone --checkpoint $pretrainpath --data_root_path $datarootpath --backbone $backbone --store_result --suprem
 ```
