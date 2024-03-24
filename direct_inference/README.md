@@ -15,7 +15,20 @@
     │   └── ct.nii.gz
     ...
 ```
-##### 1. Clone and setup the GitHub repository
+
+### Option 1: 
+
+[HuggingFace 🤗](https://huggingface.co/qicq1c/SuPreM):
+```
+inputs_data=/path/to/your/CT/scan/folders
+outputs_data=/path/to/your/output/folders
+wget https://huggingface.co/qicq1c/SuPreM/resolve/main/suprem_final.sif
+SINGULARITYENV_CUDA_VISIBLE_DEVICES=0 singularity run --nv -B $inputs_data:/workspace/inputs -B $outputs_data:/workspace/outputs suprem_final.sif
+```
+
+### Option 2:
+
+##### 1. Clone the GitHub repository
 ```bash
 git clone https://github.com/MrGiovanni/SuPreM
 cd SuPreM/direct_inference/pretrained_checkpoints/
@@ -23,7 +36,7 @@ wget https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_swi
 wget https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_unet_2100.pth
 ```
 
-##### 2 Create Environments
+##### 2 Create environments
 ```bash
 conda create -n suprem python=3.9
 source activate suprem
@@ -33,7 +46,7 @@ cd SuPreM/
 pip install -r requirements.txt
 ```
 
-##### 3. Apply SuPreM to New CT Scans
+##### 3. Apply SuPreM to new CT scans
 
 ```bash
 datarootpath=/path/to/your/CT/scan/folders
