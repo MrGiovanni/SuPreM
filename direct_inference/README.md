@@ -18,12 +18,18 @@
 
 ### Option 1: 
 
-[HuggingFace 🤗](https://huggingface.co/qicq1c/SuPreM):
-```
+[HuggingFace 🤗](https://huggingface.co/qicq1c/SuPreM)
+```bash
 inputs_data=/path/to/your/CT/scan/folders
 outputs_data=/path/to/your/output/folders
+
+# If using singularity
 wget https://huggingface.co/qicq1c/SuPreM/resolve/main/suprem_final.sif
 SINGULARITYENV_CUDA_VISIBLE_DEVICES=0 singularity run --nv -B $inputs_data:/workspace/inputs -B $outputs_data:/workspace/outputs suprem_final.sif
+
+# If using docker
+docker pull qchen99/suprem:v1
+sudo docker container run --gpus "device=0" -m 128G --rm -v $inputs_data:/workspace/inputs/ -v $outputs_data:/workspace/outputs/ qchen99/suprem:v1 /bin/bash -c "sh predict.sh"
 ```
 
 ### Option 2:
