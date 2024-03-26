@@ -114,8 +114,9 @@ AbdomenAtlasDemoPredict
 
 ##### 4. [Important!] Postprocess vertebrae masks
 
-Please check the AI-predicted vertebrae masks and the original CT scans. To ease the visualization, you can plot videos by modifying our [plot_video_multiprocessing.py](https://github.com/MrGiovanni/SuPreM/blob/main/utils/plot_video_multiprocessing.py). Based on the medical knowledge below, design an automatic postprocessing to refine the vertebrae masks. The postprocessing should be formatted in a separated python file `postprocessing_vertebrae.py`.
+Please check the AI-predicted vertebrae masks and the original CT scans. If you look closely at the AI-predicted masks, you will see many errors. Please design an automatic postprocessing to reduce these errors as many as you can. The postprocessing should be formatted in a separated python file `postprocessing_vertebrae.py`.
+
+To identify the errors, you will need some knowledge about vertebrae in the human body as follow.
 
 ![Vertebral anatomy](https://i0.wp.com/aneskey.com/wp-content/uploads/2023/08/f01-01-9780323882262.jpg)
 </div>
-
