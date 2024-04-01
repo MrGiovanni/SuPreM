@@ -319,10 +319,20 @@ def event(folder, args):
         make_avi(folder, plane, args)
         
 def main(args):
-     folder_names = [name for name in os.listdir(args.abdomen_atlas) if os.path.isdir(os.path.join(args.abdomen_atlas, name))]
-     print('>> {} CPU cores are secured.'.format(cpu_count()))
+    all_folder_names = [name for name in os.listdir(args.abdomen_atlas) if os.path.isdir(os.path.join(args.abdomen_atlas, name))]
     
-     with ProcessPoolExecutor(max_workers=cpu_count()) as executor:
+    folder_names = []
+    for pid in tqdm(all_folder_names):
+        mask_path = os.path.join(args.abdomen_atlas, pid, 'segmentations', 'liver.nii.gz')
+        mask = nib.load(mask_path)
+        mask_shape = mask.header['dim']
+        if mask_shape[3] > args.minimal_slices:
+            folder_names.append(pid)
+    print(folder_names)
+     
+    print('>> {} CPU cores are secured.'.format(cpu_count()))
+    
+    with ProcessPoolExecutor(max_workers=cpu_count()) as executor:
         futures = {executor.submit(event, folder, args): folder
                    for folder in folder_names}
         
@@ -347,6 +357,9 @@ if __name__ == "__main__":
                        )
     parser.add_argument("--gif_save_path", dest='gif_save_path', type=str, default='./gifs',
                         help='the directory for saving gifs',
+                       )
+    parser.add_argument("--minimal_slices", dest='minimal_slices', type=int, default=500,
+                        help='the minimal value for the number of CT slices',
                        )
     parser.add_argument("--FPS", dest='FPS', type=float, default=20,
                         help='the FPS value for videos; larger the value, faster the video',
