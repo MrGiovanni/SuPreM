@@ -328,7 +328,7 @@ def main(args):
         mask_shape = mask.header['dim']
         if mask_shape[3] > args.minimal_slices:
             folder_names.append(pid)
-    print(folder_names)
+#    print(folder_names)
      
     print('>> {} CPU cores are secured.'.format(cpu_count()))
     
