@@ -1,5 +1,7 @@
 '''
-python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoPNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoAVI --gif_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoGIF --FPS 25
+python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.0PNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.0AVI --gif_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.0GIF --FPS 25
+
+python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.1PNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.1AVI --gif_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo1.1GIF --FPS 25
 '''
 
 import numpy as np 
@@ -18,16 +20,16 @@ low_range = -150
 high_range = 250
 
 # AbdomenAtlas 1.0
-class_of_interest = ['aorta',
-                     'gall_bladder',
-                     'kidney_left',
-                     'kidney_right',
-                     'liver',
-                     'pancreas',
-                     'postcava',
-                     'spleen',
-                     'stomach',
-                    ]
+#class_of_interest = ['aorta',
+#                     'gall_bladder',
+#                     'kidney_left',
+#                     'kidney_right',
+#                     'liver',
+#                     'pancreas',
+#                     'postcava',
+#                     'spleen',
+#                     'stomach',
+#                    ]
 
 # JHH Dataset
 # class_of_interest = ['aorta',
@@ -47,32 +49,32 @@ class_of_interest = ['aorta',
 #                     ]
 
 # AbdomenAtlas 1.1
-# class_of_interest = ['aorta',
-#                      'gall_bladder',
-#                      'kidney_left',
-#                      'kidney_right',
-#                      'liver',
-#                      'pancreas',
-#                      'postcava',
-#                      'spleen',
-#                      'stomach',
-#                      'adrenal_gland_left',
-#                      'adrenal_gland_right',
-#                      'bladder',
-#                      'celiac_trunk',
-#                      'colon',
-#                      'duodenum',
-#                      'esophagus',
-#                      'femur_left',
-#                      'femur_right',
-#                      'hepatic_vessel',
-#                      'intestine',
-#                      'lung_left',
-#                      'lung_right',
-#                      'portal_vein_and_splenic_vein',
-#                      'prostate',
-#                      'rectum'
-#                     ]
+class_of_interest = ['aorta',
+                     'gall_bladder',
+                     'kidney_left',
+                     'kidney_right',
+                     'liver',
+                     'pancreas',
+                     'postcava',
+                     'spleen',
+                     'stomach',
+                     'adrenal_gland_left',
+                     'adrenal_gland_right',
+                     'bladder',
+                     'celiac_trunk',
+                     'colon',
+                     'duodenum',
+                     'esophagus',
+                     'femur_left',
+                     'femur_right',
+                     'hepatic_vessel',
+                     'intestine',
+                     'lung_left',
+                     'lung_right',
+                     'portal_vein_and_splenic_vein',
+                     'prostate',
+                     'rectum'
+                    ]
 
 CLASS_IND = {
     'spleen': 1,
