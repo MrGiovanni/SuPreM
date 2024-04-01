@@ -1,5 +1,5 @@
 '''
-python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasPro --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasProPNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasProAVI --gif_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasProGIF --FPS 25
+python -W ignore plot_website_video_multiprocessing.py --abdomen_atlas /Users/zongwei.zhou/Downloads/AbdomenAtlasDemo --png_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoPNG --video_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoAVI --gif_save_path /Users/zongwei.zhou/Downloads/AbdomenAtlasDemoGIF --FPS 25
 '''
 
 import numpy as np 
@@ -17,8 +17,9 @@ from multiprocessing import cpu_count
 low_range = -150
 high_range = 250
 
+# AbdomenAtlas 1.0
 class_of_interest = ['aorta',
-                     'gallbladder',
+                     'gall_bladder',
                      'kidney_left',
                      'kidney_right',
                      'liver',
@@ -26,125 +27,183 @@ class_of_interest = ['aorta',
                      'postcava',
                      'spleen',
                      'stomach',
-                     'adrenal_gland_right',
-                     'adrenal_gland_left',
-                     'duodenum',
-                     'intestine',
-                     'colon',
                     ]
+
+# JHH Dataset
+# class_of_interest = ['aorta',
+#                      'gallbladder',
+#                      'kidney_left',
+#                      'kidney_right',
+#                      'liver',
+#                      'pancreas',
+#                      'postcava',
+#                      'spleen',
+#                      'stomach',
+#                      'adrenal_gland_right',
+#                      'adrenal_gland_left',
+#                      'duodenum',
+#                      'intestine',
+#                      'colon',
+#                     ]
+
+# AbdomenAtlas 1.1
+# class_of_interest = ['aorta',
+#                      'gall_bladder',
+#                      'kidney_left',
+#                      'kidney_right',
+#                      'liver',
+#                      'pancreas',
+#                      'postcava',
+#                      'spleen',
+#                      'stomach',
+#                      'adrenal_gland_left',
+#                      'adrenal_gland_right',
+#                      'bladder',
+#                      'celiac_trunk',
+#                      'colon',
+#                      'duodenum',
+#                      'esophagus',
+#                      'femur_left',
+#                      'femur_right',
+#                      'hepatic_vessel',
+#                      'intestine',
+#                      'lung_left',
+#                      'lung_right',
+#                      'portal_vein_and_splenic_vein',
+#                      'prostate',
+#                      'rectum'
+#                     ]
 
 CLASS_IND = {
     'spleen': 1,
     'kidney_right': 2,
     'kidney_left': 3,
-    'gallbladder': 4,
+    'gall_bladder': 4,
     'esophagus': 5,
     'liver': 6,
     'stomach': 7,
     'aorta': 8,
     'postcava': 9,
-    'portal and splenic vein': 10,
+    'portal_vein_and_splenic_vein': 10,
     'pancreas': 11,
     'adrenal_gland_right': 12,
     'adrenal_gland_left': 13,
     'duodenum': 14,
-    'hepatic vessel': 15,
-    'lung R': 16,
-    'lung L': 17,
+    'hepatic_vessel': 15,
+    'lung_right': 16,
+    'lung_left': 17,
     'colon': 18,
     'intestine': 19,
     'rectum': 20,
     'bladder': 21,
     'prostate': 22,
-    'head of femur L': 23,
-    'head of femur R': 24,
-    'celiac trunk': 25,
-    'kidney tumor': 26,
-    'liver tumor': 27,
-    'pancreatic tumor': 28,
-    'hepatic vessel tumor': 29,
-    'lung tumor': 30,
-    'colon tumor': 31,
+    'femur_left': 23,
+    'femur_right': 24,
+    'celiac_trunk': 25,
+    'kidney_tumor': 26,
+    'liver_tumor': 27,
+    'pancreatic_tumor': 28,
+    'hepatic_vessel_tumor': 29,
+    'lung_tumor': 30,
+    'colon_tumor': 31,
     'kidney cyst': 32,
 }
 
 def add_colorful_mask(image, mask, class_index):
     
-    image[mask == class_index['spleen'], 0] = 255   # spleen (255,0,0)
+    image[mask == class_index['aorta'], 0] = 255   # aorta (255,0,0)
+    image[mask == class_index['aorta'], 1] = image[mask == class_index['aorta'], 1] * 0.5
+    image[mask == class_index['aorta'], 2] = image[mask == class_index['aorta'], 2] * 0.5
     
     image[mask == class_index['kidney_right'], 1] = 255   # kidney_right (0,255,0)
     image[mask == class_index['kidney_left'], 1] = 255   # kidney_left (0,255,0)
-    image[mask == class_index['kidney tumor'], 1] = 255  # kidney tumor (0,255,0)
+    image[mask == class_index['kidney_tumor'], 1] = 255  # kidney_tumor (0,255,0)
     image[mask == class_index['kidney cyst'], 1] = 255  # kidney cyst (0,255,0)
+
+    image[mask == class_index['femur_left'], 0] = image[mask == class_index['femur_left'], 0] * 0.9  # femur (230,230,230)
+    image[mask == class_index['femur_left'], 1] = image[mask == class_index['femur_left'], 1] * 0.9  # femur (230,230,230)
+    image[mask == class_index['femur_left'], 2] = image[mask == class_index['femur_left'], 2] * 0.9  # femur (230,230,230)
+    image[mask == class_index['femur_right'], 0] = image[mask == class_index['femur_right'], 0] * 0.9  # femur (230,230,230)
+    image[mask == class_index['femur_right'], 1] = image[mask == class_index['femur_right'], 1] * 0.9  # femur (230,230,230)
+    image[mask == class_index['femur_right'], 2] = image[mask == class_index['femur_right'], 2] * 0.9  # femur (230,230,230)
     
-    image[mask == class_index['gallbladder'], 0] = 255   # gallbladder (255,255,0)
-    image[mask == class_index['gallbladder'], 1] = 255   #
+    image[mask == class_index['gall_bladder'], 0] = 255   # gallbladder (255,255,0)
+    image[mask == class_index['gall_bladder'], 1] = 255   #
+
+    image[mask == class_index['bladder'], 0] = 128   # bladder (128,255,0)
+    image[mask == class_index['bladder'], 1] = 255   #
     
-    image[mask == class_index['intestine'], 1] = 255   # esophagus (0,255,255)
+    image[mask == class_index['intestine'], 1] = 255   # intestine (0,255,255)
     image[mask == class_index['intestine'], 2] = 255   #
     image[mask == class_index['liver'], 0] = 255   # liver (255,0,255)
-    image[mask == class_index['hepatic vessel'], 0] = 255  # hepatic vessel (255,0,255)
-    image[mask == class_index['liver tumor'], 0] = 255  # liver tumors (255,0,255)
-    image[mask == class_index['hepatic vessel tumor'], 0] = 255  # hepatic vessel tumors (255,0,255)
+    image[mask == class_index['hepatic_vessel'], 0] = 255  # hepatic_vessel (255,0,255)
+    image[mask == class_index['liver_tumor'], 0] = 255  # liver_tumors (255,0,255)
+    image[mask == class_index['hepatic_vessel_tumor'], 0] = 255  # hepatic_vessel_tumors (255,0,255)
     image[mask == class_index['liver'], 2] = 255   # liver (255,0,255)
-    image[mask == class_index['hepatic vessel'], 2] = 255  # hepatic vessel (255,0,255)
-    image[mask == class_index['liver tumor'], 2] = 255  # liver tumors (255,0,255)
-    image[mask == class_index['hepatic vessel tumor'], 2] = 255  # hepatic vessel tumors (255,0,255)
+    image[mask == class_index['hepatic_vessel'], 2] = 255  # hepatic_vessel (255,0,255)
+    image[mask == class_index['liver_tumor'], 2] = 255  # liver_tumors (255,0,255)
+    image[mask == class_index['hepatic_vessel_tumor'], 2] = 255  # hepatic_vessel_tumors (255,0,255)
     
-    image[mask == class_index['stomach'], 0] = 255
-    image[mask == class_index['stomach'], 1] = 239   # stomach (255,239,255)
-    image[mask == class_index['stomach'], 2] = 213   #
+    image[mask == class_index['stomach'], 0] = 255  # stomach (255,128,128)
+    image[mask == class_index['stomach'], 1] = 128 + image[mask == class_index['stomach'], 1] * 0.5   
+    image[mask == class_index['stomach'], 2] = 128 + image[mask == class_index['stomach'], 2] * 0.5   
     
-    image[mask == class_index['aorta'], 1] = 255
-    image[mask == class_index['aorta'], 2] = 255   # aorta (0,255,255)
+    image[mask == class_index['spleen'], 0] = 255
+    image[mask == class_index['spleen'], 2] = 64   # spleen (255,0,255)
     
-    image[mask == class_index['postcava'], 0] = 205   # postcava (205,133,63)
-    image[mask == class_index['postcava'], 1] = 133   #
-    image[mask == class_index['postcava'], 2] = 63 # + image[mask == class_index['postcava'], 2] * 0.2   #
+    image[mask == class_index['postcava'], 0] = image[mask == class_index['postcava'], 0] * 0.5   # postcava (0,0,255)
+    image[mask == class_index['postcava'], 1] = image[mask == class_index['postcava'], 1] * 0.5
+    image[mask == class_index['postcava'], 2] = 255
+
+    image[mask == class_index['celiac_trunk'], 0] = 255 # celiac_trunk (255,12,12)
+    image[mask == class_index['celiac_trunk'], 1] = image[mask == class_index['celiac_trunk'], 1] * 0.05
+    image[mask == class_index['celiac_trunk'], 2] = image[mask == class_index['celiac_trunk'], 2] * 0.05
+
+    image[mask == class_index['esophagus'], 0] = image[mask == class_index['esophagus'], 0] * 0.1 # esophagus (25,255,25)
+    image[mask == class_index['esophagus'], 1] = 255
+    image[mask == class_index['esophagus'], 2] = image[mask == class_index['esophagus'], 2] * 0.1
     
-    # image[mask == class_index['portal and splenic vein'], 0] = 0 + image[mask == class_index['portal and splenic vein'], 0] * 0.5 # portal and splenic vein (0,0,255)
-    # image[mask == class_index['portal and splenic vein'], 1] = 0 + image[mask == class_index['portal and splenic vein'], 1] * 0.5 #
-    # image[mask == class_index['portal and splenic vein'], 2] = 255  #
+    image[mask == class_index['portal_vein_and_splenic_vein'], 0] = 0 + image[mask == class_index['portal_vein_and_splenic_vein'], 0] * 0.5 # portal_vein_and_splenic_vein (128,128,255)
+    image[mask == class_index['portal_vein_and_splenic_vein'], 1] = 0 + image[mask == class_index['portal_vein_and_splenic_vein'], 1] * 0.5 #
+    image[mask == class_index['portal_vein_and_splenic_vein'], 2] = 255  #
     
     image[mask == class_index['pancreas'], 0] = 102  # pancreas (102,205,170)
     image[mask == class_index['pancreas'], 1] = 205
     image[mask == class_index['pancreas'], 2] = 170  #
-    image[mask == class_index['pancreatic tumor'], 0] = 102  # pancreatic tumors (102,205,170)
-    image[mask == class_index['pancreatic tumor'], 1] = 205
-    image[mask == class_index['pancreatic tumor'], 2] = 170
+    image[mask == class_index['pancreatic_tumor'], 0] = 102  # pancreatic_tumors (102,205,170)
+    image[mask == class_index['pancreatic_tumor'], 1] = 205
+    image[mask == class_index['pancreatic_tumor'], 2] = 170
 
-    image[mask == class_index['adrenal_gland_right'], 0] = 0 + image[mask == class_index['adrenal_gland_right'], 0] * 0.5 # adrenal_gland_right (0,255,0)
-    image[mask == class_index['adrenal_gland_right'], 1] = 255 #
-    image[mask == class_index['adrenal_gland_right'], 2] = 0 + image[mask == class_index['adrenal_gland_right'], 2] * 0.5  #
-    image[mask == class_index['adrenal_gland_left'], 0] = 0 + image[mask == class_index['adrenal_gland_left'], 0] * 0.5 # adrenal_gland_left (0,255,0)
-    image[mask == class_index['adrenal_gland_left'], 1] = 255 #
-    image[mask == class_index['adrenal_gland_left'], 2] = 0 + image[mask == class_index['adrenal_gland_left'], 2] * 0.5 #
+    image[mask == class_index['adrenal_gland_right'], 0] = 200 + image[mask == class_index['adrenal_gland_right'], 0] * 0.2  # adrenal_gland_right (200,128,0)
+    image[mask == class_index['adrenal_gland_right'], 2] = 128 + image[mask == class_index['adrenal_gland_right'], 2] * 0.5  #
+    image[mask == class_index['adrenal_gland_left'], 0] = 200 + image[mask == class_index['adrenal_gland_left'], 0] * 0.2  # lung_left (200,128,0)
+    image[mask == class_index['adrenal_gland_left'], 2] = 128 + image[mask == class_index['adrenal_gland_left'], 2] * 0.5  #
     
     image[mask == class_index['duodenum'], 0] = 255 # duodenum (255,80,80)
     image[mask == class_index['duodenum'], 1] = 80 + image[mask == class_index['duodenum'], 1] * 0.6 #
     image[mask == class_index['duodenum'], 2] = 80 + image[mask == class_index['duodenum'], 2] * 0.6 #
     
-    # image[mask == class_index['lung R'], 0] = 200 + image[mask == class_index['lung R'], 0] * 0.2  # lung R (200,128,0)
-    # image[mask == class_index['lung R'], 2] = 128 + image[mask == class_index['lung R'], 2] * 0.5  #
-    # image[mask == class_index['lung L'], 0] = 200 + image[mask == class_index['lung L'], 0] * 0.2  # lung L (200,128,0)
-    # image[mask == class_index['lung L'], 2] = 128 + image[mask == class_index['lung L'], 2] * 0.5  #
-    # image[mask == class_index['lung tumor'], 0] = 200 + image[mask == class_index['lung tumor'], 0] * 0.2  # lung tumor (200,128,0)
-    # image[mask == class_index['lung tumor'], 2] = 128 + image[mask == class_index['lung tumor'], 2] * 0.5  #
+    image[mask == class_index['lung_right'], 0] = image[mask == class_index['lung_right'], 0] * 0.2  # lung_right (0,0,128)
+    image[mask == class_index['lung_right'], 2] = 128 + image[mask == class_index['lung_right'], 2] * 0.5  #
+    image[mask == class_index['lung_left'], 0] = image[mask == class_index['lung_left'], 0] * 0.2  # lung_left (0,0,128)
+    image[mask == class_index['lung_left'], 2] = 128 + image[mask == class_index['lung_left'], 2] * 0.5  #
+    image[mask == class_index['lung_tumor'], 0] = 200 + image[mask == class_index['lung_tumor'], 0] * 0.2  # lung_tumor (200,0,64)
+    image[mask == class_index['lung_tumor'], 2] = 64 + image[mask == class_index['lung_tumor'], 2] * 0.5  #
     
     image[mask == class_index['colon'], 0] = 170  # colon (170,0,255)
     image[mask == class_index['colon'], 1] = 0 + image[mask == class_index['colon'], 1] * 0.7    #
     image[mask == class_index['colon'], 2] = 255  #
-    image[mask == class_index['colon tumor'], 0] = 170  # colon tumors (170,0,255)
-    image[mask == class_index['colon tumor'], 1] = 0 + image[mask == class_index['colon tumor'], 1] * 0.7    #
-    image[mask == class_index['colon tumor'], 2] = 255  #
+    image[mask == class_index['colon_tumor'], 0] = 170  # colon_tumors (170,0,255)
+    image[mask == class_index['colon_tumor'], 1] = 0 + image[mask == class_index['colon_tumor'], 1] * 0.7    #
+    image[mask == class_index['colon_tumor'], 2] = 255  #
     
-    # image[mask == class_index['prostate'], 0] = 0    # prostate (0,128,128)
-    # image[mask == class_index['prostate'], 1] = 128  #
-    # image[mask == class_index['prostate'], 2] = 128 + image[mask == class_index['prostate'], 2] * 0.5  #
+    image[mask == class_index['prostate'], 0] = 0    # prostate (0,128,128)
+    image[mask == class_index['prostate'], 1] = 128  #
+    image[mask == class_index['prostate'], 2] = 128 + image[mask == class_index['prostate'], 2] * 0.5  #
     
-    # image[mask == class_index['celiac trunk'], 0] = 255    # celiac trunk (255,0,0)
-    # image[mask == class_index['celiac trunk'], 1] = 0 + image[mask == class_index['celiac trunk'], 1] * 0.5  #
-    # image[mask == class_index['celiac trunk'], 2] = 0  #
+    image[mask == class_index['rectum'], 0] = 255    # rectum (255,0,0)
+    image[mask == class_index['rectum'], 1] = 0 + image[mask == class_index['rectum'], 1] * 0.5  #
+    image[mask == class_index['rectum'], 2] = 0  #
     
     return image
 
