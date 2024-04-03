@@ -41,6 +41,51 @@ Prelimianry benchmark showed that supervised pre-training strikes as a preferred
 
 We anticipate that the release of large, annotated datasets (AbdomenAtlas 1.1) and the suite of pre-trained models (SuPreM) will bolster collaborative endeavors in establishing Foundation Datasets and Foundation Models for the broader applications of 3D volumetric medical image analysis.
 
+The AbdomenAtlas dataset is organized as
+```
+AbdomenAtlas
+    ├── BDMAP_00000001
+    │   ├── ct.nii.gz
+    │   └── segmentations
+    │       ├── aorta.nii.gz
+    │       ├── gall_bladder.nii.gz
+    │       ├── kidney_left.nii.gz
+    │       ├── kidney_right.nii.gz
+    │       ├── liver.nii.gz
+    │       ├── pancreas.nii.gz
+    │       ├── postcava.nii.gz
+    │       ├── spleen.nii.gz
+    │       ├── stomach.nii.gz
+    │       └── ...
+    ├── BDMAP_00000002
+    │   ├── ct.nii.gz
+    │   └── segmentations
+    │       ├── aorta.nii.gz
+    │       ├── gall_bladder.nii.gz
+    │       ├── kidney_left.nii.gz
+    │       ├── kidney_right.nii.gz
+    │       ├── liver.nii.gz
+    │       ├── pancreas.nii.gz
+    │       ├── postcava.nii.gz
+    │       ├── spleen.nii.gz
+    │       ├── stomach.nii.gz
+    │       └── ...
+    ├── BDMAP_00000003
+    │   ├── ct.nii.gz
+    │   └── segmentations
+    │       ├── aorta.nii.gz
+    │       ├── gall_bladder.nii.gz
+    │       ├── kidney_left.nii.gz
+    │       ├── kidney_right.nii.gz
+    │       ├── liver.nii.gz
+    │       ├── pancreas.nii.gz
+    │       ├── postcava.nii.gz
+    │       ├── spleen.nii.gz
+    │       ├── stomach.nii.gz
+    │       └── ...
+    ...
+```
+
 ## A Suite of Pre-trained Models: SuPreM
 
 The following is a list of supported model backbones in our collection. Select the appropriate family of backbones and click to expand the table, download a specific backbone and its pre-trained weights (`name` and `download`), and save the weights into `./pretrained_weights/`. More backbones will be added along time. **Please suggest the backbone in [this channel](https://github.com/MrGiovanni/SuPreM/issues/1) if you want us to pre-train it on AbdomenAtlas 1.1 containing 9,262 annotated CT volumes.**
