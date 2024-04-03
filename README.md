@@ -41,9 +41,9 @@ Prelimianry benchmark showed that supervised pre-training strikes as a preferred
 
 We anticipate that the release of large, annotated datasets (AbdomenAtlas 1.1) and the suite of pre-trained models (SuPreM) will bolster collaborative endeavors in establishing Foundation Datasets and Foundation Models for the broader applications of 3D volumetric medical image analysis.
 
-The AbdomenAtlas dataset is organized as
+The AbdomenAtlas 1.1 dataset is organized as
 ```
-AbdomenAtlas
+AbdomenAtlas1.1
     ├── BDMAP_00000001
     │   ├── ct.nii.gz
     │   └── segmentations
