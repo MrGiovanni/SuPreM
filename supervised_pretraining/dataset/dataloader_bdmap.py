@@ -58,7 +58,7 @@ class_map_abdomenatlas_1_1 = {
     9: 'adrenal_gland_left', 
     10: 'adrenal_gland_right', 
     11: 'bladder', 
-    12: 'celiac_truck', 
+    12: 'celiac_trunk', 
     13: 'colon', 
     14: 'duodenum', 
     15: 'esophagus', 
