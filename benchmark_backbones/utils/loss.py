@@ -84,7 +84,7 @@ class DiceLoss(nn.Module):
         for b in range(B):
             target_sum = torch.sum(target[b], axis = (1,2,3))
             # print('target_sum:',target_sum)
-            assert len(target_sum) == self.num_classes, 'target sum =! 25 (25 is set by default for args.num_class in train.py)'
+            assert len(target_sum) == self.num_classes, 'target sum =! 9 (9 is set by default for args.num_class in train.py)'
             non_zero_tensor = torch.nonzero(target_sum).squeeze()
             non_zero_list = non_zero_tensor.tolist() if non_zero_tensor.dim() > 0 else [non_zero_tensor.tolist()]
             # print('non_zero_list:',non_zero_list)
