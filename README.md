@@ -127,7 +127,7 @@ The following is a list of supported model backbones in our collection. Select t
 
 | name | params | pre-trained data | resources | download |
 |:----  |:----  |:----  |:----  |:----  |
-| SuPreM | 470.13M | 2100 CT | ours :star2: | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_segresnet_2100.pth?download=true) |
+| SuPreM | 4.70M | 2100 CT | ours :star2: | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_segresnet_2100.pth?download=true) |
 
 </div>
 </details>
