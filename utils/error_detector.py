@@ -8,6 +8,7 @@ import argparse
 
 import nibabel as nib
 import numpy as np
+import csv
 
 from tqdm import tqdm
 
@@ -50,7 +51,9 @@ def main(args):
                                                            ))
             
             if error_count/liver_mask.shape[-1] > 0.03:
-                error_list.append(pid)
+                error_percent = round(100.0*error_count/liver_mask.shape[-1], 1)
+                total_slices = liver_mask.shape[-1]
+                error_list.append((pid, error_percent, error_count, total_slices))
         else:
             for i in range(liver_mask.shape[0]):
                 if (np.sum(liver_mask[i,:,:]) > 0 and np.sum(aorta_mask[i,:,:]) == 0) or \
@@ -64,9 +67,12 @@ def main(args):
                                                            ))
             
             if error_count/liver_mask.shape[0] > 0.03:
-                error_list.append(pid)
+                error_percent = round(100.0*error_count/liver_mask.shape[0], 1)
+                total_slices = liver_mask.shape[0]
+                error_list.append((pid, error_percent, error_count, total_slices))
 
     print('\n> Overall error report {:.1f}% = {}/{}'.format(100.0*len(error_list)/len(folder_names), len(error_list), len(folder_names)))
+    return error_list
         
 if __name__ == "__main__":
     
@@ -76,4 +82,12 @@ if __name__ == "__main__":
                        )
     args = parser.parse_args()
     
-    main(args)
+    error_list = main(args)
+    
+    with open('error_list.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(['Patient ID', 'Error Percentage', 'Error Count', 'Total Slices'])
+        for pid, error_percent, error_count, total_slices in error_list:
+            writer.writerow([pid, error_percent, error_count, total_slices])
+    
+    print('Error list saved to error_list.csv')
