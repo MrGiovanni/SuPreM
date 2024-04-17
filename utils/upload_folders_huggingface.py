@@ -10,19 +10,20 @@ import huggingface_hub
 from pathlib import Path
 from huggingface_hub import HfApi, CommitOperationAdd
 
-folder = "AbdomenAtlasDemo" #path on your computer
-repository = "MrGiovanni/AbdomenAtlasPro" #Hugging face repository
-repository_type = "dataset" #dataset, model or space
-n = 1000 #number of files per commit
+# Base folder path on your computer
+base_folder = Path("/data2/wenxuan/Project/BagofTricks/SuPreM/direct_inference/AbdomenAtlasDemo") # /path/to/the/folder
+repository = "wenxuanchelsea/testAbdomenAtlas"  # Hugging face repository
+repository_type = "dataset"  # can be dataset, model, or space
+n = 1000  # number of files per commit
 
 def get_all_files(root: Path):
     dirs = [root]
-    while len(dirs) > 0:
-        dir = dirs.pop()
-        for candidate in dir.iterdir():
+    while dirs:
+        current_dir = dirs.pop()
+        for candidate in current_dir.iterdir():
             if candidate.is_file():
                 yield candidate
-            if candidate.is_dir():
+            elif candidate.is_dir():
                 dirs.append(candidate)
 
 def get_groups_of_n(n: int, iterator):
@@ -33,25 +34,22 @@ def get_groups_of_n(n: int, iterator):
             yield buffer
             buffer = []
         buffer.append(elt)
-    if len(buffer) != 0:
+    if buffer:
         yield buffer
 
-
 api = HfApi()
-root = Path(folder)
 
 try:
-    counter=torch.load('counter.pt')
-except:
-    counter=0
-#counter=0
+    counter = torch.load('counter.pt')
+except FileNotFoundError:
+    counter = 0
 
-for i, file_paths in enumerate(get_groups_of_n(n, get_all_files(root))):
-    if i<counter:
+for i, file_paths in enumerate(get_groups_of_n(n, get_all_files(base_folder))):
+    if i < counter:
         continue
     print(f"Committing {i}")
     operations = [
-        CommitOperationAdd(path_in_repo='/'.join(str(file_path).split('/')[2:]), 
+        CommitOperationAdd(path_in_repo=str(file_path.relative_to(base_folder)),
                            path_or_fileobj=str(file_path))
         for file_path in file_paths
     ]
@@ -61,4 +59,4 @@ for i, file_paths in enumerate(get_groups_of_n(n, get_all_files(root))):
         commit_message=f"Upload part {i}",
         repo_type=repository_type
     )
-    torch.save(i,'counter.pt')
+    torch.save(i, 'counter.pt')
