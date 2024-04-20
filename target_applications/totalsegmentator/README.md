@@ -22,6 +22,8 @@ pip install -r requirements.txt
 ```bash
 cd target_applications/totalsegmentator/pretrained_weights/
 wget https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_swinunetr_2100.pth
+wget https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_segresnet_2100.pth
+wget https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_unet_2100.pth
 cd ../../../
 ```
 
