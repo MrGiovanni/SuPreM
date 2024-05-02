@@ -30,6 +30,6 @@ datapath=/scratch/zzhou82/data/AbdomenAtlasMini1.0
 
 ### Training 
 
-python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist  --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
 
 # sbatch --error=logs/unet.out --output=logs/unet.out hg.sh

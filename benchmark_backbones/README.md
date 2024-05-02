@@ -32,10 +32,10 @@ datapath=/scratch/zzhou82/data/AbdomenAtlasMini1.0 # need modification
 
 # Single GPU
 # A batch size of 2 requires 6G GPU memory (U-Net)
-python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT train.py --dist False --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
+python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT train.py --dist  --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
 
 # Multi GPU (e.g., 4)
-python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist True --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist  --data_root_path $datapath --num_workers 12 --log_name AbdomenAtlas1.0.$backbone --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 2 --max_epoch 800 --cache_dataset
 ```
 
 ### 4. Change to your own backbone
