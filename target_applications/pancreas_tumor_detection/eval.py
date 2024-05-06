@@ -402,7 +402,7 @@ def main():
                 list(tqdm(pool.imap(process_wrapper, args_list), total=len(patientIDs)))
         else:
             for patientID, args, save_subfolder in tqdm(args_list):
-                process_patient(patientID, args, save_subfolder)
+                visualize_error_case(patientID, args, save_subfolder)
 
 if __name__ == "__main__":
     main()
