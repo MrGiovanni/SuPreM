@@ -195,7 +195,7 @@ def get_loader(args):
                 train_name.append(name)
         data_dicts_train = [{'image': image, 'label': label, 'name': name}
                     for image, label, name in zip(train_img, train_lbl, train_name)]
-        print('train len {}'.format(len(data_dicts_train)))
+        # print('train len {}'.format(len(data_dicts_train)))
 
         train_dataset = Dataset(data=data_dicts_train, transform=train_transforms)
         train_sampler = DistributedSampler(dataset=train_dataset, even_divisible=True, shuffle=True) if args.dist else None
@@ -215,7 +215,7 @@ def get_loader(args):
                 test_name_img.append(name_img)
         data_dicts_test = [{'image': image,'name_img':name_img}
                     for image, name_img in zip(test_img, test_name_img)]
-        print('test len {}'.format(len(data_dicts_test)))
+        # print('test len {}'.format(len(data_dicts_test)))
         
         test_dataset = Dataset(data=data_dicts_test, transform=test_transforms)
         test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=0, collate_fn=list_data_collate)

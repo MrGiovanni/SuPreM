@@ -1,5 +1,5 @@
 <h1 align="center">SuPreM</h1>
-<h3 align="center" style="font-size: 20px; margin-bottom: 4px">For Pancreatic Tumor Segmentation</h3>
+<h3 align="center" style="font-size: 20px; margin-bottom: 4px">For Pancreatic Tumor Detection</h3>
 <p align="center">
     <a href='https://www.zongweiz.com/dataset'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
     <a href='https://www.cs.jhu.edu/~alanlab/Pubs23/li2023suprem.pdf'><img src='https://img.shields.io/badge/Paper-PDF-purple'></a> 
