@@ -328,6 +328,9 @@ def main():
     args.size_limits = {'pdac': args.pdac_size, 'cyst': args.cyst_size, 'pnet': args.pnet_size}
     
     patientIDs = set(os.path.basename(f).split('_')[0] for f in os.listdir(args.predpath) if os.path.isdir(os.path.join(args.predpath, f)))
+    # exclude cases have gt errors re-reviewed by radiologists
+    normal_cases = ['FELIX-Cys-1432', 'FELIX5145', 'FELIX-CYS-1289', 'FELIX7528', 'FELIX-Cys-1680', 'FELIX-Cys-1222', 'FELIX7594', 'FELIX5222', 'FELIX5224', 'FELIX-PDAC-1174', 'FELIX-Cys-1680', 'FELIX-PDAC-1174', 'FELIX7179', 'FELIX5544', 'FELIX5222', 'FELIX7521', 'FELIX-Cys-1222', 'FELIX-Cys-1632', 'FELIX-Cys-1623', 'FELIX5145', 'FELIX7521', 'FELIX-Cys-1233', 'FELIX5046', 'FELIX-Cys-1432']
+    patientIDs = patientIDs - set(normal_cases)
     patientIDs = list(patientIDs)
 
     if args.plotroc:
