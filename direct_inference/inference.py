@@ -108,7 +108,7 @@ def validation(model, ValLoader, val_transforms, args):
             with torch.no_grad():
                 # print("Image: {}, shape: {}".format(name[0], image.shape))
                 val_outputs = sliding_window_inference(image, (args.roi_x, args.roi_y, args.roi_z), 1, model, overlap=args.overlap, mode='gaussian', sw_device="cuda", device="cpu")
-                val_outputs = val_outputs.sigmoid()
+                val_outputs = F.softmax(val_outputs, dim=1)
                 # print(val_outputs.shape)
                 hard_val_outputs = torch.argmax(val_outputs, dim=1).unsqueeze(1)
                 # print(hard_val_outputs.shape)
