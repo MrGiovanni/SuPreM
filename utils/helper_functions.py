@@ -23,6 +23,14 @@ def save_mask(data, affine, header, pid, class_name, datapath):
     nifti_path = os.path.join(datapath, pid, 'segmentations', class_name + '.nii.gz')
     nib.save(nib.Nifti1Image(data, affine=affine, header=header), nifti_path)
 
+def check_dim(list_of_array):
+
+    dim = list_of_array[0].shape
+    for i in range(len(list_of_array)):
+        if dim != list_of_array[i].shape:
+            return False
+    return True
+
 def aorta_error(pid, datapath):
 
     liver, _, _ = load_mask(pid, 'liver', datapath)
@@ -30,6 +38,8 @@ def aorta_error(pid, datapath):
     lung_left, _, _ = load_mask(pid, 'lung_left', datapath)
     lung_right, _, _ = load_mask(pid, 'lung_right', datapath)
     postcava, _, _ = load_mask(pid, 'postcava', datapath)
+
+    assert check_dim([liver, aorta, lung_left, lung_right, postcava])
 
     error_count = 0
 
@@ -70,6 +80,8 @@ def kidney_error(pid, datapath):
 
     kidney_left, _, _ = load_mask(pid, 'kidney_left', datapath)
     kidney_right, _, _ = load_mask(pid, 'kidney_right', datapath)
+
+    assert check_dim([kidney_left, kidney_right])
 
     kidney_lr_overlap = error3d_overlaps(kidney_left, kidney_right)
     if kidney_lr_overlap > 0:

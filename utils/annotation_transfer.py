@@ -2,6 +2,7 @@
 source /data/zzhou82/environments/syn/bin/activate
 python -W ignore annotation_transfer.py --source_datapath /Volumes/T9/HGFC_inference_separate_data --destination_datapath /Volumes/T9/AbdomenAtlasPro -o error_analysis/aorta.csv -c aorta
 python -W ignore annotation_transfer.py --source_datapath /Volumes/T9/HGFC_inference_separate_data --destination_datapath /Volumes/T9/AbdomenAtlasPro -o error_analysis/kidney.csv -c kidney_left
+python -W ignore annotation_transfer.py --source_datapath /Volumes/Expansion/AbdomenAtlas/AbdomenAtlasPro --destination_datapath /Volumes/T9/AbdomenAtlasPro -o /Volumes/T9/error_analysis/aorta.csv -c aorta
 '''
 
 import os

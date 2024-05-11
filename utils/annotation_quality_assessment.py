@@ -1,6 +1,7 @@
 '''
 source /data/zzhou82/environments/syn/bin/activate
-python -W ignore annotation_quality_assessment.py --datapath /Users/zongwei.zhou/Dropbox\ \(ASU\)/PublicResource/SuPreM/AbdomenAtlas/AbdomenAtlasProDemo -o /Users/zongwei.zhou/Desktop/error_analysis --aorta --csvname aorta.csv
+python -W ignore annotation_quality_assessment.py --datapath /Volumes/T9/AbdomenAtlasPro -o /Users/zongweizhou/Desktop/error_analysis --aorta --csvname aorta.csv
+python -W ignore annotation_quality_assessment.py --datapath /Volumes/T9/AbdomenAtlasPro -o /Users/zongweizhou/Desktop/error_analysis --kidney --csvname kidney.csv
 '''
 
 import os
