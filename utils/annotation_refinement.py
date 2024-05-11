@@ -11,11 +11,11 @@ def main(args):
 
     folder_names = [name for name in os.listdir(args.datapath) if os.path.isdir(os.path.join(args.datapath, name))]
     folder_names = sorted(folder_names)
-    error_list = []
 
     for pid in folder_names:
 
         if args.kidney:
+            kidney_postprocessing(pid, args.datapath)
             
 
 if __name__ == "__main__":

@@ -1,22 +1,35 @@
 import os
 import nibabel as nib
 import numpy as np
+from skimage.measure import label
+
+def getLargestCC(segmentation):
+    labels = label(segmentation)
+    assert( labels.max() != 0 ) # assume at least 1 CC
+    largestCC = labels == np.argmax(np.bincount(labels.flat)[1:])+1
+    return largestCC
 
 def load_mask(pid, class_name, datapath):
 
     mask_path = os.path.join(datapath, pid, 'segmentations', class_name + '.nii.gz')
     if os.path.isfile(mask_path):
-        return nib.load(mask_path).get_fdata().astype(np.uint8)
+        nii = nib.load(mask_path)
+        return nii.get_fdata().astype(np.uint8), nii.affine, nii.header
     else:
-        return None
+        return None, None, None
+
+def save_mask(data, affine, header, pid, class_name, datapath):
     
+    nifti_path = os.path.join(datapath, pid, 'segmentations', class_name + '.nii.gz')
+    nib.save(nib.Nifti1Image(data, affine=affine, header=header), nifti_path)
+
 def aorta_error(pid, datapath):
 
-    liver = load_mask(pid, 'liver', datapath)
-    aorta = load_mask(pid, 'aorta', datapath)
-    lung_left = load_mask(pid, 'lung_left', datapath)
-    lung_right = load_mask(pid, 'lung_right', datapath)
-    postcava = load_mask(pid, 'postcava', datapath)
+    liver, _, _ = load_mask(pid, 'liver', datapath)
+    aorta, _, _ = load_mask(pid, 'aorta', datapath)
+    lung_left, _, _ = load_mask(pid, 'lung_left', datapath)
+    lung_right, _, _ = load_mask(pid, 'lung_right', datapath)
+    postcava, _, _ = load_mask(pid, 'postcava', datapath)
 
     error_count = 0
 
@@ -55,8 +68,8 @@ def kidney_error(pid, datapath):
 
     error_detected = False
 
-    kidney_left = load_mask(pid, 'kidney_left', datapath)
-    kidney_right = load_mask(pid, 'kidney_right', datapath)
+    kidney_left, _, _ = load_mask(pid, 'kidney_left', datapath)
+    kidney_right, _, _ = load_mask(pid, 'kidney_right', datapath)
 
     kidney_lr_overlap = error3d_overlaps(kidney_left, kidney_right)
     if kidney_lr_overlap > 0:
@@ -67,8 +80,18 @@ def kidney_error(pid, datapath):
 
 def kidney_postprocessing(pid, datapath):
 
-    kidney_left = load_mask(pid, 'kidney_left', datapath)
-    kidney_right = load_mask(pid, 'kidney_right', datapath)
+    kidney_left, kidney_left_affine, kidney_left_header = load_mask(pid, 'kidney_left', datapath)
+    kidney_right, kidney_right_affine, kidney_right_header = load_mask(pid, 'kidney_right', datapath)
+
+    kidney_left = getLargestCC(kidney_left)
+    kidney_right = getLargestCC(kidney_right)
+
+    save_mask(kidney_left, kidney_left_affine, kidney_left_header, 
+              pid, 'kidney_left', datapath,
+              )
+    save_mask(kidney_right, kidney_right_affine, kidney_right_header, 
+              pid, 'kidney_right', datapath,
+              )
 
 def error2d_isliver_noaorta(liver, aorta):
 
@@ -97,9 +120,3 @@ def error3d_overlaps(c1, c2):
     
     return np.sum(np.logical_and(c1, c2))
 
-def error_detection_per_case(pid, args):
-
-    if args.aorta:
-        return aorta_error(pid, args.datapath)
-    if args.kidney:
-        return kidney_error(pid, args.datapath)
