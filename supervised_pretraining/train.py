@@ -100,10 +100,11 @@ def process(args):
         print('Use pretrained weights')
 
     if args.trans_encoding == 'word_embedding':
-        if args.word_embedding:
-            word_embedding = torch.load(args.word_embedding)
-            model.organ_embedding.data = word_embedding.float()
-            print('load word embedding')
+        if args.backbone != 'segresnet':
+            if args.word_embedding:
+                word_embedding = torch.load(args.word_embedding)
+                model.organ_embedding.data = word_embedding.float()
+                print('load word embedding')
 
     model.to(args.device)
     model.train()
