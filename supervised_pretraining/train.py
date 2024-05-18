@@ -13,6 +13,7 @@ from dataset.dataloader_bdmap import get_loader
 from tensorboardX import SummaryWriter
 
 from backbone.Universal_model import Universal_model
+from monai.networks.nets import SegResNet
 from utils import loss
 from optimizers.lr_scheduler import LinearWarmupCosineAnnealingLR
 
@@ -75,13 +76,23 @@ def process(args):
     args.device = torch.device(f"cuda:{rank}")
     torch.cuda.set_device(args.device)
 
-    # Universal model, support for swin_unetr, unet, and other models
-    model = Universal_model(img_size=(args.roi_x, args.roi_y, args.roi_z),
+    if args.backbone == 'segresnet':
+        model = SegResNet(
+                    blocks_down=[1, 2, 2, 4],
+                    blocks_up=[1, 1, 1],
+                    init_filters=args.segresnet_init_filters,
                     in_channels=1,
                     out_channels=args.num_class,
-                    backbone=args.backbone,
-                    encoding=args.trans_encoding
+                    dropout_prob=0.0,
                     )
+    else:
+        # Universal model, support for swin_unetr, unet, and other models
+        model = Universal_model(img_size=(args.roi_x, args.roi_y, args.roi_z),
+                        in_channels=1,
+                        out_channels=args.num_class,
+                        backbone=args.backbone,
+                        encoding=args.trans_encoding
+                        )
 
     # load pre-trained weights
     if args.pretrain:
@@ -89,9 +100,10 @@ def process(args):
         print('Use pretrained weights')
 
     if args.trans_encoding == 'word_embedding':
-        word_embedding = torch.load(args.word_embedding)
-        model.organ_embedding.data = word_embedding.float()
-        print('load word embedding')
+        if args.word_embedding:
+            word_embedding = torch.load(args.word_embedding)
+            model.organ_embedding.data = word_embedding.float()
+            print('load word embedding')
 
     model.to(args.device)
     model.train()
@@ -149,18 +161,6 @@ def process(args):
                 'scheduler': scheduler.state_dict(),
                 "epoch": args.epoch
             }
-            checkpoint_backbone = {
-                "net": model.module.backbone.state_dict(),
-                'optimizer':optimizer.state_dict(),
-                'scheduler': scheduler.state_dict(),
-                "epoch": args.epoch
-            }
-            checkpoint_language = {
-                "net": {k: v for k, v in model.module.state_dict().items() if k not in model.module.backbone.state_dict()},
-                'optimizer':optimizer.state_dict(),
-                'scheduler': scheduler.state_dict(),
-                "epoch": args.epoch
-            }
             save_dir = os.path.join('out', args.log_name)
             if not os.path.isdir(save_dir):
                 os.makedirs(save_dir)
@@ -169,13 +169,27 @@ def process(args):
             torch.save(checkpoint, save_path)
             print('Model saved successfully at epoch:', args.epoch)
             
-            save_backbone_path = os.path.join(save_dir, args.backbone+'_backbone.pth')
-            torch.save(checkpoint_backbone, save_backbone_path)
-            print('Backbone branch saved successfully at epoch:', args.epoch)
-            
-            save_language_path = os.path.join(save_dir, args.backbone+'_language.pth')
-            torch.save(checkpoint_language, save_language_path)
-            print('Language branch saved successfully at epoch:', args.epoch)
+            if args.backbone != 'segresnet':
+                checkpoint_backbone = {
+                    "net": model.module.backbone.state_dict(),
+                    'optimizer':optimizer.state_dict(),
+                    'scheduler': scheduler.state_dict(),
+                    "epoch": args.epoch
+                }
+                checkpoint_language = {
+                    "net": {k: v for k, v in model.module.state_dict().items() if k not in model.module.backbone.state_dict()},
+                    'optimizer':optimizer.state_dict(),
+                    'scheduler': scheduler.state_dict(),
+                    "epoch": args.epoch
+                }
+                save_backbone_path = os.path.join(save_dir, args.backbone+'_backbone.pth')
+                torch.save(checkpoint_backbone, save_backbone_path)
+                print('Backbone branch saved successfully at epoch:', args.epoch)
+                
+                save_language_path = os.path.join(save_dir, args.backbone+'_language.pth')
+                torch.save(checkpoint_language, save_language_path)
+                print('Language branch saved successfully at epoch:', args.epoch)
+
         args.epoch += 1
 
     dist.destroy_process_group()
@@ -203,7 +217,7 @@ def main():
                         help='The path of pretrain model')
     parser.add_argument('--trans_encoding', default='word_embedding', 
                         help='the type of encoding: rand_embedding or word_embedding')
-    parser.add_argument('--word_embedding', default='./pretrained_weights/txt_encoding_abdomenatlas1.1.pth', 
+    parser.add_argument('--word_embedding', default=None, 
                         help='The path of word embedding, need to change if you change the AbdomenAtlas version, 1.1 by default')
     
     ## hyperparameter
@@ -212,7 +226,8 @@ def main():
     parser.add_argument('--warmup_epoch', default=20, type=int, help='number of warmup epochs')
     parser.add_argument('--lr', default=1e-4, type=float, help='Learning rate')
     parser.add_argument('--weight_decay', default=1e-5, help='Weight Decay')
-    parser.add_argument('--backbone', default='unet', help='model backbone, unet backbone by default') 
+    parser.add_argument('--backbone', default='unet', help='model backbone, unet backbone by default')
+    parser.add_argument('--segresnet_init_filters', default=16, type=int, help='Number of initial filters in segresnet') 
     
     ## dataset
     parser.add_argument('--dataset_list', nargs='+', default=['AbdomenAtlas1.1'])

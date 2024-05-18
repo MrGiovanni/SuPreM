@@ -41,8 +41,22 @@ backbone=unet # or swinunetr
 pretrainpath=./pretrained_weights/Genesis_Chest_CT.pt
 # pretrainpath=./pretrained_weights/swin_unetr.base_5000ep_f48_lr2e-4_pretrained.pt # for swinunetr
 datasetversion=AbdomenAtlas1.1 # or AbdomenAtlas1.0
+num_class_in_dataset=25 # or 9
 wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.1.pth
 # wordembeddingpath=./pretrained_weights/txt_encoding_abdomenatlas1.0.pth # for AbdomenAtlas 1.0
 
-python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist  --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$backbone --pretrain $pretrainpath --word_embedding $wordembeddingpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class 25 --cache_num 150 --dataset_version $datasetversion
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist --dataset_list $datasetversion --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$backbone --pretrain $pretrainpath --word_embedding $wordembeddingpath --backbone $backbone --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class $num_class_in_dataset --cache_num 150 --dataset_version $datasetversion
+```
+
+If you want to pre-train a model with SegResNet backbone, please use the following command:
+```bash
+RANDOM_PORT=$((RANDOM % 64512 + 1024))
+datapath=/scratch/zzhou82/data/AbdomenAtlas1.1Mini
+backbone=segresnet
+backbone_initial_filters=16 # or 32 for larger model
+datasetversion=AbdomenAtlas1.1 # or AbdomenAtlas1.0
+num_class_in_dataset=25 # or 9
+
+
+python -W ignore -m torch.distributed.launch --nproc_per_node=4 --master_port=$RANDOM_PORT train.py --dist --dataset_list $datasetversion --data_root_path $datapath --num_workers 12 --log_name $datasetversion.$backbone --backbone $backbone --segresnet_init_filters $backbone_initial_filters --lr 1e-4 --warmup_epoch 20 --batch_size 8 --max_epoch 800 --cache_dataset --num_class $num_class_in_dataset --cache_num 150 --dataset_version $datasetversion
 ```
