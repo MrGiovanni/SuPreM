@@ -248,9 +248,10 @@ def process(args):
             writer.add_scalar('train_loss', loss, args.epoch)
             writer.add_scalar('lr', scheduler.get_lr(), args.epoch)
 
+        model_to_save = model.module if hasattr(model, 'module') else model
         if (args.epoch % args.store_num == 0):
             checkpoint = {
-                "net": model.module.state_dict(),
+                "net": model_to_save.state_dict(),
                 'optimizer':optimizer.state_dict(),
                 'scheduler': scheduler.state_dict(),
                 "epoch": args.epoch
@@ -261,15 +262,12 @@ def process(args):
             print('Checkpoint saved at epoch:', args.epoch)
 
         checkpoint = {
-            "net": model.module.state_dict(),
+            "net": model_to_save.state_dict(),
             'optimizer': optimizer.state_dict(),
             'scheduler': scheduler.state_dict(),
             "epoch": args.epoch
             }
-        directory = os.path.join(args.log_checkpoint_savepath, args.log_name)
-        if not os.path.isdir(directory):
-            os.mkdir(directory)
-        torch.save(checkpoint, directory + '/model.pth')
+        torch.save(checkpoint, os.path.join(args.log_checkpoint_savepath, args.log_name, 'model.pth'))
 
         args.epoch += 1
 
