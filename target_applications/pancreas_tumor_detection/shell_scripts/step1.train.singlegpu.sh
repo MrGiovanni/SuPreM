@@ -12,5 +12,5 @@ num_workers=10
 dataset_list=jhh_train
 
 # Single GPU
-CUDA_VISIBLE_DEVICES=0 python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT train.py --dist False --model_backbone $arch --log_name $arch.jhh --num_class $num_target_class --dataset_path $datapath --num_workers $num_workers --batch_size $batch_size --pretrain $suprem_path --lr 5e-4 --dataset_list $dataset_list --num_samples $num_samples --a_min -100 --a_max 200 --max_epoch 800 --stage train
+CUDA_VISIBLE_DEVICES=0 python -W ignore -m torch.distributed.launch --nproc_per_node=1 --master_port=$RANDOM_PORT train.py --model_backbone $arch --log_name $arch.jhh --num_class $num_target_class --dataset_path $datapath --num_workers $num_workers --batch_size $batch_size --pretrain $suprem_path --lr 5e-4 --dataset_list $dataset_list --num_samples $num_samples --a_min -100 --a_max 200 --max_epoch 800 --stage train
 # --resume $resume_path
