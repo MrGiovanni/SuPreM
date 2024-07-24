@@ -8,6 +8,12 @@ We developed a suite of pre-trained 3D models, named **SuPreM**, that combined t
 
 ## Paper
 
+<b>AbdomenAtlas: A Large-Scale, Detailed-Annotated, & Multi-Center Dataset for Efficient Transfer Learning and Open Algorithmic Benchmarking</b> <br/>
+Wenxuan Li, Chongyu Qu, Xiaoxi Chen, Pedro R. A. S. Bassi, Yijia Shi, Yuxiang Lai, Qian Yu, Huimin Xue, Yixiong Chen, Xiaorui Lin, Yutong Tang, Yining Cao, Haoqi Han, Zheyuan Zhang, Jiawei Liu, Tiezheng Zhang, Yujiu Ma, Jincheng Wang, Guang Zhang, Alan Yuille, Zongwei Zhou* <br/>
+Johns Hopkins University <br/>
+Medical Image Analysis, 2024 <br/>
+[paper](https://arxiv.org/pdf/2407.16697)
+
 <b>How Well Do Supervised 3D Models Transfer to Medical Imaging Tasks?</b> <br/>
 [Wenxuan Li](https://scholar.google.com/citations?hl=en&user=tpNZM2YAAAAJ), [Alan Yuille](https://www.cs.jhu.edu/~ayuille/), and [Zongwei Zhou](https://www.zongweiz.com/)<sup>*</sup> <br/>
 Johns Hopkins University  <br/>
