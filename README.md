@@ -160,6 +160,12 @@ Estimated cost:
 ## Citation
 
 ```
+@article{li2024abdomenatlas,
+  title={AbdomenAtlas: A Large-Scale, Detailed-Annotated, \& Multi-Center Dataset for Efficient Transfer Learning and Open Algorithmic Benchmarking},
+  author={Li, Wenxuan and Qu, Chongyu and Chen, Xiaoxi and Bassi, Pedro RAS and Shi, Yijia and Lai, Yuxiang and Yu, Qian and Xue, Huimin and Chen, Yixiong and Lin, Xiaorui and others},
+  journal={arXiv preprint arXiv:2407.16697},
+  year={2024}
+}
 @inproceedings{li2024well,
   title={How Well Do Supervised Models Transfer to 3D Image Segmentation?},
   author={Li, Wenxuan and Yuille, Alan and Zhou, Zongwei},
