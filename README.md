@@ -166,6 +166,7 @@ Estimated cost:
   journal={arXiv preprint arXiv:2407.16697},
   year={2024}
 }
+
 @inproceedings{li2024well,
   title={How Well Do Supervised Models Transfer to 3D Image Segmentation?},
   author={Li, Wenxuan and Yuille, Alan and Zhou, Zongwei},
