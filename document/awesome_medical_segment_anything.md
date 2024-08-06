@@ -1,0 +1,35 @@
+# Awesome Medical Segment Anything [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
+Dear Colleagues,
+ 
+While we are not directly working on [Segment Anything Models (SAM)](https://segment-anything.com), our team at Johns Hopkins University has been collecting and annotating large-scale datasets for Medical SAM. We believe [our dataset](https://www.zongweiz.com/dataset) would be of great interest if you plan to adapt [SAM2](https://ai.meta.com/sam2/) to medical images.
+ 
+We are progressively releasing **9,262 3D CT volumes** and **231,550 3D anatomical masks** to the public. In support of Medical SAM, we are happy to proactively share these data with you for beta test.
+ 
+*Simply reply to this email <zzhou82@jh.edu> if you would like access to our dataset.*
+*We would greatly appreciate it if you could also forward this message to colleagues who might be interested in SAM for segmenting medical images.*
+
+Below is a list of papers relevant to Medical SAM(2). Feel free to create pull requests to make this list more comprehensive.
+
+| **title** | **paper** | **repo** |
+|-----------|:---------:|:---------:|
+| Medical SAM 2: Segment Medical Images As Video Via Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.00874-b31b1b.svg)](https://arxiv.org/pdf/2408.00874) | [![GitHub stars](https://img.shields.io/github/stars/MedicineToken/Medical-SAM2.svg?logo=github&label=Stars)](https://github.com/MedicineToken/Medical-SAM2) |
+| ESP-MedSAM: Efficient Self-Prompting SAM for Universal Domain-Generalized Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2407.14153-b31b1b.svg)](https://arxiv.org/pdf/2407.14153) |  |
+| Segment Anything Model for Medical Image Analysis: An Experimental Study | [![arXiv](https://img.shields.io/badge/arXiv-2304.10517-b31b1b.svg)](https://arxiv.org/pdf/2304.10517.pdf) | [![GitHub stars](https://img.shields.io/github/stars/mazurowski-lab/segment-anything-medical.svg?logo=github&label=Stars)](https://github.com/mazurowski-lab/segment-anything-medical) |
+| Segment Anything Model for Medical Images? | [![arXiv](https://img.shields.io/badge/arXiv-2304.14660-b31b1b.svg)](https://arxiv.org/pdf/2304.14660.pdf) | [![GitHub stars](https://img.shields.io/github/stars/yuhoo0302/Segment-Anything-Model-for-Medical-Images.svg?logo=github&label=Stars)](https://github.com/yuhoo0302/Segment-Anything-Model-for-Medical-Images) |
+| Medical SAM Adapter: Adapting Segment Anything Model for Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2304.12620-b31b1b.svg)](https://arxiv.org/pdf/2304.12620.pdf) | [![GitHub stars](https://img.shields.io/github/stars/KidsWithTokens/Medical-SAM-Adapter.svg?logo=github&label=Stars)](https://github.com/KidsWithTokens/Medical-SAM-Adapter) |
+| DeSAM: Decoupling Segment Anything Model for Generalizable Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2306.00499-b31b1b.svg)](https://arxiv.org/pdf/2306.00499.pdf) | [![GitHub stars](https://img.shields.io/github/stars/yifangao112/DeSAM.svg?logo=github&label=Stars)](https://github.com/yifangao112/DeSAM) |
+| 3DSAM-adapter: Holistic Adaptation of SAM from 2D to 3D for Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2306.13465-b31b1b.svg)](https://arxiv.org/pdf/2306.13465.pdf) | [![GitHub stars](https://img.shields.io/github/stars/med-air/3DSAM-adapter.svg?logo=github&label=Stars)](https://github.com/med-air/3DSAM-adapter) |
+| MedLSAM: Localize and Segment Anything Model for Medical Images | [![arXiv](https://img.shields.io/badge/arXiv-2306.14752-b31b1b.svg)](https://arxiv.org/pdf/2306.14752.pdf) | [![GitHub stars](https://img.shields.io/github/stars/openmedlab/MedLSAM.svg?logo=github&label=Stars)](https://github.com/openmedlab/MedLSAM) |
+| SurgicalSAM: Efficient Class Promptable Surgical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2308.08746-b31b1b.svg)](https://arxiv.org/pdf/2308.08746.pdf) | [![GitHub stars](https://img.shields.io/github/stars/wenxi-yue/SurgicalSAM.svg?logo=github&label=Stars)](https://github.com/wenxi-yue/SurgicalSAM) |
+| SAM-Med2D | [![arXiv](https://img.shields.io/badge/arXiv-2308.16184-b31b1b.svg)](https://arxiv.org/pdf/2308.16184.pdf) | [![GitHub stars](https://img.shields.io/github/stars/OpenGVLab/SAM-Med2D.svg?logo=github&label=Stars)](https://github.com/OpenGVLab/SAM-Med2D) |
+| SAM3D: Segment Anything Model in Volumetric Medical Images | [![arXiv](https://img.shields.io/badge/arXiv-2309.03493-b31b1b.svg)](https://arxiv.org/pdf/2309.03493.pdf) | [![GitHub stars](https://img.shields.io/github/stars/UARK-AICV/SAM3D.svg?logo=github&label=Stars)](https://github.com/UARK-AICV/SAM3D) |
+| SAMUS: Adapting Segment Anything Model for Clinical Ultrasound | [![arXiv](https://img.shields.io/badge/arXiv-2309.06824-b31b1b.svg)](https://arxiv.org/pdf/2309.06824.pdf) | [![GitHub stars](https://img.shields.io/github/stars/xianlin7/SAMUS.svg?logo=github&label=Stars)](https://github.com/xianlin7/SAMUS) |
+| MA-SAM: Modality-agnostic SAM Adaptation for 3D Medical Images | [![arXiv](https://img.shields.io/badge/arXiv-2309.08842-b31b1b.svg)](https://arxiv.org/pdf/2309.08842.pdf) | [![GitHub stars](https://img.shields.io/github/stars/cchen-cc/MA-SAM.svg?logo=github&label=Stars)](https://github.com/cchen-cc/MA-SAM) |
+| SAM-Med3D | [![arXiv](https://img.shields.io/badge/arXiv-2310.15161-b31b1b.svg)](https://arxiv.org/pdf/2310.15161.pdf) | [![GitHub stars](https://img.shields.io/github/stars/uni-medical/SAM-Med3D.svg?logo=github&label=Stars)](https://github.com/uni-medical/SAM-Med3D) |
+| ProMISe: Prompt-driven 3D Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2310.19721-b31b1b.svg)](https://arxiv.org/pdf/2310.19721.pdf) | [![GitHub stars](https://img.shields.io/github/stars/MedICL-VU/ProMISe.svg?logo=github&label=Stars)](https://github.com/MedICL-VU/ProMISe) |
+| ScribblePrompt: Fast and Flexible Interactive 3D Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2312.07381-b31b1b.svg)](https://arxiv.org/pdf/2312.07381.pdf) | [![GitHub stars](https://img.shields.io/github/stars/halleewong/ScribblePrompt.svg?logo=github&label=Stars)](https://github.com/halleewong/ScribblePrompt) |
+| SemiSAM: Exploring SAM for Enhancing Semi-Supervised Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2312.06316-b31b1b.svg)](https://arxiv.org/pdf/2312.06316.pdf) |  |
+| Segment Anything Model for Medical Image Segmentation: Current Applications and Future Directions | [![arXiv](https://img.shields.io/badge/arXiv-2401.03495-b31b1b.svg)](https://arxiv.org/pdf/2401.03495.pdf) | [![GitHub stars](https://img.shields.io/github/stars/YichiZhang98/SAM4MIS.svg?logo=github&label=Stars)](https://github.com/YichiZhang98/SAM4MIS) |
