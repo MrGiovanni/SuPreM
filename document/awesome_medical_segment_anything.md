@@ -15,11 +15,7 @@ Below is a list of papers relevant to Medical SAM(2). Feel free to create pull r
 
 | **title** | **paper** | **repo** |
 |-----------|:---------:|:---------:|
-| Zero-Shot Surgical Tool Segmentation in Monocular Video Using Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.01648
--b31b1b.svg)](https://arxiv.org/pdf/2408.01648
-) | [![GitHub stars](https://img.shields.io/github/stars/AngeLouCN/SAM-2_Surgical_Video
-.svg?logo=github&label=Stars)](https://github.com/AngeLouCN/SAM-2_Surgical_Video
-) |
+| Zero-Shot Surgical Tool Segmentation in Monocular Video Using Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.01648-b31b1b.svg)](https://arxiv.org/pdf/2408.01648) | [![GitHub stars](https://img.shields.io/github/stars/AngeLouCN/SAM-2_Surgical_Video.svg?logo=github&label=Stars)](https://github.com/AngeLouCN/SAM-2_Surgical_Video) |
 | Medical SAM 2: Segment Medical Images As Video Via Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.00874-b31b1b.svg)](https://arxiv.org/pdf/2408.00874) | [![GitHub stars](https://img.shields.io/github/stars/MedicineToken/Medical-SAM2.svg?logo=github&label=Stars)](https://github.com/MedicineToken/Medical-SAM2) |
 | ESP-MedSAM: Efficient Self-Prompting SAM for Universal Domain-Generalized Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2407.14153-b31b1b.svg)](https://arxiv.org/pdf/2407.14153) |  |
 | Segment Anything in Medical Images | [![arXiv](https://img.shields.io/badge/arXiv-2304.12306-b31b1b.svg)](https://arxiv.org/pdf/2304.12306.pdf) | [![GitHub stars](https://img.shields.io/github/stars/bowang-lab/MedSAM.svg?logo=github&label=Stars)](https://github.com/bowang-lab/MedSAM) |
