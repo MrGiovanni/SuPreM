@@ -15,6 +15,7 @@ Below is a list of papers relevant to Medical SAM(2). Feel free to create pull r
 
 | **title** | **paper** | **repo** |
 |-----------|:---------:|:---------:|
+| Segment Anything in Medical Images and Videos: Benchmark and Deployment | [![arXiv](https://img.shields.io/badge/arXiv-2408.03322-b31b1b.svg)](https://arxiv.org/pdf/2408.03322) | [![GitHub stars](https://img.shields.io/github/stars/bowang-lab/MedSAM.svg?logo=github&label=Stars)](https://github.com/bowang-lab/MedSAM) |
 | Segment anything model 2: an application to 2D and 3D medical images | [![arXiv](https://img.shields.io/badge/arXiv-2408.00756-b31b1b.svg)](https://arxiv.org/pdf/2408.00756) |  |
 | Zero-Shot Surgical Tool Segmentation in Monocular Video Using Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.01648-b31b1b.svg)](https://arxiv.org/pdf/2408.01648) | [![GitHub stars](https://img.shields.io/github/stars/AngeLouCN/SAM-2_Surgical_Video.svg?logo=github&label=Stars)](https://github.com/AngeLouCN/SAM-2_Surgical_Video) |
 | Medical SAM 2: Segment Medical Images As Video Via Segment Anything Model 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.00874-b31b1b.svg)](https://arxiv.org/pdf/2408.00874) | [![GitHub stars](https://img.shields.io/github/stars/MedicineToken/Medical-SAM2.svg?logo=github&label=Stars)](https://github.com/MedicineToken/Medical-SAM2) |
