@@ -163,10 +163,13 @@ Estimated cost:
 
 ```
 @article{li2024abdomenatlas,
-  title={AbdomenAtlas: A Large-Scale, Detailed-Annotated, \& Multi-Center Dataset for Efficient Transfer Learning and Open Algorithmic Benchmarking},
+  title={AbdomenAtlas: A large-scale, detailed-annotated, \& multi-center dataset for efficient transfer learning and open algorithmic benchmarking},
   author={Li, Wenxuan and Qu, Chongyu and Chen, Xiaoxi and Bassi, Pedro RAS and Shi, Yijia and Lai, Yuxiang and Yu, Qian and Xue, Huimin and Chen, Yixiong and Lin, Xiaorui and others},
-  journal={arXiv preprint arXiv:2407.16697},
-  year={2024}
+  journal={Medical Image Analysis},
+  pages={103285},
+  year={2024},
+  publisher={Elsevier},
+  url={https://github.com/MrGiovanni/AbdomenAtlas}
 }
 
 @inproceedings{li2024well,
