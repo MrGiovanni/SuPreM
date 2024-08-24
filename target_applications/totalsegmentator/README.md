@@ -13,6 +13,19 @@
 
 ##### 0. Create a virtual environment (optional)
 
+<details>
+<summary style="margin-left: 25px;">[Optional] Install Anaconda on Linux</summary>
+<div style="margin-left: 25px;">
+    
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
+bash Anaconda3-2024.06-1-Linux-x86_64.sh
+```
+Once the installation is complete, open a **new** bash window to start.
+
+</div>
+</details>
+
 ```bash
 conda create -n suprem python=3.8
 source activate suprem
