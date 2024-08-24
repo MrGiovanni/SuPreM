@@ -19,10 +19,10 @@
     
 ```bash
 wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
-bash Anaconda3-2024.06-1-Linux-x86_64.sh
+bash Anaconda3-2024.06-1-Linux-x86_64.sh -b -p /path/to/your/folder/anaconda3
+/path/to/your/folder/anaconda3/bin/conda init
+source ~/.bashrc
 ```
-Once the installation is complete, open a **new** bash window to start.
-
 </div>
 </details>
 
