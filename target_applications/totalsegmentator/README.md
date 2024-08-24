@@ -19,8 +19,8 @@
     
 ```bash
 wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
-bash Anaconda3-2024.06-1-Linux-x86_64.sh -b -p /path/to/your/folder/anaconda3
-/path/to/your/folder/anaconda3/bin/conda init
+bash Anaconda3-2024.06-1-Linux-x86_64.sh -b -p ./anaconda3
+./anaconda3/bin/conda init
 source ~/.bashrc
 ```
 </div>
