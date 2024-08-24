@@ -27,7 +27,7 @@ source ~/.bashrc
 </details>
 
 ```bash
-conda create -n suprem python=3.8
+conda create -n suprem python=3.8 -y
 source activate suprem
 ```
 
