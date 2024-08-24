@@ -13,8 +13,21 @@
 
 ### 0. Create a virtual environment (optional)
 
+<details>
+<summary style="margin-left: 25px;">[Optional] Install Anaconda on Linux</summary>
+<div style="margin-left: 25px;">
+    
 ```bash
-conda create -n suprem python=3.8
+wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh
+bash Anaconda3-2024.06-1-Linux-x86_64.sh -b -p ./anaconda3
+./anaconda3/bin/conda init
+source ~/.bashrc
+```
+</div>
+</details>
+
+```bash
+conda create -n suprem python=3.8 -y
 source activate suprem
 ```
 
@@ -25,6 +38,7 @@ git clone https://github.com/MrGiovanni/SuPreM
 cd SuPreM/benchmark_backbones/
 pip install torch==1.11.0+cu113 torchvision==0.12.0+cu113 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu113
 pip install monai[all]==0.9.0
+pip install pip==23.3.1
 pip install -r requirements.txt
 ```
 
