@@ -15,6 +15,7 @@ Below is a list of papers relevant to Medical SAM(2). Feel free to create pull r
 
 | **title** | **paper** | **repo** |
 |-----------|:---------:|:---------:|
+| Interactive 3d medical image segmentation with sam 2 | [![arXiv](https://img.shields.io/badge/arXiv-2408.02635-b31b1b.svg)](https://arxiv.org/pdf/2408.02635) | [![GitHub stars](https://img.shields.io/github/stars/Chuyun-Shen/SAM_2_Medical_3D.svg?logo=github&label=Stars)](https://github.com/Chuyun-Shen/SAM_2_Medical_3D) |
 | SAM-UNet: Enhancing Zero-Shot Segmentation of SAM for Universal Medical Images | [![arXiv](https://img.shields.io/badge/arXiv-2408.09886-b31b1b.svg)](https://arxiv.org/pdf/2408.09886) | [![GitHub stars](https://img.shields.io/github/stars/Hhankyangg/sam-unet.svg?logo=github&label=Stars)](https://github.com/Hhankyangg/sam-unet) |
 | Zero-shot 3D Segmentation of Abdominal Organs in CT Scans Using Segment Anything Model 2: Adapting Video Tracking Capabilities for 3D Medical Imaging | [![arXiv](https://img.shields.io/badge/arXiv-2408.06170-b31b1b.svg)](https://arxiv.org/pdf/2408.06170) |  |
 | SAM2-UNet: Segment Anything 2 Makes Strong Encoder for Natural and Medical Image Segmentation | [![arXiv](https://img.shields.io/badge/arXiv-2408.08870-b31b1b.svg)](https://arxiv.org/pdf/2408.08870) | [![GitHub stars](https://img.shields.io/github/stars/WZH0120/SAM2-UNet.svg?logo=github&label=Stars)](https://github.com/WZH0120/SAM2-UNet) |
