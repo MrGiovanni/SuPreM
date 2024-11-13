@@ -1,5 +1,5 @@
 '''
-python plot_roc_curve.py --datafile ./patientID_pr_gt_pos_flag.csv --saverocpath plot_roc_curve
+python plot_roc_curve.py --datafile ./patientID_pr_gt_pos_flag.csv --saverocpath .
 '''
 
 import os
