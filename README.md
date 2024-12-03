@@ -26,7 +26,7 @@ International Conference on Learning Representations (ICLR) 2024 (oral; top 1.2%
 <sup>2</sup>City University of Hong Kong  <br/>
 <sup>3</sup>NVIDIA  <br/>
 Radiological Society of North America (RSNA) 2023  <br/>
-<a href='document/rsna_abstract.pdf'><img src='https://img.shields.io/badge/Abstract-PDF-purple'></a> <a href='document/rsna_slides.pdf'><img src='https://img.shields.io/badge/Slides-PDF-orange'></a>
+<a href='document/rsna_abstract.pdf'><img src='https://img.shields.io/badge/Abstract-PDF-purple'></a> <a href='document/rsna2023_slides.pdf'><img src='https://img.shields.io/badge/Slides-2023-orange'></a> <a href='document/rsna2024_slides.pdf'><img src='https://img.shields.io/badge/Slides-2024-orange'></a>
 
 
 **&#9733; We have maintained a document for [Frequently Asked Questions](document/frequently_asked_questions.md).**
