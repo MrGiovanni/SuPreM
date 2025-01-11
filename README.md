@@ -1,9 +1,15 @@
 <div align="center">
- 
+
 ![logo](document/fig_suprem_logo.png)
+
+</div>
+
+<div align="center">
+
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=MrGiovanni/SuPreM)
 [![GitHub Repo stars](https://img.shields.io/github/stars/MrGiovanni/SuPreM?style=social)](https://github.com/MrGiovanni/SuPreM/stargazers)
-**Subscribe us: https://groups.google.com/u/2/g/bodymaps**  
+[![GitHub last commit](https://img.shields.io/github/last-commit/MrGiovanni/SuPreM)](https://github.com/MrGiovanni/SuPreM/commits/master)
+[![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/MrGiovanni/SuPreM/pulls)
 
 </div>
 
