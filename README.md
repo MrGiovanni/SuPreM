@@ -9,7 +9,8 @@
 ![visitors](https://visitor-badge.laobi.icu/badge?page_id=MrGiovanni/SuPreM)
 [![GitHub Repo stars](https://img.shields.io/github/stars/MrGiovanni/SuPreM?style=social)](https://github.com/MrGiovanni/SuPreM/stargazers)
 [![GitHub last commit](https://img.shields.io/github/last-commit/MrGiovanni/SuPreM)](https://github.com/MrGiovanni/SuPreM/commits/master)
-[![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/MrGiovanni/SuPreM/pulls)
+[![GitHub pull request](https://img.shields.io/badge/PRs-welcome-blue)](https://github.com/MrGiovanni/SuPreM/pulls) <br/>
+**Subscribe us: https://groups.google.com/u/2/g/bodymaps**  
 
 </div>
 
