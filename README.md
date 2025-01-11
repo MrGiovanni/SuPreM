@@ -1,7 +1,10 @@
 <div align="center">
  
-![logo](document/fig_suprem_logo.png)  
+![logo](document/fig_suprem_logo.png)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=MrGiovanni/SuPreM)
+[![GitHub Repo stars](https://img.shields.io/github/stars/MrGiovanni/SuPreM?style=social)](https://github.com/MrGiovanni/SuPreM/stargazers)
 **Subscribe us: https://groups.google.com/u/2/g/bodymaps**  
+
 </div>
 
 We developed a suite of pre-trained 3D models, named **SuPreM**, that combined the best of large-scale datasets and per-voxel annotations, showing the transferability across a range of 3D medical imaging tasks.
