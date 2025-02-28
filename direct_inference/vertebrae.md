@@ -22,13 +22,10 @@ The CT scans are organized in such a way:
 
 ```
 AbdomenAtlasDemo
-    ├── BDMAP_00000001
+    ├── BDMAP_00000006
     │   └── ct.nii.gz
-    ├── BDMAP_00000002
+    ├── BDMAP_00000031
     │   └── ct.nii.gz
-    ├── BDMAP_00000003
-    │   └── ct.nii.gz
-    ...
 ```
 
 ##### 1. Clone and setup the GitHub repository
@@ -75,7 +72,7 @@ python -W ignore inference.py --save_dir $savepath --checkpoint $pretrainpath --
 The vertebrae masks will be saved as
 ```
 AbdomenAtlasDemoPredict
-    ├── BDMAP_00000001
+    ├── BDMAP_00000006
     │   ├── combined_labels.nii.gz
     │   └── segmentations
     │       ├── vertebrae_L5.nii.gz
@@ -90,7 +87,7 @@ AbdomenAtlasDemoPredict
     │       ├── vertebrae_C6.nii.gz
     │       ├── ...
     │       └── vertebrae_C1.nii.gz
-    ├── BDMAP_00000002
+    ├── BDMAP_00000031
     │   ├── combined_labels.nii.gz
     │   └── segmentations
     │       ├── vertebrae_L5.nii.gz
@@ -105,22 +102,6 @@ AbdomenAtlasDemoPredict
     │       ├── vertebrae_C6.nii.gz
     │       ├── ...
     │       └── vertebrae_C1.nii.gz
-    ├── BDMAP_00000003
-    │   ├── combined_labels.nii.gz
-    │   └── segmentations
-    │       ├── vertebrae_L5.nii.gz
-    │       ├── vertebrae_L4.nii.gz
-    │       ├── ...
-    │       ├── vertebrae_L1.nii.gz
-    │       ├── vertebrae_T12.nii.gz
-    │       ├── vertebrae_T11.nii.gz
-    │       ├── ...
-    │       ├── vertebrae_T1.nii.gz
-    │       ├── vertebrae_C7.nii.gz
-    │       ├── vertebrae_C6.nii.gz
-    │       ├── ...
-    │       └── vertebrae_C1.nii.gz
-    ...
 ```
 
 ##### 4. [Important!] Postprocess vertebrae masks
