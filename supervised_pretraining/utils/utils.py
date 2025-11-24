@@ -200,31 +200,34 @@ TUMOR_ORGAN = {
 
 
 def organ_post_process(pred_mask, organ_list):
-    post_pred_mask = np.zeros(pred_mask.shape)
+    post_pred_mask = np.zeros(pred_mask.shape, dtype=pred_mask.dtype)
+    
+    # Convert lists to sets for O(1) membership testing
+    rest_organs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25}
+    tumor_organs = {26, 27, 28, 29, 30, 31}
+    organ_list_set = set(organ_list)
+    
     for b in range(pred_mask.shape[0]):
         for organ in organ_list:
             if organ == 16:
                 left_lung_mask, right_lung_mask = lung_post_process(pred_mask[b])
-                post_pred_mask[b,16] = left_lung_mask
-                post_pred_mask[b,15] = right_lung_mask
+                post_pred_mask[b, 16] = left_lung_mask
+                post_pred_mask[b, 15] = right_lung_mask
             elif organ == 17:
-                continue ## the left lung case has been processes in right lung
-            elif organ == 11: # both process pancreas and Portal vein and splenic vein
-                post_pred_mask[b,10] = extract_topk_largest_candidates(pred_mask[b,10], 1) # for pancreas
-                if 10 in organ_list:
-                    post_pred_mask[b,9] = PSVein_post_process(pred_mask[b,9], post_pred_mask[b,10])
-                    # post_pred_mask[b,9] = pred_mask[b,9]
-                # post_pred_mask[b,organ-1] = extract_topk_largest_candidates(pred_mask[b,organ-1], 1)
-            elif organ in [1,2,3,4,5,6,7,8,9,12,13,14,15,18,19,20,21,22,23,24,25]: ## rest organ index
-                post_pred_mask[b,organ-1] = extract_topk_largest_candidates(pred_mask[b,organ-1], 1)
-            elif organ in [26,27,28,29,30,31]:
+                continue  # the left lung case has been processed in right lung
+            elif organ == 11:  # both process pancreas and Portal vein and splenic vein
+                post_pred_mask[b, 10] = extract_topk_largest_candidates(pred_mask[b, 10], 1)  # for pancreas
+                if 10 in organ_list_set:
+                    post_pred_mask[b, 9] = PSVein_post_process(pred_mask[b, 9], post_pred_mask[b, 10])
+            elif organ in rest_organs:  # rest organ index
+                post_pred_mask[b, organ-1] = extract_topk_largest_candidates(pred_mask[b, organ-1], 1)
+            elif organ in tumor_organs:
                 organ_mask = merge_and_top_organ(pred_mask[b], TUMOR_ORGAN[ORGAN_NAME[organ-1]])
-                post_pred_mask[b,organ-1] = organ_region_filter_out(pred_mask[b,organ-1], organ_mask)
-                post_pred_mask[b,organ-1] = extract_topk_largest_candidates(post_pred_mask[b,organ-1], TUMOR_NUM[ORGAN_NAME[organ-1]], area_least=TUMOR_SIZE[ORGAN_NAME[organ-1]])
+                post_pred_mask[b, organ-1] = organ_region_filter_out(pred_mask[b, organ-1], organ_mask)
+                post_pred_mask[b, organ-1] = extract_topk_largest_candidates(post_pred_mask[b, organ-1], TUMOR_NUM[ORGAN_NAME[organ-1]], area_least=TUMOR_SIZE[ORGAN_NAME[organ-1]])
             else:
-                post_pred_mask[b,organ-1] = pred_mask[b,organ-1]
+                post_pred_mask[b, organ-1] = pred_mask[b, organ-1]
     return post_pred_mask
-            
 def merge_and_top_organ(pred_mask, organ_list):
     ## merge 
     out_mask = np.zeros(pred_mask.shape[1:], np.uint8)
