@@ -77,35 +77,34 @@ class DiceLoss(nn.Module):
         Returns:
             Tensor: The scalar average Dice Loss across all classes.
         """
-        total_loss = []
         predict = F.sigmoid(predict)
         B = predict.shape[0]
-
+        
+        # Compute target presence mask efficiently using sum across spatial dimensions
+        target_sum = torch.sum(target, dim=(2, 3, 4))  # Shape: (B, C)
+        assert target_sum.shape[1] == self.num_classes, 'target sum =! 25 (25 is set by default for args.num_class in train.py)'
+        
+        # Create mask of present organs (non-zero targets)
+        present_mask = target_sum > 0  # Shape: (B, C)
+        
+        # If no organs present, return default loss
+        if not present_mask.any():
+            return torch.tensor(1.0, device=predict.device)
+        
+        # Compute dice loss for all present organs at once
+        total_loss = []
         for b in range(B):
-            target_sum = torch.sum(target[b], axis = (1,2,3))
-            # print('target_sum:',target_sum)
-            assert len(target_sum) == self.num_classes, 'target sum =! 25 (25 is set by default for args.num_class in train.py)'
-            non_zero_tensor = torch.nonzero(target_sum).squeeze()
-            non_zero_list = non_zero_tensor.tolist() if non_zero_tensor.dim() > 0 else [non_zero_tensor.tolist()]
-            # print('non_zero_list:',non_zero_list)
-            # by default, the num_classes is 25, could be changed in train.py
-            organ_list = [i for i in range(self.num_classes)]
-            # print('organ_list:',organ_list)
-            new_list = []
-            for idx in non_zero_list:
-                if idx in organ_list:
-                    new_list.append(idx)
-                    # print('new_list:',new_list)
-            if len(new_list)!=0:     
-                for organ in new_list:
+            present_organs = torch.nonzero(present_mask[b], as_tuple=True)[0]
+            if len(present_organs) > 0:
+                for organ in present_organs:
                     dice_loss = self.dice(predict[b, organ], target[b, organ])
                     total_loss.append(dice_loss)
         
         if len(total_loss) == 0:
-            return torch.tensor(1.0).cuda()
+            return torch.tensor(1.0, device=predict.device)
+        
         total_loss = torch.stack(total_loss)
-
-        return total_loss.sum()/total_loss.shape[0]
+        return total_loss.mean()
 
 class Multi_BCELoss(nn.Module):
     """
@@ -138,15 +137,15 @@ class Multi_BCELoss(nn.Module):
             Tensor: The scalar average BCE Loss across all classes.
         """
         assert predict.shape[2:] == target.shape[2:], 'predict & target shape do not match'
-
-        total_loss = []
-        B = predict.shape[0]
-        # print('predict shape:',predict.shape)
-        # print('target shape:',target.shape)
-
-        for b in range(B):
-            for organ in range(self.num_classes):
-                ce_loss = self.criterion(predict[b, organ], target[b, organ])
-                total_loss.append(ce_loss)
-        total_loss = torch.stack(total_loss)
-        return total_loss.sum()/total_loss.shape[0]
+        
+        # Reshape for efficient computation: (B*C, H*W*D)
+        B, C = predict.shape[:2]
+        predict_flat = predict.reshape(B * C, -1)
+        target_flat = target.reshape(B * C, -1)
+        
+        # Compute BCE loss for all batch-class combinations at once
+        ce_loss = F.binary_cross_entropy_with_logits(predict_flat, target_flat, reduction='none')
+        # Average over spatial dimensions, then over batch and classes
+        ce_loss = ce_loss.mean(dim=1).mean()
+        
+        return ce_loss

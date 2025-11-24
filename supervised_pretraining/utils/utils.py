@@ -308,12 +308,12 @@ def threshold_organ(data, organ=None, threshold=None):
     ## data: sigmoid value
     ## threshold_list: a list of organ threshold
     B = data.shape[0]
-    threshold_list = []
+    device = data.device
     if organ:
         THRESHOLD_DIC[organ] = threshold
-    for key, value in THRESHOLD_DIC.items():
-        threshold_list.append(value)
-    threshold_list = torch.tensor(threshold_list).repeat(B, 1).reshape(B,len(threshold_list),1,1,1).cuda()
+    # Create threshold list more efficiently
+    threshold_list = torch.tensor(list(THRESHOLD_DIC.values()), device=device)
+    threshold_list = threshold_list.view(1, -1, 1, 1, 1).expand(B, -1, 1, 1, 1)
     pred_hard = data > threshold_list
     return pred_hard
 
@@ -364,22 +364,17 @@ def visualize_label(batch, save_dir, input_transform):
 
 def merge_label(pred_bmask, name):
     B, C, W, H, D = pred_bmask.shape
-    merged_label_v1 = torch.zeros(B,1,W,H,D).cuda()
-    merged_label_v2 = torch.zeros(B,1,W,H,D).cuda()
+    device = pred_bmask.device
+    merged_label_v1 = torch.zeros(B, 1, W, H, D, device=device)
+    merged_label_v2 = torch.zeros(B, 1, W, H, D, device=device)
     for b in range(B):
         template_key = get_key(name[b])
         transfer_mapping_v1 = MERGE_MAPPING_v1[template_key]
         transfer_mapping_v2 = MERGE_MAPPING_v2[template_key]
-        organ_index = []
-        for item in transfer_mapping_v1:
-            src, tgt = item
-            merged_label_v1[b][0][pred_bmask[b][src-1]==1] = tgt
-        for item in transfer_mapping_v2:
-            src, tgt = item
-            merged_label_v2[b][0][pred_bmask[b][src-1]==1] = tgt
-            # organ_index.append(src-1)
-        # organ_index = torch.tensor(organ_index).cuda()
-        # predicted_prob = pred_sigmoid[b][organ_index]
+        for src, tgt in transfer_mapping_v1:
+            merged_label_v1[b, 0][pred_bmask[b, src-1] == 1] = tgt
+        for src, tgt in transfer_mapping_v2:
+            merged_label_v2[b, 0][pred_bmask[b, src-1] == 1] = tgt
     return merged_label_v1, merged_label_v2
 
 
