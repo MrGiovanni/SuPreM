@@ -146,13 +146,21 @@ class LoadSelectedImaged(MapTransform):
         
         # based on which dataset is being used, load the appropriate class map
         label_organs = abdomenatlas_set[self.dataset_version]
-        temp = nib.load(os.path.join(label_parent_path,label_organs[0]+'.nii.gz')).get_fdata()
-        W,H,D = temp.shape
-        label = np.zeros((len(label_organs),W,H,D))
         
-        for organ in range(len(label_organs)):
+        # Pre-allocate label array by loading first organ to get dimensions
+        first_organ_path = os.path.join(label_parent_path, label_organs[0] + '.nii.gz')
+        temp = nib.load(first_organ_path).get_fdata()
+        W, H, D = temp.shape
+        label = np.zeros((len(label_organs), W, H, D), dtype=np.uint8)
+        
+        # Load first organ data (already loaded as temp)
+        label[0][temp == 1] = 1
+        
+        # Load remaining organs
+        for organ in range(1, len(label_organs)):
             selected_organ = label_organs[organ]
-            organ_data = nib.load(os.path.join(label_parent_path, selected_organ+'.nii.gz')).get_fdata()
+            organ_path = os.path.join(label_parent_path, selected_organ + '.nii.gz')
+            organ_data = nib.load(organ_path).get_fdata()
             label[organ][organ_data == 1] = 1
     
         d['label'] = label

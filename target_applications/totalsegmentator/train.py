@@ -43,17 +43,18 @@ def train(args, train_loader, model, optimizer):
     )
     for step, batch in enumerate(epoch_iterator):
         x, y, name = batch["image"].to(args.device), batch["label"].float().to(args.device), batch['name']
+        
+        optimizer.zero_grad()
         logit_map = model(x)
         loss = loss_function(logit_map, y)
         loss.backward()
         optimizer.step()
-        optimizer.zero_grad()
+        
+        loss_ave += loss.detach().item()
         epoch_iterator.set_description(
             "Epoch=%d: Training (%d / %d Steps) (loss=%2.5f)" % (
-                args.epoch, step, len(train_loader), loss.item())
+                args.epoch, step, len(train_loader), loss_ave/(step+1))
         )
-        loss_ave += loss.item()
-        torch.cuda.empty_cache()
     print('Epoch=%d: ave_loss=%2.5f' % (args.epoch, loss_ave/len(epoch_iterator)))
     
     return loss_ave/len(epoch_iterator)
