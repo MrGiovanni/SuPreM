@@ -82,7 +82,7 @@ class DiceLoss(nn.Module):
         
         # Compute target presence mask efficiently using sum across spatial dimensions
         target_sum = torch.sum(target, dim=(2, 3, 4))  # Shape: (B, C)
-        assert target_sum.shape[1] == self.num_classes, 'target sum =! 25 (25 is set by default for args.num_class in train.py)'
+        assert target_sum.shape[1] == self.num_classes, f'Number of target classes {target_sum.shape[1]} does not match expected {self.num_classes}'
         
         # Create mask of present organs (non-zero targets)
         present_mask = target_sum > 0  # Shape: (B, C)

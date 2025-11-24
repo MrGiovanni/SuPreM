@@ -151,6 +151,7 @@ class LoadSelectedImaged(MapTransform):
         first_organ_path = os.path.join(label_parent_path, label_organs[0] + '.nii.gz')
         temp = nib.load(first_organ_path).get_fdata()
         W, H, D = temp.shape
+        # Use uint8 for binary masks (0 or 1) to save memory
         label = np.zeros((len(label_organs), W, H, D), dtype=np.uint8)
         
         # Load first organ data (already loaded as temp)
