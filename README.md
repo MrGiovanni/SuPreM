@@ -225,9 +225,11 @@ Estimated cost:
 
 ```
 @inproceedings{li2024well,
-  title={How Well Do Supervised Models Transfer to 3D Image Segmentation?},
+  title={How well do supervised 3d models transfer to medical imaging tasks?},
   author={Li, Wenxuan and Yuille, Alan and Zhou, Zongwei},
-  booktitle={The Twelfth International Conference on Learning Representations},
+  booktitle={International Conference on Learning Representations},
+  volume={2024},
+  pages={16389--16404},
   year={2024}
 }
 
