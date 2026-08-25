@@ -56,7 +56,7 @@ AbdomenAtlas 1.1 is an extensive dataset of 9,262 CT volumes with per-voxel anno
 
 <p align="center"><img width="100%" src="document/fig_benchmark.png" /></p>
 
-Prelimianry benchmark showed that supervised pre-training strikes as a preferred choice in terms of performance and efficiency compared with self-supervised pre-training. 
+Preliminary benchmark showed that supervised pre-training strikes as a preferred choice in terms of performance and efficiency compared with self-supervised pre-training. 
 
 We anticipate that the release of large, annotated datasets (AbdomenAtlas 1.1) and the suite of pre-trained models (SuPreM) will bolster collaborative endeavors in establishing Foundation Datasets and Foundation Models for the broader applications of 3D volumetric medical image analysis.
 
@@ -167,7 +167,7 @@ The following is a list of supported model backbones in our collection. Select t
 | name | params | pre-trained data | resources | download |
 |:----  |:----  |:----  |:----  |:----  |
 | [Tang et al.](https://openaccess.thecvf.com/content/CVPR2022/papers/Tang_Self-Supervised_Pre-Training_of_Swin_Transformers_for_3D_Medical_Image_Analysis_CVPR_2022_paper.pdf) | 62.19M | 5050 CT | [![GitHub stars](https://img.shields.io/github/stars/Project-MONAI/research-contributions.svg?logo=github&label=Stars)](https://github.com/Project-MONAI/research-contributions) | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/self_supervised_nv_swin_unetr_5050.pt?download=true) |
-| [Jose Valanaras et al.](https://arxiv.org/pdf/2307.16896) | 62.19M | 50000 CT/MRI | [![GitHub stars](https://img.shields.io/github/stars/Project-MONAI/research-contributions.svg?logo=github&label=Stars)](https://github.com/Project-MONAI/research-contributions) | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/self_supervised_nv_swin_unetr_50000.pth?download=true) |
+| [Valanarasu et al.](https://arxiv.org/pdf/2307.16896) | 62.19M | 50000 CT/MRI | [![GitHub stars](https://img.shields.io/github/stars/Project-MONAI/research-contributions.svg?logo=github&label=Stars)](https://github.com/Project-MONAI/research-contributions) | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/self_supervised_nv_swin_unetr_50000.pth?download=true) |
 | [Universal Model](https://openaccess.thecvf.com/content/ICCV2023/papers/Liu_CLIP-Driven_Universal_Model_for_Organ_Segmentation_and_Tumor_Detection_ICCV_2023_paper.pdf) | 62.19M | 2100 CT | [![GitHub stars](https://img.shields.io/github/stars/ljwztc/CLIP-Driven-Universal-Model.svg?logo=github&label=Stars)](https://github.com/ljwztc/CLIP-Driven-Universal-Model) | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_clip_driven_universal_swin_unetr_2100.pth?download=true) |
 | SuPreM | 62.19M | 2100 CT | ours :star2: | [weights](https://huggingface.co/MrGiovanni/SuPreM/resolve/main/supervised_suprem_swinunetr_2100.pth?download=true) |
 
