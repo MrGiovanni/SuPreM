@@ -217,12 +217,17 @@ references:
         given-names: "Tiezheng"
       - family-names: "Qiao"
         given-names: "Hualin"
+      - family-names: "Liu"
+        given-names: "Jie"
       - family-names: "Tang"
         given-names: "Yucheng"
       - family-names: "Yuille"
-        given-names: "Alan L."
+        given-names: "Alan"
       - family-names: "Zhou"
         given-names: "Zongwei"
         orcid: "https://orcid.org/0000-0002-3154-9851"
-    collection-title: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023)"
+    collection-title: "Advances in Neural Information Processing Systems 36 (NeurIPS 2023) Datasets and Benchmarks Track"
+    start: 36620
+    end: 36636
     year: 2023
+    doi: "10.52202/075280-1592"
