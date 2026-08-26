@@ -49,7 +49,6 @@ def validation(model, ValLoader, val_transforms, args):
                 pred_sigmoid = F.sigmoid(pred)
             pred_hard = threshold_organ(pred_sigmoid,args)
             pred_hard = pred_hard.cpu()
-            torch.cuda.empty_cache()
 
             B = pred_hard.shape[0]
             for b in range(B):
@@ -133,8 +132,6 @@ def validation(model, ValLoader, val_transforms, args):
                 )
             count += 1
             print("[{}/{}] Saved {}".format(count,len(ValLoader),name[0]))
-            
-        torch.cuda.empty_cache()
 
 
 def main():
@@ -201,14 +198,16 @@ def main():
                         encoding='word_embedding'
                         )
         #Load pre-trained weights
-        store_dict = model.state_dict()
-        store_dict_keys = [key for key, value in store_dict.items()]
         checkpoint = torch.load(args.checkpoint)
         load_dict = checkpoint['net']
-        load_dict_value = [value for key, value in load_dict.items()]
-
-        for i in range(len(store_dict)):
-            store_dict[store_dict_keys[i]] = load_dict_value[i]
+        store_dict = model.state_dict()
+        
+        # Efficiently transfer weights by matching keys
+        load_dict_keys = list(load_dict.keys())
+        store_dict_keys = list(store_dict.keys())
+        
+        for store_key, load_key in zip(store_dict_keys, load_dict_keys):
+            store_dict[store_key] = load_dict[load_key]
     
     if args.customize:
         model = SwinUNETR(img_size=(args.roi_x, args.roi_y, args.roi_z),
@@ -220,16 +219,14 @@ def main():
                     dropout_path_rate=0.0,
                     use_checkpoint=False
                     )
-        store_dict = model.state_dict()
         model_dict = torch.load(args.checkpoint)['net']
         store_dict = model.state_dict()
-        amount = 0
+        
+        # Efficiently match keys by removing module prefix
         for key in model_dict.keys():
             new_key = '.'.join(key.split('.')[1:])
-            if new_key in store_dict.keys():
-                store_dict[new_key] = model_dict[key]   
-                amount += 1
-        print(amount, len(store_dict.keys()))
+            if new_key in store_dict:
+                store_dict[new_key] = model_dict[key]
         
     model.load_state_dict(store_dict)
     print('Use pretrained weights')
