@@ -47,16 +47,16 @@ def train(args, train_loader, model, optimizer, loss_seg_DICE, loss_seg_CE):
         term_seg_Dice = loss_seg_DICE.forward(logit_map, y)
         term_seg_BCE = loss_seg_CE.forward(logit_map, y)
         loss = term_seg_BCE + term_seg_Dice
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-        optimizer.zero_grad()
+        # Accumulate loss values (detach to avoid keeping computation graph)
+        loss_bce_ave += term_seg_BCE.detach().item()
+        loss_dice_ave += term_seg_Dice.detach().item()
         epoch_iterator.set_description(
             "Epoch=%d: Training (%d / %d Steps) (dice_loss=%2.5f, bce_loss=%2.5f)" % (
-                args.epoch, step, len(train_loader), term_seg_Dice.item(), term_seg_BCE.item())
+                args.epoch, step, len(train_loader), loss_dice_ave/(step+1), loss_bce_ave/(step+1))
         )
-        loss_bce_ave += term_seg_BCE.item()
-        loss_dice_ave += term_seg_Dice.item()
-        torch.cuda.empty_cache()
     print('Epoch=%d: ave_dice_loss=%2.5f, ave_bce_loss=%2.5f' % (args.epoch, loss_dice_ave/len(epoch_iterator), loss_bce_ave/len(epoch_iterator)))
     
     return loss_dice_ave/len(epoch_iterator), loss_bce_ave/len(epoch_iterator)

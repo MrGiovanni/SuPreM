@@ -24,12 +24,12 @@ def save_mask(data, affine, header, pid, class_name, datapath):
     nib.save(nib.Nifti1Image(data, affine=affine, header=header), nifti_path)
 
 def check_dim(list_of_array):
-
+    """Check if all arrays in the list have the same dimensions."""
+    if not list_of_array:
+        return True
+    
     dim = list_of_array[0].shape
-    for i in range(len(list_of_array)):
-        if dim != list_of_array[i].shape:
-            return False
-    return True
+    return all(arr.shape == dim for arr in list_of_array)
 
 def aorta_error(pid, datapath):
 

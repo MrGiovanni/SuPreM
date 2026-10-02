@@ -233,24 +233,26 @@ TUMOR_ORGAN = {
 }
 
 
-def organ_post_process(pred_mask, organ_list,case_dir,args):
+def organ_post_process(pred_mask, organ_list, case_dir, args):
     total_anomly_slice_number = 0
-    post_pred_mask = np.zeros(pred_mask.shape)
+    post_pred_mask = np.zeros(pred_mask.shape, dtype=pred_mask.dtype)
     dataset_id = case_dir.split('/')[-2]
     case_id = case_dir.split('/')[-1]
     if args.create_dataset:
-        plot_save_path = os.path.join(case_dir,'average')
-        anomaly_csv_path = os.path.join(args.save_dir,dataset_id,'average_anomaly.csv')
+        plot_save_path = os.path.join(case_dir, 'average')
+        anomaly_csv_path = os.path.join(args.save_dir, dataset_id, 'average_anomaly.csv')
     else:
-        plot_save_path = os.path.join(case_dir,'backbones',args.backbone)
-        anomaly_csv_path = os.path.join(args.save_dir,dataset_id,args.backbone+'_anomaly.csv')
-    # if not os.path.isdir(plot_save_path):
-        # os.makedirs(plot_save_path)
+        plot_save_path = os.path.join(case_dir, 'backbones', args.backbone)
+        anomaly_csv_path = os.path.join(args.save_dir, dataset_id, args.backbone + '_anomaly.csv')
+    
+    # Convert to set for O(1) membership testing
+    organ_list_set = set(organ_list)
+    
     for b in range(pred_mask.shape[0]):
         for organ in organ_list:
             if organ == 11: # both process pancreas and Portal vein and splenic vein
                 post_pred_mask[b,10] = extract_topk_largest_candidates(pred_mask[b,10], 1) # for pancreas
-                if 10 in organ_list:
+                if 10 in organ_list_set:
                     post_pred_mask[b,9] = PSVein_post_process(pred_mask[b,9], post_pred_mask[b,10])
                     # post_pred_mask[b,9] = pred_mask[b,9]
                 # post_pred_mask[b,organ-1] = extract_topk_largest_candidates(pred_mask[b,organ-1], 1)
