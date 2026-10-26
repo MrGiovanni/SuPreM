@@ -120,12 +120,13 @@ To identify the errors, you will need some knowledge about vertebrae in the huma
 
 ##### Related Work
 
-[1] Liu, Junqi, Dongli He, Wenxuan Li, Ningyu Wang, Alan L. Yuille, and Zongwei Zhou. ["ShapeKit."](https://www.cs.jhu.edu/~zongwei/publication/liu2025shapekit.pdf) In International Workshop on Shape in Medical Imaging, pp. 44-58. Cham: Springer Nature Switzerland, 2025. 
+[1] Warszawer, Yehuda, Nathan Molinier, Jan Valosek, Pierre-Louis Benveniste, Sandrine Bédard, Emanuel Shirbint, Feroze Mohamed et al. ["TotalSpineSeg: robust spine segmentation with landmark-based labeling in MRI."](https://www.researchgate.net/profile/Yehuda-Warszawer/publication/389881289_TotalSpineSeg_Robust_Spine_Segmentation_with_Landmark-Based_Labeling_in_MRI/links/67d616582719090652bb0a05/TotalSpineSeg-Robust-Spine-Segmentation-with-Landmark-Based-Labeling-in-MRI.pdf) Research-Gate (2025).
 
 [2] Meng, Di, Edmond Boyer, and Sergi Pujades. ["Vertebrae localization, segmentation and identification using a graph optimization and an anatomic consistency cycle."](https://gitlab.inria.fr/spine/vertebrae_segmentation) Computerized Medical Imaging and Graphics 107 (2023): 102235.
 
 [3] Jaus, Alexander, Constantin Seibold, Kelsey Hermann, Negar Shahamiri, Alexandra Walter, Kristina Giske, Johannes Haubold, Jens Kleesiek, and Rainer Stiefelhagen. ["Towards unifying anatomy segmentation: Automated generation of a full-body ct dataset."](https://github.com/alexanderjaus/AtlasDataset) In 2024 IEEE International Conference on Image Processing (ICIP), pp. 41-47. IEEE, 2024.
 
-[4] Seng, Magdalena, Jakob Wasserthal, Michael Bach, Ashraya Kumar Indrakanti, Markus Obmann, Christian Meier, Dorothee Harder, Elmar M. Merkle, Martin Segeroth, and Hanns-Christian Breit. ["AI-Based Opportunistic CT Risk Assessment Using TotalSegmentator in Osteoporotic Vertebral Fractures."](https://link.springer.com/content/pdf/10.1007/s10278-026-02049-0.pdf) Journal of Imaging Informatics in Medicine (2026): 1-12.
+[4] Liu, Junqi, Dongli He, Wenxuan Li, Ningyu Wang, Alan L. Yuille, and Zongwei Zhou. ["ShapeKit."](https://www.cs.jhu.edu/~zongwei/publication/liu2025shapekit.pdf) In International Workshop on Shape in Medical Imaging, pp. 44-58. Cham: Springer Nature Switzerland, 2025. 
 
-[5] Warszawer, Yehuda, Nathan Molinier, Jan Valosek, Pierre-Louis Benveniste, Sandrine Bédard, Emanuel Shirbint, Feroze Mohamed et al. ["TotalSpineSeg: robust spine segmentation with landmark-based labeling in MRI."](https://www.researchgate.net/profile/Yehuda-Warszawer/publication/389881289_TotalSpineSeg_Robust_Spine_Segmentation_with_Landmark-Based_Labeling_in_MRI/links/67d616582719090652bb0a05/TotalSpineSeg-Robust-Spine-Segmentation-with-Landmark-Based-Labeling-in-MRI.pdf) Research-Gate (2025).
+[5] Seng, Magdalena, Jakob Wasserthal, Michael Bach, Ashraya Kumar Indrakanti, Markus Obmann, Christian Meier, Dorothee Harder, Elmar M. Merkle, Martin Segeroth, and Hanns-Christian Breit. ["AI-Based Opportunistic CT Risk Assessment Using TotalSegmentator in Osteoporotic Vertebral Fractures."](https://link.springer.com/content/pdf/10.1007/s10278-026-02049-0.pdf) Journal of Imaging Informatics in Medicine (2026): 1-12.
+
